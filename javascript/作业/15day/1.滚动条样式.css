@@ -1,0 +1,25 @@
+html,
+body {
+  margin: 0;
+  /* 
+       系统滚动条是由html,body共同决定的，将html,body共同赋予
+        overflow:hidden属性可以隐藏系统滚动条
+             */
+  overflow: hidden;
+}
+#box {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  background-color: burlywood;
+}
+#box #scroll {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100px;
+  background-color: coral;
+}

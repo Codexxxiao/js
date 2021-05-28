@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>isNaN练习</title>
+
+</head>
+<body>
+    <!-- 用户输入电话 -->
+    <input type="text" id="ip" placeholder="请输入电话号码" atuofocus>
+    <button id="bt">检测</button>
+
+    <script>
+        /* 通过id获取input和button中的值 */
+        var oIp = document.getElementById("ip");
+        var oBt = document.getElementById("bt");
+
+        /* 单点击button是触发 */
+        oBt.onclick=function(){
+            /* 获取input里面的值 */
+            var userip = oIp.value;
+            /* 判断值是否为全数字,使用isNaN函数 */
+            var isTrue = isNaN(userip);
+            /* 判断执行 */
+            if(isTrue == true){
+                alert('请重新输入');
+            }else{
+                alert('输入正确');
+            }
+        }
+    </script>
+</body>
+</html>

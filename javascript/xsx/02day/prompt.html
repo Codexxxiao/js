@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>判断登录</title>
+    <!-- 
+        result = prompt(text,value);
+        resule；获得用户输入的内容
+        text：提示用户的内容
+        value：输入框的默认值，没有设置的情况下为undefined
+     -->
+</head>
+
+<body>
+    <script>
+        // prompt是包含输入框  确认和取消的弹窗 用户输入的值就是这个prompt方法的返回值  如果用户没有输入或输入空  则返回null
+        //prompt第一个参数 是提示用户的话
+
+        //方法一
+        //1、页面刚进入 先弹窗让用户输入账号名和密码
+        var userName = prompt("请输入用户名");
+        var passWord = prompt("请输入密码");
+        //2、如果判断不正确 就一直让弹出输入账号名密码  所以可以考虑while循环
+        while (userName != "laowang" || passWord != "88888") {
+            // 3、密码输入错 或者  账号输入错误  就进入while执行 弹窗
+            userName = prompt("请输入用户名");
+            passWord = prompt("请输入密码");
+        }
+        alert("欢迎光临  老王")
+
+
+        // 方法二： 递归调用
+        var userName = prompt("请输入用户名");
+        var passWord = prompt("请输入密码");
+        //因为每次输入完都要判断  所以需要封装一个 函数
+        function isLogin() {
+            if (userName != "laowang" || passWord != "88888") {
+                userName = prompt("请输入用户名");
+                passWord = prompt("请输入密码");
+                isLogin(); //递归算法（在函数中调用自身）
+            } else {
+                alert("欢迎光临 老王 你是老王吧")
+            }
+        }
+        isLogin();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>不重名传参数版本</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            不重名传参数版本
+                arguments是一个伪数组，里面保存了传入的实参
+
+                Array.from()方法可以把伪数组转伪一个数组
+                1.Array.from(arguments);
+
+                使用数组中slice方法截取从第二个参数开始的所有参数
+                2.var arr = Array.from(arguments).slice(1);
+
+                使用数组toString()方法把数组转为字符串
+                3.arr.toString();
+
+                使用eval('fn(a,b,c)');
+                eval('fn('+arr.toString() +')');
+
+        */
+
+        //1.Function.prototype中扩展myCall方法
+        Function.prototype.myCall = function (con) {
+            //2.判断是否是undefined 或 null类型
+            if (con === undefined || con === null) {
+                con = window; //如果是undefined或null，使con指向window对象
+            }
+
+            // 判断是否使基本包装类型
+            if (typeof con != 'object' && typeof con != 'function') {
+                con = Object(con); //如果是基本包装类型，使con指向它的包装对象
+            }
+
+            // 如果是对象，不改变con指向
+
+            //3.获取不重名方法名
+            var fnName = Date.now().toString(36);
+
+            // 4.给con对象扩展名为fnName的方法
+            con[fnName] = this; //this指向调用myCall的  方法对象
+
+            // 5.获取实参并转变为字符串
+            //Array.from()把伪数组转变伪数组，使用slice()截取从第二个参数开始的所有参数
+            // 使用Array.prototype.toString()把截取的数组转为字符串
+            var arr = Array.from(arguments).slice(1);
+            var str = arr.toString();
+
+            // 6.使用eval调用 con中的fnName的方法
+            eval('con[fnName](' + str + ')');
+
+            // 7.删除con中的fnName的方法
+            delete con[fnName];
+        }
+
+        function fn(a, b, c) {
+            console.log(this);
+            console.log(a + b + c);
+        }
+
+        fn.myCall('abc', 1, 2, 3, 4)
+    </script>
+</body>
+
+</html>

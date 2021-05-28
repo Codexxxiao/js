@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tab方法一基础版</title>
+    <!-- 
+        方法一：直接对点击的标签操作，对未点击的标签移除
+     -->
+    <style>
+        .outer {
+            width: 600px;
+            margin: 50px auto;
+            border: 1px solid red;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #title {
+            display: flex;
+        }
+
+        #title h3 {
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid red;
+            box-sizing: border-box;
+        }
+
+        #title h3.active {
+            background-color: red;
+        }
+
+        ul li {
+            height: 300px;
+            line-height: 300px;
+            border: 1px solid red;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+
+            display: none;
+        }
+
+        ul li.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div id="title">
+            <h3 class="active">标题一</h3>
+            <h3>标题二</h3>
+            <h3>标题三</h3>
+        </div>
+        <ul id="con">
+            <li class="show">内容一</li>
+            <li>内容二</li>
+            <li>内容三</li>
+        </ul>
+    </div>
+    <script>
+        //通过id获取标签元素
+        var oTitle = document.getElementById('title');
+        var oCon = document.getElementById('con');
+        //通过标签名获取元素下面相同标签名的类数组（实则为对象）
+        var oHs = oTitle.getElementsByTagName('h3');
+        var oLis = oCon.getElementsByTagName('li');
+
+        //使用for循环为每个标签绑定点击事件
+        for (var i = 0; i < oHs.length; i++) {
+            // 使用index属性获取当前对象的下标
+            oHs[i].index = i;
+            // 为获取的标签绑定点击事件
+            oHs[i].onclick = function () {
+
+                for (var i = 0; i < oHs.length; i++) {
+                    // 判断:如果点击的标签和当前标签相同
+                    if (this === oHs[i]) {
+                        // 为这个标签和内容添加类
+                        this.classList.add('active');
+                        oLis[this.index].classList.add('show');
+                    } else {
+                        // 移除没有点击标签和内容的类
+                        oHs[i].classList.remove('active');
+                        oLis[i].classList.remove('show');
+                    }
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

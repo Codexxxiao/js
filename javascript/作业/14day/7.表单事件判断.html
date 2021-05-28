@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表单事件判断</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #outer {
+            width: 50%;
+            height: 50%;
+            margin: 50px auto;
+
+            display: flex;
+        }
+
+        #left,
+        #right {
+            width: 40%;
+            height: 100%;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        #left {
+            background-color: rosybrown;
+        }
+
+        #right {
+            background-color: sandybrown;
+        }
+
+        #change {
+            width: 20%;
+            height: 100%;
+            text-align: center;
+            background-color: slateblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <ul id="left">
+            <li><input type="checkbox" id="l1"><label for="l1"> left的内容1</label></li>
+            <li><input type="checkbox" id="l2"><label for="l2"> left的内容2</label></li>
+            <li><input type="checkbox" id="l3"><label for="l3"> left的内容3</label></li>
+            <li><input type="checkbox" id="l4"><label for="l4"> left的内容4</label></li>
+        </ul>
+        <div id="change">
+            <button>&gt;&gt;&gt;&gt;</button><br>
+            <button>&lt;&lt;&lt;&lt;</button>
+        </div>
+        <ul id="right">
+            <li><input type="checkbox" id="r1"><label for="r1"> right的内容1</label></li>
+            <li><input type="checkbox" id="r2"><label for="r2"> right的内容2</label></li>
+            <li><input type="checkbox" id="r3"><label for="r3"> right的内容3</label></li>
+            <li><input type="checkbox" id="r4"><label for="r4"> right的内容4</label></li>
+        </ul>
+    </div>
+    <script>
+        /* 
+            表单事件内容互换
+        */
+
+        var oOuter = document.getElementById('outer');
+
+        var oLeft = document.getElementById('left');
+        var oRight = document.getElementById('right');
+
+        var oBtns = document.querySelectorAll('#change button');
+
+        // 给li绑定点击事件
+        oOuter.onclick = function (event) {
+            if (event.target.nodeName === 'INPUT') {
+                event.target.parentNode.style.background = 'red';
+            }
+        }
+
+        // 绑定点击事件
+        oBtns[0].onclick = function () {
+
+            var oLeftInput = document.querySelectorAll('#left input');
+
+            oLeftInput.forEach(function (item, index) {
+                if (item.checked) {
+                    oRight.appendChild(item.parentNode);
+                    item.parentNode.style.background = 'transparent';
+                    item.checked = false;
+                }
+            })
+        }
+
+        // 绑定点击事件
+        oBtns[1].onclick = function () {
+
+            var oRightInput = document.querySelectorAll('#right input');
+
+            oRightInput.forEach(function (item, index) {
+                if (item.checked) {
+                    oLeft.appendChild(item.parentNode);
+                    item.parentNode.style.background = 'transparent';
+                    item.checked = false;
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

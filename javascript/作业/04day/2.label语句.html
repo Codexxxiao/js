@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>label语句</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            label语句：声明循环(标识名:)
+                -label语句往往跟continue和break语句一起使用
+                -当存在多层嵌套循环的时候，continue和break默认跳转最近的循环
+                -使用lable可以为循环定义标识，可以使用continue和break跳转到任意外层循环
+                （break + 标识名; continue + 标识名）
+
+            注意：变量声明，函数声明，循环声明
+         */
+
+        //获得外层为偶数，内层为奇数的数据情况
+        outer:
+            for (var i = 0; i <= 20; i++) {
+                inner: for (var j = 0; j <= 20; j++) {
+                    if (i % 2 != 0) {
+                        continue outer;
+                    }
+                    if (j % 2 === 0) {
+                        continue inner;
+                    }
+                    console.log(i, j)
+                }
+            }
+    </script>
+</body>
+
+</html>

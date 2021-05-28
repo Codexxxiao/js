@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>乘性运算符</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            乘性运算符
+                -乘法运算符
+                    会自动调用Number()函数进行隐式转换
+                -除法运算符
+                    会自动调用Number()函数进行隐式转换
+                -求模运算符
+                    会自动调用Number()函数进行隐式转换
+                    前面为被除数，后面为除数
+
+        */
+
+        //乘法运算符
+        console.log(12 * 12); //144
+        console.log('12' * 12); //144
+        console.log(12 * null); //0
+        console.log(12 * undefined); //NaN
+        console.log(12 * true); //12
+        console.log(12 * false); //0
+        console.log(12 * 'aaa'); //NaN
+
+        //除法运算符
+        console.log(12 / 12); //1
+        console.log('12' / 12); //1
+        console.log(12 / null); //Infinity
+        console.log(12 / undefined); //NaN
+        console.log(12 / true); //12
+        console.log(12 / false); //Infinity
+        console.log(12 / 'aaa'); //NaN
+
+        //求模运算符
+        console.log(13 % 2); //1
+        console.log('12' % 2); //0
+        console.log(12 % null); //NaN
+        console.log(12 % undefined); //NaN
+        console.log(12 % true); //0
+        console.log(12 % false); //NaN
+        console.log(12 % 'aaa'); //NaN
+    </script>
+</body>
+
+</html>

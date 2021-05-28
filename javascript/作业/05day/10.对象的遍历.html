@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>对象的遍历操作</title>
+    <!-- 
+        问题：研究 for in 的原理
+        问题：描述符的使用
+        问题：字面量定义对象如何修改描述符
+            Object.defineProperty(obj,property,description)
+            为属性增加或修改当前属性值（如果不存在进行增加操作，存在进行修改操作）
+            Object.defineProperties(obj,description)
+     -->
+</head>
+
+<body>
+    <script>
+        /* 
+        对象的遍历操作
+    */
+        function foo() {
+            return 1;
+        }
+        var person1 = {
+            name: {
+                first: 'x',
+                last: 'sx'
+            },
+            age: 18,
+            gender: 'male',
+            foo: foo
+        }
+        Object.defineProperty(person1, 'name', {
+            value: 'xsxD',
+            enumerable: false
+        })
+        for (var i in person1) {
+            console.log(i);
+        }
+        //变量i接收person1中的属性名
+        /* for (var i in person1) {
+            console.log(i);
+            console.log(person1[i]);
+
+            console.log(i + ':' + person1[i]);
+        } */
+        console.log(Object.getOwnPropertyDescriptor(person1, 'age'));
+        console.log(Object.getOwnPropertyNames(person1));
+    </script>
+</body>
+
+</html>

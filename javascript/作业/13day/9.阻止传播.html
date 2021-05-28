@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>阻止传播</title>
+    <style>
+        #outer {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background-color: burlywood;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #inner {
+            width: 300px;
+            height: 300px;
+            background-color: aquamarine;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #box {
+            position: absolute;
+            left: 600px;
+            width: 100px;
+            height: 100px;
+            background-color: chocolate;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="box"></div>
+        </div>
+    </div>
+    <script>
+        /* 
+            阻止传播：
+            (主流的方法)
+                方法一：event.stopPropagation()  
+                    阻止捕获和冒泡阶段中当前事件的进一步传播
+                        注意在捕获阶段阻止之后这个事件就完全停止，本元素也不会在执行点击事件
+                    
+                方法二：event.stopImmediatePropagation()
+                    阻止捕获和冒泡阶段中当前事件的进一步传播
+
+                区别：
+                    event.stopPropagation()
+                        相同元素的相同事件类型的监听器仍然会执行（相当于事件传播不到下个元素）
+                    
+                    event.stopImmediatePropation()
+                        相同元素的相同事件类型的监听器不会执行（相当于立马停止这个事件）
+
+            (IE低版本)
+                e.cancleBubble = true;             
+        */
+
+        var oOuter = document.getElementById('outer');
+        var oInner = document.querySelector('#inner');
+        var oBox = document.querySelector('#box');
+
+        /* oBox.onclick = function () {
+            // event.stopPropagation();
+            event.preventDefault();
+            console.log('oBox');
+        }
+        oInner.onclick = function (event) {
+            // event.stopPropagation(); //点击事件到此为止，不在传播
+            console.log('oInner');
+        }
+        oOuter.onclick = function () {
+            console.log('oOuter');
+        } */
+
+        oOuter.addEventListener('click', function (event) {
+
+            console.log('oOuter1');
+        }, true)
+        oOuter.addEventListener('click', function (event) {
+            // event.stopPropagation();
+            event.stopImmediatePropagation();
+            console.log('oOuter2');
+        }, true)
+        oInner.addEventListener('click', function () {
+            console.log('oInner');
+        }, true)
+        oBox.addEventListener('click', function () {
+            console.log('oBox');
+        }, true)
+
+        document.addEventListener('click', function () {
+            console.log('document');
+        }, false)
+    </script>
+</body>
+
+</html>

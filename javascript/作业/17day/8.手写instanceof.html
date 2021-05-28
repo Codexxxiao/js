@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>手写instanceof</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            分析 object instanceof constructor
+                检测constructor的prototype的属性是否出现在object的原型链上
+        */
+        //封装一个myInstanceof的函数
+        function myInstanceof(obj, con) {
+            var conPro = con.prototype;
+            var obj = obj.__proto__;
+            while (true) {
+
+                if (obj === conPro) {
+                    return true;
+                }
+
+                if (obj.__proto__ === null) {
+                    return false;
+                }
+
+                obj = obj.__proto__;
+            }
+        }
+
+        function Foo() {}
+        var f1 = new Foo();
+        console.log(myInstanceof(f1, Foo)); //true
+        console.log(myInstanceof(f1, Object)); //true
+
+        //案例2
+        console.log(myInstanceof(Object, Object)); //true
+        console.log(myInstanceof(Object, f1)) //flase
+    </script>
+</body>
+
+</html>

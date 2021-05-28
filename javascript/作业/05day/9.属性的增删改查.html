@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>对象的增删改查</title>
+    <!-- 
+        问题：为什么点击开了新添加的属性显现出来了
+
+        Object.preventExtensions():不允许增加
+        Object.seal(object):不允许增加、删除属性
+        Object.freeze(object):不允许增加、删除、修改属性
+        Object.isExtensible()
+        Object.isSealed(object)
+        Object.isFrozen(object)
+     -->
+</head>
+
+<body>
+    <script>
+        function foo() {
+            return 1;
+        }
+        var person1 = {
+            name: {
+                first: 'x',
+                last: 'sx'
+            },
+            age: 18,
+            gender: 'male',
+            foo: foo
+        }
+        //注意一个情况，当第一次显示的时候，没有新添加的属性，但点击开了
+        // 新添加的属性却出现了
+        console.log(person1);
+
+        //使用·操作符给person1添加hobby属性
+        /* console.log(Object.isSealed(person1)); //false
+        Object.seal(person1); //不允许增加、删除属性
+        console.log(Object.isSealed(person1)); //true */
+        person1.hobby = '篮球';
+        console.log(person1);
+
+        //使用中括号操作符修改age属性的值
+        /* console.log(Object.isFrozen(person1)); //false
+        Object.freeze(person1); //不允许增加、删除、修改属性
+        console.log(Object.isFrozen(person1)); //true */
+        person1['age'] = 28;
+        console.log(person1)
+
+        //使用delete删除name属性
+        delete person1.name;
+        console.log(person1);
+    </script>
+</body>
+
+</html>

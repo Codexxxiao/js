@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #outer {
+            display: flex;
+        }
+
+        #small {
+            position: relative;
+            width: 300px;
+            border: 1px solid red;
+        }
+
+        #small img {
+            display: block;
+            width: 300px;
+            height: 450px;
+        }
+
+        #mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            background-color: saddlebrown;
+
+            display: none;
+            z-index: 1;
+        }
+
+        #big {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            display: none;
+        }
+
+        #big img {
+            width: 1000px;
+            height: calc(1000/300*450px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="small">
+            <img src="./images/3.jpg" id="small-img">
+            <div id="mask"></div>
+        </div>
+        <div id="big">
+            <img src="./images/3.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        var oOuter = document.getElementById('outer');
+        var oSmall = document.getElementById('small');
+        var oMask = document.getElementById('mask')
+        var oBig = document.getElementById('big');
+        var oImg = document.getElementById('small-img');
+
+        function maskLocation(evt) {
+
+
+
+            // 计算元素的位置
+            var pointer = {
+                // 这里为什么用clientX,clientY，而不用offsetX,offsetY
+                x: evt.clientX - oMask.offsetWidth / 2,
+                y: evt.clientY - oMask.offsetHeight / 2
+            }
+            // 判断临界值 
+            pointer.x = pointer.x < 0 ? 0 : pointer.x;
+            pointer.y = pointer.y < 0 ? 0 : pointer.y;
+
+            pointer.x = pointer.x > oSmall.clientWidth - oMask.offsetWidth ? oSmall.clientWidth - oMask
+                .offsetWidth : pointer.x;
+            pointer.y = pointer.y > oSmall.clientHeight - oMask.offsetHeight ? oSmall.clientHeight - oMask
+                .offsetHeight : pointer.y;
+
+            // 将这个位置赋值给遮盖层
+            oMask.style.left = pointer.x + 'px';
+            oMask.style.top = pointer.y + 'px';
+        }
+
+        oSmall.onmouseenter = function (evt) {
+            oMask.style.display = 'block';
+            oBig.style.display = 'block';
+        }
+
+        oSmall.onmouseleave = function (evt) {
+            oMask.style.display = 'none';
+            oBig.style.display = 'none';
+        }
+
+        oSmall.onmousemove = function (evt) {
+            maskLocation(evt);
+        }
+    </script>
+</body>
+
+</html>

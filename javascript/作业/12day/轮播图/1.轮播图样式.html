@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图样式</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #outer {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            margin: 100px auto 0;
+        }
+
+        #inner {
+            overflow: auto;
+        }
+
+        #inner .imgs {
+            width: 2000px;
+            height: 600px;
+            display: flex;
+        }
+
+        #inner .imgs img {
+            width: 400px;
+            height: 600px;
+        }
+        
+        .left,
+        .right {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: rgba(100, 100, 100, .8);
+
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .left {
+            left: 20px;
+        }
+
+        .right {
+            right: 20px;
+        }
+
+        #inner .list {
+            display: flex;
+
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #inner .list li {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-color: rgba(100, 100, 100, .4);
+
+            cursor: pointer;
+        }
+
+        #inner .list li.active {
+            background-color: rgba(100, 100, 100, .9);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div class="imgs">
+                <img src="../img/1.jpg" alt="">
+                <img src="../img/2.jpg" alt="">
+                <img src="../img/3.jpg" alt="">
+                <img src="../img/4.jpg" alt="">
+                <img src="../img/5.jpg" alt="">
+            </div>
+            <p class="left">&lt;</p>
+            <p class="right">&gt;</p>
+            <ul class="list">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

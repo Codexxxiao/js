@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>购买保险的小练习</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            购买保险的小练习
+            需求：公司给员工买保险（用户通过此程序查询自己是否符合条件）：1.只要结婚的都买;2.没有结婚的男人 25岁以下不买;3.没有结婚的姑娘 22岁以下不买.
+        */
+        var isMarry = prompt('是否婚配（是：1，否：0）');
+        var isGender = prompt('性别（男：1，女：0）');
+        var age = prompt('芳龄几何：');
+        //判断是否婚配
+        if (isMarry === '1') {
+            alert('可以买保险了');
+        } else if (isGender === '1' && age >= 25) { // 没有婚配且男不小于25岁
+            alert('可以买保险了');
+        } else if (isGender === '0' && age >= 22) { // 没有婚配且女不小于22岁
+            alert('可以买保险了');
+        } else {
+            alert('不符合规定！');
+        }
+    </script>
+</body>
+
+</html>

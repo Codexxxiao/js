@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 1;
+        var b = a + 2 * (a++ + 3 * 2);//比如这里括号的优先级最高，但并不会先计算括号中的表达式得到a=2之后赋给第一个a,而是严格按照从左到右来进行取值和计算,等拿到括时再考虑左右的计算优先级。
+        console.log(b);
+
+        console.log(parseInt(''));
+
+        console.log(isNaN(true));
+        console.log(isNaN(null));
+        console.log(isNaN(undefined));
+    </script>
+</body>
+</html>

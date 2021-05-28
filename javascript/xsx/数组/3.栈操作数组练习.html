@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>pop练习-十进制转为二进制</title>
+</head>
+
+<body>
+    <script>
+        function change(num) {
+            //把余数压入栈中
+            var arr = [];
+            // 保存每次生成的余数
+            var temp = null;
+            // 最后返回的二进制字符串
+            var s = '';
+            while (num > 0) {
+                temp = num % 2;
+                //把余数压入数组中
+                arr.push(temp);
+                // num每次除于2并且取整
+                num = parseInt(num / 2);
+            }
+
+            while (arr.length > 0) {
+                //pop每次去除尾部的数组元素
+                // 使用+好对字符串进行拼接
+                s += arr.pop();
+            }
+
+            return s;
+        }
+        var a = change(10);
+        console.log(a);
+    </script>
+</body>
+
+</html>

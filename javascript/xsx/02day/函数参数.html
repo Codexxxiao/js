@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取函数的参数</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            获取函数的参数个数
+                实现累加
+
+            在调用一个函数的时候，会创建一个arguments对象
+                arguments{
+                    0：形参1
+                    1：形参2
+                    2：形参3
+                    3：形参4
+                    ....
+                    callee:f fn()  (这个属性指向函数本身)
+                        lenght  （函数本身的形参个数）
+                        name   （函数本身的函数名）
+                    length:n  （这个属性为实参的个数）
+                }
+
+            fn.length == arguments.callee.length;//true
+                fn.length为函数形参的个数
+                agruments.callee指向本函函数fn
+            
+             arguments.length;(获得函数实参的个数)
+                适用于不知道实参个数的时候获得实参
+                
+          */
+        function fn(a) {
+            var sum = null;
+            console.log(arguments);
+            for (var i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+            }
+
+            console.log(fn.length == arguments.callee.length); //true
+            console.log(fn.length == arguments.length); //false
+
+            return sum;
+        }
+        console.log(fn(111, 222, 33, 444, 5)); //815
+    </script>
+</body>
+
+</html>

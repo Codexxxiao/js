@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>String类型</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            String类型
+                -字符串常量
+                -单引号和双引号互相嵌套
+                -转义字符
+                -空串
+                -空白字符串
+                -字符串的长度
+                -选取字符串中的单个字符
+        */
+
+        var a = '1'; //字符串常量
+        var b = ''; //空串
+        var c = ' '; //空白字符串
+        var d = '今天天气"真好"'; //单引号和双引号互相嵌套
+        var e = '今天天气\n"真好"'; //转义字符
+
+        var f = '今天天气\n"真好"'
+
+        console.log(a); //1
+        console.log(b); //''
+        console.log(c); //''
+        console.log(d); //今天天气"真好"
+        console.log(e); //今天天气  换行 "真好" 
+        console.log(f.length); //9  \n转义成了一个换行符,因此只有九个字符  length获得字符串的长度
+        console.log(f[3]); //气  []选取那个字符,从0开始
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数声明</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            函数声明的三种方式
+                1.函数声明声明函数
+                    会有函数提升的情况出现
+                2.函数表达式声明函数
+                    不会出现函数提升的情况
+   
+
+
+                注意：在js中不存在函数重载，在相同函数名的情况下，后面的会覆盖前面
+            函数覆盖：
+                同时使用函数声明声明多个相同名的函数
+                    或同时使用多个函数表达式声明多个同名函数的时候
+                    后面声明的会覆盖前面的
+
+                    
+        */
+
+        //1.函数声明声明函数
+        function fn() {
+
+        }
+
+        //2.函数表达式声明函数
+        var fn = function () {
+
+        }
+
+        //3.构造函数声明函数
+        var fn = new Function();
+
+        //函数覆盖test
+        /* function foo() {
+            console.log('这是foo1函数');
+        }
+        var bar = function foo() {
+            console.log('这是函数表达式foo');
+        }
+        foo(); */
+    </script>
+</body>
+
+</html>

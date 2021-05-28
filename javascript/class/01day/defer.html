@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 
+        defer:script中吧布尔型属性，脚本被延迟到整个页面
+        都解析完之后运行
+        有多个的话，第一个延迟脚本比第二个延迟脚本先执行
+        适用于外部js文件，不适用于script内包含的脚本
+    
+    -->
+    <script >
+        alert('head引入js');
+    </script>
+    <script async  src="./defer.js"></script>
+</head>
+<body>
+    <div>这是第一个div1</div>
+    <script>
+        alert('body引入js');
+    </script>
+    <script async src="./defer.js" ></script>
+   <div>这是第一个div2</div>
+</body>
+</html>

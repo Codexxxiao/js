@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>filter方法的使用</title>
+    <!-- 
+        var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])
+            -filter()方法创建一个新数组
+            -返回值:其包含通过所有提供函数实现的测试的所有元素
+            -数组中每个元素执行一次回调函数,并利用返回true的元素创建一个新数组
+            -对原数组没有影响
+            
+     -->
+</head>
+
+<body>
+    <script>
+        var persons = [{
+                name: "lily1",
+                sex: "女",
+                age: 18
+            },
+            {
+                name: "lily2",
+                sex: "男",
+                age: 19
+            },
+            {
+                name: "lily3",
+                sex: "女",
+                age: 11
+            },
+            {
+                name: "lily4",
+                sex: "男",
+                age: 28
+            },
+            {
+                name: "lily5",
+                sex: "女",
+                age: 22
+            },
+        ];
+
+        //筛选性别为女的人员
+        var female = persons.filter(function (item, index, array) {
+            return item.sex === '女';
+        });
+        console.log(persons);
+        console.log(female);
+    </script>
+</body>
+
+</html>

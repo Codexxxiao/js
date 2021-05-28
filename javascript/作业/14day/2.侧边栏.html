@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>侧边栏</title>
+    <style>
+        #aside {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 50%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        #aside .con {
+            position: relative;
+            width: 60px;
+            text-align: center;
+        }
+
+        #aside .con h2 {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            height: 60px;
+            line-height: 60px;
+
+            background-color: rosybrown;
+            position: relative;
+            z-index: 2;
+
+        }
+
+        #aside .con p {
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 0;
+            padding: 0;
+            width: 100px;
+            height: 60px;
+            line-height: 60px;
+            background-color: salmon;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="aside">
+        <div class="con">
+            <p>内容一</p>
+            <h2>标签一</h2>
+        </div>
+        <div class="con">
+            <p>内容二</p>
+            <h2>标签二</h2>
+        </div>
+        <div class="con">
+            <p>内容三</p>
+            <h2>标签三</h2>
+        </div>
+    </div>
+    <script>
+        /* 
+        需求：实现一个侧边栏
+    */
+        var oCons = document.querySelectorAll('#aside .con');
+        var oPs = document.querySelectorAll('p');
+
+        // 当个元素绑定鼠标事件
+        // var l = 0;
+        /*  oCons[0].onmouseenter = function () {
+             clearInterval(timer);
+             timer = setInterval(function () {
+                 l--;
+                 if (l <= -100) {
+                     l = -100;
+                 }
+                 oPs[0].style.left = l + 'px';
+             }, 10)
+         }
+
+         oCons[0].onmouseleave = function () {
+             clearInterval(timer);
+             timer = setInterval(function () {
+                 l++;
+                 if (l >= 0) {
+                     l = 0;
+                 }
+                 oPs[0].style.left = l + 'px';
+             }, 10)
+         } */
+
+        // 给所有的oCon绑定鼠标事件
+        oCons.forEach(function (item, index) {
+
+            // 本质等于创建了三个函数，分别给三个元素绑定不同的定时器和局部元素
+            var timer = null;
+            item.index = index;
+            (function () {
+                var l = 0;
+                item.onmouseenter = function () {
+                    var that = this;
+                    clearInterval(timer);
+                    timer = setInterval(function () {
+                        l--;
+                        if (l <= -100) {
+                            l = -100;
+                        }
+                        oPs[that.index].style.left = l + 'px';
+                    }, 10)
+                }
+
+                item.onmouseleave = function () {
+                    debugger;
+                    var that = this;
+                    clearInterval(timer);
+                    timer = setInterval(function () {
+                        l++;
+                        if (l >= 0) {
+                            l = 0;
+                        }
+                        oPs[that.index].style.left = l + 'px';
+                    }, 10)
+                }
+
+            })();
+        })
+    </script>
+</body>
+
+</html>

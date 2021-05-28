@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+</head>
+
+<body>
+    <button id="btn">点击变红</button>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+    <script>
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+
+        var oLis = oBox.querySelectorAll('li');
+
+        oLis.forEach(function (item, index) {
+            // console.log(this); //window
+            item.onclick = function () {
+                // console.log(this); //item
+                this.setAttribute('checked', 'true');
+            }
+        })
+
+        /* oBtn.onclick = function () {
+            oLis.forEach(function (item, index) {
+                //console.log(this); 
+                // console.dir(item.checked);
+                // 使用g
+                if (item.getAttribute('checked')) {
+                    item.style.background = 'red';
+                    item.removeAttribute('click');
+                }
+            })
+        } */
+    </script>
+</body>
+
+</html>

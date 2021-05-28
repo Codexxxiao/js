@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>封装函数</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        /* 
+         //封装一个在元素内部的最上边插入beforeChild
+        function beforeChild() {
+
+        }
+
+        A.beforeChild(B);
+
+
+        //封装一个在兄弟元素后边插入一个元素的方法 insertAfter
+        function insertAfter() {
+
+        }
+        */
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+        var oLis = oBox.querySelectorAll('li');
+
+
+        // 封装function beforeChild函数
+        function beforeChild(parent, child) {
+            var firstEle = parent.firstElementChild;
+            if (firstEle) {
+                parent.insertBefore(child, firstEle);
+            } else {
+                parent.appendChild(child);
+            }
+        }
+
+        /*  oBtn.onclick = function () {
+             var newLi = document.createElement('li');
+
+             beforeChild(oBox, newLi);
+         } */
+
+        // 封装insertAfter函数
+        function insertAfter(newEle, oldEle) {
+            var nextEle = oldEle.nextElementSibling;
+            if (nextEle) {
+                oldEle.parentNode.insertBefore(newEle, nextEle);
+            } else {
+                oldEle.parentNode.appendChild(newEle);
+            }
+        }
+
+        oBtn.onclick = function () {
+            var newLi = document.createElement('li');
+
+            insertAfter(newLi, oLis[1]);
+        }
+    </script>
+</body>
+
+</html>

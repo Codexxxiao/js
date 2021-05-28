@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>相等和不等</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            相等和不等:==  !=
+                （1）当两个类型相等时，直接进行比较
+                （2）当两个类型不相等的时候，调用Number进行隐式转换（undefined，null除外）
+                （3）undefined和null不会调用number的隐式转换
+                    undefined == null;true
+                    undefined == 0;false
+                    null == 0;false
+                （4）NaN和任何比较都为false(NaN不等于自身)
+
+
+            全等和不全等:===  !==
+        */
+        console.log(1 == '1'); //t
+        console.log(1 == 2); //f
+        console.log(1 == true); //t
+        console.log(0 == false); //t
+        console.log('abc' == 'abc'); //t
+        console.log(1 == undefined); //f
+        console.log(0 == undefined); //f
+        console.log(null == undefined); //t
+        console.log(null == 0); //f
+
+        console.log([] == 0); //t
+        console.log({} == 0); //f
+        console.log([1] == 1); //t
+        console.log([1] == true); //t
+
+        console.log(NaN == NaN); //f
+    </script>
+</body>
+
+</html>

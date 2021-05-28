@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数属性</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            函数的几个默认属性
+                1.arguments(保存实参的类数组)
+                    length（实参个数）
+                    callee（当前函数）
+                2.length（形参的长度）
+                    使用函数名.length获得形参的个数
+                3.name（函数名）
+                    函数表达式声明的具名函数
+                        函数名只能在函数内部使用，表达式变量可以在内部也可以在外部使用
+                4.prototype（原型对象）
+                    每一个函数都有一个prototype属性
+        */
+        //1.artuments
+        function add() {
+            var sum = 0;
+            //使用 arguments.length获得实参的个数
+            for (var i = 0; i < arguments.length; i++) {
+                // 使用arguments[i]依次获得每个实参的值
+                sum += arguments[i];
+
+            }
+            // arguments.callee就相当于当前的函数
+            console.log(arguments.callee === add); //true
+            return sum;
+        }
+        var sum = add(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        console.log(sum); //45
+
+        // 2.length
+        function foo(a, b) {
+            //foo.length为当前函数的形参个数
+            console.log(foo.length); //2
+            //foo.length === arguments.callee.length返回值为true
+            console.log(foo.length === arguments.callee.length); //true
+            console.log(a, b); //1  2
+        }
+        foo(1, 2, 3);
+
+        //3.name
+
+        //情况一：函数调用模式下的函数名
+        function foo() {
+
+        }
+        console.log(foo.name); //foo
+
+        // 情况二：函数表达式下的匿名函数的函数名
+        var bar = function () {
+
+        }
+        console.log(bar.name); //bar
+
+        //情况三：函数表达式下的具名函数的函数名
+        var bar = function fn() {
+
+        }
+        console.log(bar.name); //fn
+
+        //4.prototype
+        function foo() {
+
+        }
+        //foo.prototype指向foo的原型对象
+        foo.prototype.name = 'xsx';
+        console.log(foo.prototype.name);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自定义滚动条样式</title>
+    <link rel="stylesheet" href="./1.滚动条样式.css" type="text/css">
+</head>
+
+<body>
+
+    <div id="con"></div>
+
+    <div id="box">
+        <div id="scroll"></div>
+    </div>
+
+    <script>
+        /* 
+            实现自定义滚动条的简单拖拽功能
+                思路：
+                    鼠标到窗口上边缘的距离 - 鼠标到元素上边缘的距离 = 滚动条所在元素距离
+
+            思路：
+                       内容能滚动的距离 / 滑动条能滚动的距离  =内容滚过的长度  /  滑动条滚过的长度  
+        */
+        var oCon = document.getElementById('con');
+        var oScroll = document.getElementById('scroll');
+        var oBox = document.getElementById('box');
+
+        for (let i = 0; i < 100; i++) {
+            oCon.innerHTML += i + '<br>';
+        }
+
+        // 绑定鼠标按下事件
+        oScroll.onmousedown = function (event) {
+            // 阻止默认事件
+            event.preventDefault();
+
+            // 获得鼠标位置
+            var nowPointer = event.offsetY;
+
+            // 获得文档能滚动的距离
+            var docH = oCon.offsetHeight - document.documentElement.clientHeight;
+
+            // 获得滚动条能滚动的距离
+            var scrH = oBox.clientHeight - oScroll.offsetHeight;
+
+            // 获得固定倍数 
+            var scale = docH / scrH;
+
+            // 绑定鼠标移动事件
+            document.onmousemove = function (event) {
+                // 获取移动的位置
+                var moveLocation = event.clientY - nowPointer;
+
+                // 判断临界值
+                if (moveLocation <= 0) {
+                    moveLocation = 0;
+                } else if (moveLocation >= scrH) {
+                    moveLocation = scrH;
+                }
+
+                // 获取内容滚动的距离
+                var contentLocation = moveLocation * scale;
+
+                oScroll.style.top = moveLocation + 'px';
+                oCon.style.transform = 'translateY(-' + contentLocation + 'px)';
+            }
+
+
+            // 绑定鼠标松开事件
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

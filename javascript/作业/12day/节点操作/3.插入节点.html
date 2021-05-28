@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>插入节点</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        /* 
+            插入节点
+                A.appendChild(B)
+                    -把B元素插到父元素A内部的末尾
+
+                A.insertBefore(new,old)
+                    -把new插入到old元素的上边的位置（new和old是兄弟元素），A是父元素
+
+            注意：插入的不仅仅可以是新节点，也可以是老节点
+                （注意，节点唯一，插入老节点，原来位置的老节点位置就变了）
+        */
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+        // var oLis = oBox.querySelectorAll('li');//nodeList
+        var oLis = oBox.getElementsByTagName('li'); //HTMLCollection
+
+
+        oBtn.onclick = function () {
+            // 创建一个新元素节点
+            var newLi = document.createElement('li');
+            newLi.textContent = 'new';
+
+            // 在父元素末尾插入子元素节点
+            // oBox.appendChild(newLi);
+
+            // 在父元素的任意子元素节点前面插入一个新节点
+            // oBox.insertBefore(newLi, oLis[1]);
+
+            // console.log(oLis.length);
+
+            //插入一个老节点
+            oBox.insertBefore(oLis[3], oLis[0]);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>创建对象的三种方法</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            创建对象的三种方法：
+                1.字面量创建对象
+                2.构造函数创建对象
+                3.Object.create创建对象
+
+            注意：对象里面属性名其实也是一个字符串，可以是规则的标识符，也可以是
+                不规则的标识符    
+        */
+        //1.字面量创建对象
+        var person1 = {
+            name: 'xsx1',
+            age: 18,
+            gender: 'male'
+        }
+        console.log(person1);
+        //2.构造函数创建对象
+        var person2 = new Object(); //恭喜你创建了一个空对象
+        var person3 = new Object({
+            name: 'xsx3',
+            age: 18,
+            gender: 'male'
+        });
+        console.log(person2);
+        console.log(person3);
+
+        //3.使用Object.create创建对象
+        var person4 = Object.create(null, {
+            name: {
+                value: 'xsx4',
+                writable: true,
+                enumerable: true,
+                configurable: true
+            },
+            age: {
+                value: 18,
+                writable: true,
+                enumerable: true,
+                configurable: true
+            },
+            gender: {
+                value: 'male',
+                writable: true,
+                enumerable: true,
+                configurable: true
+            }
+        })
+        console.log(person4);
+    </script>
+</body>
+
+</html>

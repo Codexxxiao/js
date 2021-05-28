@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽方法一</title>
+    <style>
+        div {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            background-color: chocolate;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            需求拖拽：
+                方法一：
+                    鼠标移动后的位置  -  鼠标移动前的位置 = box移动的位置
+
+                    box的定位 = box移动的位置 + box原本距离窗口的位置
+        */
+        var oBox = document.getElementById('box');
+
+        // 绑定鼠标按下事件
+        oBox.onmousedown = function (event) {
+            // 获取鼠标当前的位置
+            var mouseLocation = {
+                x: event.clientX,
+                y: event.clientY
+            }
+
+            // 获取元素当前的位置
+            var eleLocation = {
+                left: oBox.offsetLeft,
+                top: oBox.offsetTop
+            }
+
+            // 绑定鼠标移动事件（注意绑定给document）
+            document.onmousemove = function (event) {
+                // 计算元素的位置
+                var newLocation = {
+                    left: event.clientX - mouseLocation.x + eleLocation.left,
+                    top: event.clientY - mouseLocation.y + eleLocation.top
+                }
+
+                // 判断是否超过浏览器的边界
+                if (newLocation.left <= 0) {
+                    newLocation.left = 0;
+                } else if (newLocation.left >= document.documentElement.clientWidth - oBox.offsetWidth) {
+                    newLocation.left = document.documentElement.clientWidth - oBox.offsetWidth;
+                }
+
+                if (newLocation.top <= 0) {
+                    newLocation.top = 0;
+                } else if (newLocation.top >= document.documentElement.clientHeight - oBox.offsetHeight) {
+                    newLocation.top = document.documentElement.clientHeight - oBox.offsetHeight;
+                }
+
+                // 给元素赋值
+                oBox.style.left = newLocation.left + 'px';
+                oBox.style.top = newLocation.top + 'px';
+            }
+
+            // 绑定鼠标抬起事件（注意绑定给document，否则在box外面松开会使这个事件无法触发）
+            document.onmouseup = function () {
+                // 清除移动事件
+                document.onmousemove = null;
+                // 清除鼠标抬起事件
+                document.onmouseup = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用typeof获得值得类型</title>
+    
+</head>
+<body>
+    <script>
+        /*typeof获得值得类型(返回值为字符串)
+            数值：Number
+            字符串：String（空串返回得也是字符串）
+            undefined:undefined（情况一：未初始化；情况二：未声明；）
+            null：Object（null，对象）
+            true/false:boolean
+            函数:function 
+
+        注意：  
+            正常情况下变量未声明就拿来使用会造成not defined的错误；
+
+            未声明变量就拿来使用并且不会报错的只有typeof，输出的类型未undefined
+                例如：未声明变量a，直接使用console.log(typeof a);
+                输出结果为undefined，程序不会报错
+        
+        */
+        var a=1;
+        var str1='123';
+        var boolean1=true;
+        var null1=null;
+        var undefind1;
+
+        console.log(typeof(a));
+        console.log(typeof(str1));
+        console.log(typeof(boolean1));
+        console.log(typeof(null1));
+        console.log(typeof(undefind1));
+    </script>
+</body>
+</html>

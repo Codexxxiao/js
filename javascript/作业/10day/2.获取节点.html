@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素节点</title>
+    <!-- 
+        获取元素节点
+            -e.childNodes
+                返回一个即使更新的NodeList集合()
+                同时会获得里面的text节点、元素节点、注释节点等所有节点
+            -e.children
+                 返回一个包括某个元素所有的子元素的Html集合(HTMLCollection)
+            -e.parentNode
+                返回某个元素的父节点
+            -e.firstElementChild   e.firstChild  第一个子节点
+                返回第一个子元素节点
+            -e.lastElementChild
+                返回最后一个子元素节点  e.lastChild  最后一个子节点
+            -e.nextElementSibling
+                返回某个元素的下一个兄弟节点
+            -e.previousElementSibling
+                返回某个元素的上一个兄弟节点
+    -->
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <!--  <li>2</li> -->
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        //e.childNodes
+        var oBox = document.querySelector('#box');
+        var oLis = oBox.childNodes;
+        console.log(oLis); //NodeList (即使更新)
+        /* for (var i = 0; i < oLis.length;) {
+            oBox.removeChild(oBox.firstChild);
+            console.log(oLis.length);
+        } */
+
+        // e.children
+        var oLis = oBox.children;
+        console.log(oLis); //HTMLCollection
+
+        //e.parentNode
+        console.log(oLis[1].parentNode);
+
+        //e.firstELementChild
+        // console.log(oBox.firstChild);
+        console.log(oBox.firstElementChild);
+
+        //e.lastElementChild
+        // console.log(oBox.lastChild);
+        console.log(oBox.lastElementChild);
+
+        //e.nextSlibing
+        // console.log(oLis[1].nextSibling);
+        console.log(oLis[1].nextElementSibling);
+
+        //e.previousSlibing
+        // console.log(oLis[1].previousSibling);
+        console.log(oLis[1].previousElementSibling);
+    </script>
+</body>
+
+</html>

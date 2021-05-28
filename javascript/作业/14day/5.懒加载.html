@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>懒加载</title>
+    <style>
+        #outer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            width: 800px;
+            margin: 50px auto;
+            border: 2px solid #000;
+        }
+
+        #outer img {
+            width: 350px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <img src="./images/loading.gif" data-scr="./images/01.jpg">
+        <img src="./images/loading.gif" data-scr="./images/02.jpg">
+        <img src="./images/loading.gif" data-scr="./images/03.jpg">
+        <img src="./images/loading.gif" data-scr="./images/04.jpg">
+        <img src="./images/loading.gif" data-scr="./images/05.jpg">
+        <img src="./images/loading.gif" data-scr="./images/06.jpg">
+        <img src="./images/loading.gif" data-scr="./images/07.jpg">
+        <img src="./images/loading.gif" data-scr="./images/08.jpg">
+        <img src="./images/loading.gif" data-scr="./images/09.jpg">
+        <img src="./images/loading.gif" data-scr="./images/10.jpg">
+        <img src="./images/loading.gif" data-scr="./images/11.jpg">
+        <img src="./images/loading.gif" data-scr="./images/12.jpg">
+        <img src="./images/loading.gif" data-scr="./images/13.jpg">
+        <img src="./images/loading.gif" data-scr="./images/14.jpg">
+        <img src="./images/loading.gif" data-scr="./images/15.jpg">
+        <img src="./images/loading.gif" data-scr="./images/16.jpg">
+        <img src="./images/loading.gif" data-scr="./images/17.jpg">
+        <img src="./images/loading.gif" data-scr="./images/18.jpg">
+        <img src="./images/loading.gif" data-scr="./images/19.jpg">
+        <img src="./images/loading.gif" data-scr="./images/20.jpg">
+        <img src="./images/loading.gif" data-scr="./images/21.jpg">
+        <img src="./images/loading.gif" data-scr="./images/22.jpg">
+        <img src="./images/loading.gif" data-scr="./images/23.jpg">
+        <img src="./images/loading.gif" data-scr="./images/24.jpg">
+        <img src="./images/loading.gif" data-scr="./images/25.jpg">
+        <img src="./images/loading.gif" data-scr="./images/26.jpg">
+        <img src="./images/loading.gif" data-scr="./images/27.jpg">
+        <img src="./images/loading.gif" data-scr="./images/28.jpg">
+        <img src="./images/loading.gif" data-scr="./images/29.jpg">
+        <img src="./images/loading.gif" data-scr="./images/30.jpg">
+    </div>
+    <script>
+        /* 
+            懒加载，当用户浏览到的时候，在加载需要的图片
+            思路：当img标签中有scr属性的时候，就一定会加载图片，
+                    图片的位置相对文档上边缘的固定的，
+                    当图片到上边缘的距离小于等于滚动条滚动的距离+页面高度的时候，开始加载图片
+                    加载图片就是把用自定义属性存储的data-src属性赋值给src属性，使得图片开始加载
+        */
+        var oOuter = document.getElementById('outer');
+        var oImgs = document.querySelectorAll('#outer img');
+
+        // 获取元素到顶部的距离   使用offsetTop获取到最近定位元素的距离
+        // 方法二：使用getBoundingClientRect().top
+        function toDocTop(ele) {
+            var e = ele;
+            var l = 0;
+            var t = 0;
+            while (e) {
+                if (e === ele) {
+                    l += e.offsetLeft;
+                    t += e.offsetTop;
+                } else {
+                    l += e.offsetLeft + e.clientLeft;
+                    t += e.offsetTop + e.clientTop;
+                }
+
+                // offsetParent获得最近的定位父级元素
+                e = e.offsetParent;
+            }
+
+            return {
+                left: l,
+                top: t
+            }
+        }
+
+
+        // 监听滚动条事件
+        window.onload = onscroll = function (event) {
+            // 遍历判断每张图片相对窗口的位置
+            oImgs.forEach(function (item, index) {
+
+                /* // 获取当前元素离文档上边缘的距离
+                var nowLocation = toDocTop(item).top;
+
+                // 获取当前滚动条滚动的距离和窗口大小
+                var sumLocation = window.pageYOffset + document.documentElement.clientHeight;
+
+                if (nowLocation <= sumLocation) {
+                    item.src = item.dataset.scr;
+                } */
+
+                // 获取元素距离视口的距离
+                var nowLocation = item.getBoundingClientRect().top;
+
+                // 如果图片距离视口上边缘小于视口的高度加载图片
+                if (nowLocation <= document.documentElement.clientHeight) {
+                    item.src = item.dataset.scr;
+                }
+            })
+
+            
+        }
+    </script>
+</body>
+
+</html>

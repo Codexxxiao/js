@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>生成一个随机数</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            生成一个随机值
+            Math.random():
+                可以生成[0,1)之间的随机数
+        */
+        // 封装函数，生成从n，m之间的随机整数
+        function random(n, m) {
+            return Math.floor(Math.random() * (m - n) + n);
+        }
+        for (var i = 0; i < 10; i++) {
+            console.log(random(0, 10));
+        }
+    </script>
+</body>
+
+</html>

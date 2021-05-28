@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>元素到文档的距离</title>
+    <style>
+        #outer {
+            width: 500px;
+            height: 500px;
+            margin: 50px;
+            padding: 10px;
+            border: 2px solid #000;
+
+            background-color: chocolate;
+
+            position: relative;
+        }
+
+        #inner {
+            width: 300px;
+            height: 300px;
+            margin: 50px;
+            padding: 10px;
+            border: 2px solid #000;
+
+            background-color: darkgray;
+
+            position: relative;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            padding: 10px;
+            border: 2px solid #000;
+
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="box"></div>
+        </div>
+    </div>
+    <script>
+        /* 
+            offsetParent
+                -元素最近的定位祖辈元素
+
+            需求:获得元素到文档边缘的距离
+        */
+        var oBox = document.getElementById('box');
+
+        /* var e = oBox; */
+        var sum = 0;
+
+        /* while (e) {
+            if (e === oBox) {
+                sum += e.offsetLeft;
+            } else {
+                sum += e.offsetLeft + e.clientLeft;
+            }
+            e = e.offsetParent;
+        }
+
+        console.log(sum); //182 */
+
+        // 使用函数封装
+        function eleToDoc(element) {
+            var e = element;
+            var l = 0;
+            var t = 0;
+            // 判断e是否存在
+            while (e) {
+                // 如果e为本元素 
+                if (e === element) {
+                    l += e.offsetLeft;
+                    t += e.offsetTop;
+                } else {
+                    l += e.offsetLeft + e.clientLeft;
+                    t += e.offsetTop + e.clientTop;
+                }
+                // 把e赋值为最近的定位的元素
+                e = e.offsetParent;
+            }
+
+            return {
+                left: l,
+                top: t
+            }
+        }
+        var re = eleToDoc(oBox);
+        console.log(re);
+    </script>
+</body>
+
+</html>

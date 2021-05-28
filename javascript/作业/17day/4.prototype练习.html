@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>prototype练习</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            需求：给Array扩展一个去重的方法
+            设计目标：返回去重后的数组，不影响原数组
+        */
+        /*
+        Array.prototype.quchong = function () {
+            var newArr = [];
+            this.forEach(function (item, index) {
+                if (newArr.indexOf(item) === -1) {
+                    newArr.push(item);
+                }
+            })
+
+            return newArr;
+        } 
+        */
+
+        Array.prototype.quchong = function () {
+            var newArr = [];
+            var that = this;
+            newArr = this.filter(function (item, index) {
+                return that.indexOf(item) === index;
+            })
+            return newArr;
+        }
+
+        var arr = [1, 2, 3, 1, 2, 3, 4, 2, , 2, 31, 4, 2, 1];
+        var re = arr.quchong();
+        console.log(re);
+
+        /* 
+            需求：给String扩展去所有空格的方法
+        */
+        String.prototype.deleteSpace = function () {
+            return this.replace(/\s/g, '');
+        }
+
+        var str = ' sf sdf asdfagsdd sdfasggasdfas sdfav';
+
+        var re = str.deleteSpace();
+        console.log(re);
+    </script>
+</body>
+
+</html>

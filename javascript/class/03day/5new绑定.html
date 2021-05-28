@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>new绑定</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            new 绑定
+                如果是new关键字执行函数，相当于构造函数来实例化对象
+                那么内部this指向这个实例化对象
+        */
+
+        function foo() {
+            console.log(this);
+        }
+        foo(); //window
+        new foo; //foo  
+        /* console.log(fn); */
+    </script>
+</body>
+
+</html>

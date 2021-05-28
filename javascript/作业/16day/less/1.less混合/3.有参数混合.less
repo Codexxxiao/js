@@ -1,0 +1,47 @@
+/* 
+    less水平垂直居中
+
+    混合：
+        1.普通混合
+        2.无输出混合
+        3.有参混合
+        4.有初始值混合
+        5.命令匹配
+        6.匹配模式
+        7.arguments
+*/
+
+// 有参数混合  .混合名(@arg1,@arg2,...)
+.center(@w, @h, @c) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: @w;
+    height: @h;
+    border: 1px solid @c;
+
+    margin: auto;
+}
+
+
+
+#outer {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    border: 1px solid red;
+
+    #inner1 {
+
+        //引用有参数混合center
+        .center(200px, 200px, green);
+    }
+
+    #inner2 {
+
+        .center(300px, 300px, blue);
+    }
+}

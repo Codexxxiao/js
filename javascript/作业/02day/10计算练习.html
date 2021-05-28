@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>计算练习</title>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <button id="btn">点击</button>
+
+    <script>
+        /* 
+            需求：用户输入半径，计算圆的面积和周长
+        */
+
+        //1.获得元素
+        var oIpt = document.getElementById('ipt');
+        var oBtn = document.getElementById('btn');
+
+        //2.绑定点击事件
+        oBtn.onclick = function () {
+            //3.获得半径的值
+            var radius = Number(oIpt.value);
+
+            //4.计算面积和周长
+            console.log(parseInt(Math.PI * radius * radius)); //Math.PI 调用Math函数中的PI值
+            console.log(parseInt(Math.PI * 2 * radius));
+        }
+    </script>
+</body>
+
+</html>

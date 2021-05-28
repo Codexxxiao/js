@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>switch语句练习</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            需求:输入用户成绩,然后弹出成绩的等级
+            90-100:S
+            80-90:A
+            70-80:B
+            60-70:C
+            60以下:D
+        */
+        var userSource = prompt("请输入用户的成绩:");
+        switch (parseInt(userSource / 10)) {
+            case 10:
+            case 9:
+                alert('S');
+                break;
+            case 8:
+                alert('A');
+                break;
+            case 7:
+                alert('B');
+                break;
+            case 6:
+                alert('C');
+                break;
+            default:
+                alert('D');
+        }
+    </script>
+</body>
+
+</html>

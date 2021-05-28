@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件</title>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <script>
+        /* 
+            键盘事件
+                keydowm:键盘按下
+                keyup:键盘抬起
+                
+                两种绑定：
+                    -给输入表单绑定
+                    -直接给document绑定，然后在事件函数中操作被控制元素
+        */
+
+        // 给表单绑定
+        var oBody = document.body;
+        var oIpt = oBody.querySelector('#ipt');
+
+        oIpt.onkeydown = function () {
+            console.log('keydown');
+        }
+
+        oIpt.onkeyup = function () {
+            console.log('keyup');
+        }
+
+        // 直接绑定给document
+        document.onkeydown = function () {
+            console.log('document.keydown');
+        }
+
+        document.keyup = function () {
+            console.log('document.keyup');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>执行上下文</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            执行上下文:
+                1.注意函数并未一句一句从上到下执行,而是一块一块的去执行,这个块由函数来划分
+                2.每次开始执行一段代码,首先会做一个准备工作:(1)开辟内存空间 (2)创建变量对象
+                    (3)完成作用域链 (4)确定this指向
+                    作用域链（词法环境）：1.环境记录器，对外部环境的引用
+                3.js代码分块有3类:全局代码,函数代码,eval(不用)
+                4.因为执行上下文有很多,有一个执行上下文栈负责执行和管理执行上下文
+                5.只要开始执行就把全局执行上下文压入栈中,遇到局部,也把局部执行上下文压入栈中
+                6.当局部代码执行完毕,则从栈中弹出,当页面关闭,全局执行上下文才从栈中弹出
+        */
+
+        //使用为代码来模拟执行上下文栈如何工作的
+        function fun3() {
+            console.log("fun3");
+        }
+
+        function fun2() {
+            fun3();
+        }
+
+        function fun1() {
+            fun2();
+        }
+        fun1();
+        /* 
+            var stack = [];
+            1.只要开始执行,就把全局执行上下文压入栈中
+            var stack = [GlobalText];
+            2.当执行fun1函数调用的时候,把fun1执行上下文压入栈中
+            var stack = [GlobalText,fun1Text];
+            3.当执行fun2函数调用的时候,把fun2执行上下文压入栈中
+            var stack = [GlobalText,fun1Text,fun2Text]
+            4.当执行fun3函数调用的时候,那fun3执行上下文压入栈中
+            var stack = [GlobalText,fun1Text,fun2Text,fun3Text]
+            5.当执行完fun3函数的时候,把fun3执行上下文弹出栈
+            var stack = [GlobalText,fun1Text,fun2text]
+            6.当执行完fun2函数的时候,把fun2执行上下文弹出栈
+            var stack = [GlobalText,fun1Text];
+            7.当执行完fun1函数的时候,把fun1执行上下文弹出栈
+            var stack = [GlobalText];
+            8.当页面关闭的时候,把全局执行上下文弹出栈
+            var stack = []
+        
+        */
+
+
+        var scope = "hello";
+
+        function checkscope() {
+            var scope = "world";
+
+            function f() {
+                return scope;
+            }
+            return f();
+        }
+        checkscope();
+
+        /*  var stack = []
+            stack = [GlobalText];
+            stack = [GlobalText,checkscopteText]
+            stack = [GlobalText,checkscopteText,fText]
+            stack = [GlobalText,checkscopteText]
+            stack = [GlobalText]
+            stack = []
+        */
+    </script>
+</body>
+
+</html>

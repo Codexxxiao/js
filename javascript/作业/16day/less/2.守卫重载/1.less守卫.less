@@ -1,0 +1,20 @@
+//使用when判断条件是否符号，符合的话才执行混合里面的代码 
+
+
+.eleH(@h) when(@h>100px) {
+    background-color: green;
+}
+
+
+.eleH(@h) when(@h<100px) {
+    background-color: black;
+}
+
+
+#outer {
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+
+    .eleH(200px);
+}

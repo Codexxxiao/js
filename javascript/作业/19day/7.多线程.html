@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn1">主线程计算</button>
+    <button id="btn2">分线程计算</button>
+    <button id="btn3">测试假死</button>
+    <script>
+        /* 
+            分线程开启（分线程其实是外部的一个js文件）
+                实例化一个Worker对象即可开启一个分线程
+                返回值代表当前创建的线程
+
+            多线程缺点
+                不能操作DOM
+                不能跨域请求js
+
+            postMessage方向是向某个线程传递信息
+            onmessage事件监听是否收到数据
+            关闭线程：1.子线程中使用close()关闭线程
+                    2.主线程中使用  线程名.terminate()关闭线程    
+        */
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oBtn3 = document.getElementById('btn3');
+
+
+        oBtn1.onclick = function () {
+            console.log('主线程开始');
+            var sum = 0;
+            for (var i = 0; i < 1000000000; i++) {
+                sum += Math.sqrt(i);
+            }
+            console.log(sum);
+            console.log('主线程结束');
+        }
+
+        oBtn2.onclick = function () {
+            // 1.创建一个分线程对象  传入分线程js代码的路径
+            var ww = new Worker('./worker.js');
+
+            // 2.向分线程传入数据
+            ww.postMessage(1000000000);
+
+            // 3.在主线程中监听分线程传入的数据
+            ww.onmessage = function (e) {
+                console.log(e.data);
+
+                // 4.关闭分线程
+                // 注意这个要写在里面，不能写在外面
+                ww.terminate();
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>小球拖拽</title>
+    <style>
+        #box {
+            position: fixed;
+            top: 200px;
+            left: 200px;
+            width: 100px;
+            height: 100px;
+            background-color: darkgoldenrod;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+        
+            使用：getBoundingClientRect() 
+                返回一个DOMRect对象
+                属性：
+                    -left  元素左边缘到视口左边的距离
+                    -top    元素上边缘到视口上边的距离
+                    -right  元素右边缘到视口左边的距离
+                    -bottom     元素下边缘到视口上边的距离
+                    -width      元素的宽度
+                    -height     元素的高度
+                    -x
+                    -y
+        
+        */
+        var oBox = document.getElementById('box');
+        // console.log(oBox.getBoundingClientRect());
+
+        // oBox绑定鼠标按下事件
+        oBox.onmousedown = function (event) {
+            // 获得元素相对于视口的位置
+            var nowLocation = {
+                // 使用getBoundingClientRect()方法获得元素相对于视口的距离
+                x: oBox.getBoundingClientRect().left,
+                y: oBox.getBoundingClientRect().top
+            }
+
+            // 获得鼠标的按下位置
+            var pointer = {
+                x: event.clientX,
+                y: event.clientY
+            }
+
+            // 绑定鼠标移动事件
+            document.onmousemove = function (event) {
+
+                // 获得元素的新位置
+                var newLocation = {
+                    x: event.clientX - pointer.x + nowLocation.x,
+                    y: event.clientY - pointer.y + nowLocation.y
+                }
+
+                // 判断临界值
+                if (newLocation.x <= 0) {
+                    newLocation.x = 0
+                } else if (newLocation.x >= document.documentElement.clientWidth - oBox.offsetWidth) {
+                    newLocation.x = document.documentElement.clientWidth - oBox.offsetWidth;
+                }
+
+                if (newLocation.y <= 0) {
+                    newLocation.y = 0
+                } else if (newLocation.y >= document.documentElement.clientHeight - oBox.offsetHeight) {
+                    newLocation.y = document.documentElement.clientHeight - oBox.offsetHeight;
+                }
+
+                // 给小球赋值最新位置
+                oBox.style.left = newLocation.x + 'px';
+                oBox.style.top = newLocation.y + 'px';
+            }
+
+            // 绑定鼠标松开事件
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+
+        }
+    </script>
+</body>
+
+</html>

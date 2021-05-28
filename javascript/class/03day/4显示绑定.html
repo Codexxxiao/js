@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>显示绑定</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            显示绑定(硬绑定是显示绑定的变种)
+                -call(varthis,para1,para2,...)
+                    提供新的this值给当前调用的函数/方法
+                    (即把函数内部的this值指向varthis)
+                -apply(varthis,[para1,para2,para3,...])
+                -bind(vathis,para1,para2,...)（返回一个绑定函数，可以用一个变量去获得）                           
+               
+            硬绑定：把需要绑定的函数用另外一个函数包起来，
+                在调用这个函数，就实现了硬绑定，就算使用内置函数的情况下
+                这种绑定也是有效的    
+         */
+
+        //  call（thisArg,arg1,arg2,...）
+
+        /* // 情况一
+        var a = 10;
+
+        function foo() {
+            console.log(this);
+            console.log(this.a);
+        }
+
+        var obj = {
+            a: 5,
+            foo: foo
+        }
+        //对象调用方法函数，this指向直接对象
+        obj.foo(); //obj  5
+        //隐式丢失，相当于独立调用，this指向window
+        var bar = obj.foo;
+        bar(); //window  10
+        //使用call方法，提供新的this值指向obj，解决隐丢失
+        bar.call(obj); //obj  5 */
+
+        // 情况二
+        var a = 4;
+
+        function foo() {
+            console.log(this);
+            console.log(this.a);
+        }
+
+        var obj = {
+            a: 1
+        }
+
+        /* foo(); //window  4
+        //foo独自调用的情况下，函数内部this指向window,使用call（），使foo函数内部this指向obj
+        foo.call(obj); //obj  1
+        // 使用apply，使foo函数内部this指向obj
+        foo.apply(obj); //obj  1
+        // 使用bind，使foo函数内部this指向obj
+        var bar = foo.bind(obj);
+        bar(); //obj  1 */
+
+
+        var bar = function () {
+            foo.call(obj); //硬绑定，使用一个函数把需要绑定的函数包起来，在调用这个函数，需要绑定的函数就变成了硬绑定
+        }
+        bar(); //obj  1
+        setTimeout(bar, 1000); //obj  1
+    </script>
+</body>
+
+</html>

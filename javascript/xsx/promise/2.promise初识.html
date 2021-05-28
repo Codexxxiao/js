@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Promise是一个构造函数，身上有all、reject 、resolve方法
+                原型上有then  catch等方法
+
+            Promis的构造函数接收一个参数，是函数，并且传入两个参数：resolve,reject
+                分别表示异步操作执行成功后的回调函数
+                和异步操作执行失败后的回调函数
+
+            Promise对象有三种状态：代表异步执行的状态，
+                对象的状态只能改变一次
+        */
+        // 1.pending 初始化状态(异步代码还在执行中)
+        /* const promise = new Promise((resove, reject) => {
+            setTimeout(() => {
+                console.log('setTimeout()');
+            }, 1000)
+        })
+        console.log(promise); */
+
+        // 2.resolved / fulfilled成功状态（异步代码执行成功了）
+        /* const promise = new Promise((resove, reject) => {
+            setTimeout(() => {
+                console.log('setTimeout()');
+                resove('a数据');
+            }, 1000)
+        })
+        console.log(promise); */
+
+        // rejected失败状态（异步代码执行失败了）
+        const promise = new Promise((resove, reject) => {
+            setTimeout(() => {
+                console.log('setTimeout()');
+                reject('a数据');
+            }, 1000)
+        })
+        console.log(promise);
+    </script>
+</body>
+
+</html>

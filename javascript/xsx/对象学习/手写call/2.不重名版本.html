@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>call不重名版本</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Number.prototype.toString(2-36);
+
+            call的不重名版本
+                因为时间戳是永远不会重复的
+            
+            Date.now();获得时间搓
+            Date.now().toString(36);把时间搓转为36进制 
+
+
+            注意
+                基本包装类型变为包装对象的几种方式
+                    1.var num1 = new Number(1);
+                    2.var num2 = Object(2);
+
+        */
+        //1.在Function.prototype上声明myCall函数
+        Function.prototype.myCall = function (con) {
+            // 2.判断传入的类型
+            // 判断是否为undefined或null
+            if (con === undefined || con === null) {
+                con = window;
+            }
+
+            // 判断是否为基本包装类型
+            if (typeof con != 'object' && typeof con != 'function') {
+                con = Object(con);
+            }
+
+            // 3.获取不重名方法名
+            var fnName = Date.now().toString(36);
+
+            // 4.给con扩展方法 , 方法名为 fnName ,this指向调用myCall方法的  对象方法
+            // 把这个对象方法的地址赋值给con 对象
+            con[fnName] = this; //必须使用[]才能解析变量
+            console.log(con);
+            // 5.通过con对象调用 (调用myCall方法的  对象方法)  
+            con[fnName](); //fnName中this指向con,
+
+            //6.清除con对象扩展的fnName方法
+            delete con[fnName];
+        }
+
+        function fn() {
+            console.log(this);
+        }
+        fn.myCall(1);
+        /*   fn.call(1);
+          fn.myCall('abc');
+          fn.call('abc'); */
+    </script>
+</body>
+
+</html>

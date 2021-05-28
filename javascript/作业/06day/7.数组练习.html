@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            需求：
+            
+            //使用for 把1-100的整数以二维的形式储存在数组中
+            [
+                [0..9],
+                [11....20],
+                [21.....30],
+                ....
+                [91....100]
+            ]
+        */
+        var oarr = [];
+        for (var i = 0; i < 10; i++) {
+            //注意：每次重新创一个iarr，然后一维中的分别指向不同的iarr地址
+            var iarr = [];
+            for (var j = 0; j < 10; j++) {
+                iarr[j] = j + i * 10 + 1;
+            }
+            oarr[i] = iarr;
+        }
+        console.log(oarr);
+    </script>
+</body>
+
+</html>

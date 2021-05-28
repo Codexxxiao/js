@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>删除添加数组元素</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        删除数组元素：
+            (1)pop()  pop方法可以删除数组最后的一个元素
+                会修改原数组
+                返回从数组尾部删除的元素值
+            (2)shift()  shift方法可以删除数组头部的元素
+                会修改元素
+                返回从数组头部删除的元素值
+            (3)delete  delete运算符，可以删除数组指定下标的元素
+                返回值为boolean，删除成功返回true，删除失败返回false
+                注意：删除后为空位元素，数组的长度不发生变化
+            (4)length  length属性可以删除尾部一个或多个元素，甚至可以清空整个数组
+                会修改原数组
+            (5)splice(agr1,agr2)  splice方法可以删除指定下标位置后一个或多个元素
+                返回值是一个数组，内容是被删除的元素
+                一个参数代表从当前下标位置，一直删除到数组末尾
+                两个参数：第一个参数代表下标，第二个元素代表删除多少个数组元素
+                
+
+        添加数组元素
+            (1)push(e1,e2,e3,...) 在数组尾部添加一个或多个元素
+                会修改数组
+                返回添加元素之后的数组长度
+            (2)unshift(e1,e2,e3,...) 在数组尾部添加一个或多个元素
+                会修改数组
+                返回值为添加元素之后的数组长度
+                注意:同时添加多个元素和依次添加多个元素得到的结果是不一样的
+            (3)concat()  用于合并两个数组或多个数组(也可以在尾部插入一个或多个元素,这种情况建议使用push())
+                不会更改现有数组
+                而是会返回一个新的数组
+                注意:concat会拆分一维数组,不会拆分二维数组
+            (4)splice(start,deleteCount[,e3,e4,...])  用来在指定位置插入元素
+                start(必写):删除的开始下标位置
+                deleteCount:删除的元素个数
+                [,e3,e4,...]:要添加进数组的元素,从start位置开始
+
+    */
+        /* // 删除数组元素
+        var arr = [1, 2, 3, 4, 5, 6];
+        //pop  和  shift删除元素
+        console.log(arr.pop()); //6
+        console.log(arr.shift()); //1
+
+        //使用delete删除指定下标元素
+        console.log(arr);
+        console.log(delete arr[2]); //true
+        console.log(arr); //使用delete删除后的位置变为空位元素，数组长度不变
+
+        //使用 length删除后面一个或多个元素
+        var arr1 = [1, 2, 3, 4, 5, 6, 7]
+        arr1.length = 5;
+        console.log(arr1); //[1,2,3,4,5]
+
+        //使用 splice方法删除数组指定位置指定个数的字符串
+        var re = arr1.splice(1, 2);
+        console.log(arr1); //[1,4,5]
+        console.log(re); //[2,3] */
+
+        //数组的删除练习
+        /* var Person = [{
+                name: "xiaowang1",
+                age: 19,
+                sex: "nan"
+            },
+            {
+                name: "xiaowang1",
+                age: 19,
+                sex: "nan"
+            }, {
+                name: "xiaowang1",
+                age: 19,
+                sex: "nan"
+            },
+            {
+                name: "xiaowang2",
+                age: 21,
+                sex: "nan"
+            },
+            {
+                name: "xiaowang3",
+                age: 14,
+                sex: "nan"
+            },
+            {
+                name: "xiaowang4",
+                age: 33,
+                sex: "nan"
+            },
+            {
+                name: "xiaowang5",
+                age: 11,
+                sex: "nan"
+            },
+            {
+                name: "xiaowang5",
+                age: 11,
+                sex: "nan"
+            },
+            {
+                name: "xiaowang5",
+                age: 11,
+                sex: "nan"
+            },
+            {
+                name: "xiaowang6",
+                age: 49,
+                sex: "nan"
+            },
+            {
+                name: "xiaowang7",
+                age: 29,
+                sex: "nan"
+            },
+            {
+                name: "xiaowang8",
+                age: 6,
+                sex: "nan"
+            },
+            {
+                name: "xiaowang9",
+                age: 19,
+                sex: "nan"
+            },
+            {
+                name: "xiaowang10",
+                age: 21,
+                sex: "nan"
+            },
+        ];
+
+        // 删除Person年龄大于18的人
+        for (var i = 0; i < Person.length; i++) {
+            if (Person[i].age < 18) {
+                Person.splice(i--, 1);
+            }
+        }
+        console.log(Person); */
+
+
+        // 添加数组元素
+        var arr = [1, 2, 3, 4];
+        //使用push 和 unshift在尾部和头部添加数组元素
+        arr.push(1, 2);
+        arr.unshift(1, 2);
+        console.log(arr); //[1,2,1,2,3,4,1,2]
+
+        //使用concat添加数组元素(拼接两个数组)
+        var arr1 = ['a', 'b', 'c'];
+        var newArr = arr.concat(arr1);
+        console.log(arr1); //['a', 'b', 'c']
+        console.log(newArr); //[1,2,1,2,3,4,1,2,'a', 'b', 'c']
+
+        //使用splice在指定位置添加元素
+        var arr2 = [1, 2, 3, 4];
+        arr2.splice(2, 0, 7, 8, 9); //[1,2,7,8,9,3,4]
+        console.log(arr2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test测试</title>
+</head>
+
+<body>
+    <script>
+        /* foo(); //typeError: foo is not a function
+
+        var a = true;
+        if (a) {
+            function foo() {
+                console.log('a');
+            }
+        } else {
+            function foo() {
+                console.log('b');
+            }
+        } */
+
+        var foo;
+        var a;
+        foo();
+        a = true;
+        if (a) {
+            function foo() {
+                console.log('a');
+            }
+        } else {
+            function foo() {
+                console.log('b');
+            }
+        }
+
+
+        var a = 0;
+        if (true) {
+            a = 1;
+
+            function a() {}
+            a = 21;
+            console.log('里面', a); 
+        }
+
+        console.log('外面', a); 
+
+
+
+        foo();//a
+
+        function foo() {
+            console.log('a');
+        }
+    </script>
+</body>
+
+</html>

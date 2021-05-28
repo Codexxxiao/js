@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取时间戳</title>
+    <!-- 
+        获取时间戳
+            -valueOf
+
+            Date.now()  常用：创建一个Date对象
+
+            getTime()
+
+            使用一元运算符：常用 +
+
+     -->
+</head>
+
+<body>
+    <script>
+        /* 
+            获取时间戳的三种方法
+        */
+        var date = new Date();
+        console.log(date.valueOf());
+        console.log(Date.now()); //常用的方法
+        console.log(date.getTime());
+        console.log(+date);
+    </script>
+</body>
+
+</html>

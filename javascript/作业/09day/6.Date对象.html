@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Date对象</title>
+    <!-- 
+        时间戳：它是一个整数值，表示从1970年1月1日零时零分零秒以来的毫秒数（计算机元年）
+
+    -构造函数 
+        new Date();
+            没有提供参数，新创建对象表示实例化时刻的日期和时间
+        new Date(value);
+        new Date(dateString);
+        new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]]);
+
+    -方法
+        Date.now()
+            返回至今为止的毫秒数
+
+            
+            
+     -->
+</head>
+
+<body>
+    <script>
+        var date = new Date();
+        //Thu Apr 29 2021 18:22:13 GMT+0800 (中国标准时间)
+        console.log(date);
+
+        // 使用valueOf获得最原始的值
+        console.log(date.valueOf()); //1619691786152
+
+        // 使用Date.now()获得毫秒数
+        console.log(Date.now()); //1619692021840
+    </script>
+</body>
+
+</html>

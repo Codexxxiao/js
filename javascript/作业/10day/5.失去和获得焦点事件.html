@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>失去获得焦点事件</title>
+    <!-- 
+        focus:
+            获得焦点事件
+
+        blur:
+            失去焦点事件
+    -->
+</head>
+
+<body>
+    <input type="text" id="ipt" value="请输入密码">
+    <script>
+        /* 
+            模拟palcehold  实现失去获得焦点事件
+        */
+        var oBody = document.body;
+        var oIpt = oBody.querySelector('#ipt');
+
+        oIpt.onfocus = function () {
+            if (this.value === '请输入密码') {
+                this.value = '';
+            }
+        }
+
+        oIpt.onblur = function () {
+            if (this.value === '') {
+                this.value = '请输入密码';
+            }
+        }
+    </script>
+</body>
+
+</html>

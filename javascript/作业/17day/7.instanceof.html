@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>instanceof</title>
+</head>
+
+<body>
+    <script>
+        /* 
+           object instanceof constructor
+                检测构造函数的prototype属性是否出现某一个实例对象的原型链上
+        */
+        function Foo() {}
+        var f1 = new Foo(); function Foo() {}
+        var f1 = new Foo();
+        console.log(f1 instanceof Foo); //true
+        console.log(f1 instanceof Object); //true
+
+        //案例2
+        console.log(Object instanceof Function) //true
+        console.log(Object instanceof Object) //true
+        console.log(Function instanceof Object) //true
+        console.log(Function instanceof Function) //true
+        console.log(Object instanceof Foo); //false
+        console.log(f1 instanceof Foo); //true
+        console.log(f1 instanceof Object); //true
+
+        //案例2
+        console.log(Object instanceof Function) //true
+        console.log(Object instanceof Object) //true
+        console.log(Function instanceof Object) //true
+        console.log(Function instanceof Function) //true
+        console.log(Object instanceof Foo) //flase
+    </script>
+</body>
+
+</html>

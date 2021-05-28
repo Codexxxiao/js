@@ -1,0 +1,103 @@
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <title>函数封装练习</title>
+        </head>
+
+        <body>
+            <script>
+                /* 
+                    需求：
+                    1.求1 - n之间所有数的和 或 求n - m之间所有数的和
+                    2.圆的面积
+                    3.求2个数中的最大值  或  求3个数中的最大值  或  任意个数的最大值
+                    4.求任意个数的和
+                    5.判断一个数是否是素数(又叫质数， 只能被1和自身整数的数)
+
+                */
+
+                //1.求1 - n之间所有数的和 或 求n - m之间所有数的和
+                function add() {
+                    var add = 0;
+                    if (arguments.length == 1) {
+                        for (var i = 1; i <= arguments[0]; i++) {
+                            add += i;
+                        }
+                        return add;
+                    } else if (arguments.length == 2) {
+                        for (var i = arguments[0]; i <= arguments[1]; i++) {
+                            add += i;
+                        }
+                        return add;
+                    } else {
+                        alert('参数错误！');
+                        return;
+                    }
+                }
+
+                console.log(add(100)); //5050
+                console.log(add(10, 100)); //5005
+
+                //2.圆的面积
+                function areaCircle(radius) {
+                    return Math.PI * radius * radius;
+                }
+                console.log(areaCircle(2)); //12.566370614359172
+                console.log(areaCircle(4)); //50.26548245743669
+
+                //3.求2个数中的最大值  或  求3个数中的最大值  或  任意个数的最大值
+                function max() {
+                    var max = arguments[0];
+                    for (var i = 0; i < arguments.length; i++) {
+                        if (arguments[i] > max) {
+                            max = arguments[i];
+                        }
+                    }
+                    return max;
+                }
+                console.log(max(1, 2)); //2
+                console.log(max(1, 2, 12, 60, 25, 88)); //88
+
+                //4.求任意个数的和
+                function add() {
+                    var sum = 0;
+                    for (var i = 0; i < arguments.length; i++) {
+                        sum += arguments[i];
+                    }
+                    return sum;
+                }
+                console.log(add(1, 2, 3, 4, 5)); //15
+                console.log(add(1123, 2123, 3123, 4213, 5123)); //15705
+
+                //5.判断一个数是否是素数(又叫质数， 只能被1和自身整数的数)
+                //大于0的自然数，（0，1既不是质数，也不是合数）
+                function isPrimeNumber(num) {
+                    if (num === 2) {
+                        return true;
+                    } else if (num % 2 === 0) {
+                        return false;
+                    } else {
+                        for (var i = 2; i < num / 2; i++) {
+                            if (num % i === 0) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                }
+                console.log(isPrimeNumber(1)); //true
+                console.log(isPrimeNumber(2)); //true
+                console.log(isPrimeNumber(3)); //true
+                console.log(isPrimeNumber(4)); //false
+                console.log(isPrimeNumber(5)); //true
+                console.log(isPrimeNumber(6)); //false
+                console.log(isPrimeNumber(11)); //true
+                console.log(isPrimeNumber(19)); //true
+                console.log(isPrimeNumber(9)); //false
+                console.log(isPrimeNumber(21)); //false
+            </script>
+        </body>
+
+        </html>

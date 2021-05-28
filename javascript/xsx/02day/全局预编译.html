@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>全局预编译</title>
+
+    <!-- 
+        全局预编译
+            1.创建GO对象（Global Object）对象
+            2.找到变量声明，将变量名作为Go属性名，值为undefined
+            3.找到函数声明，作为Go属性名，赋值函数体
+
+     -->
+</head>
+
+<body>
+    <script>
+        console.log(fn1);
+
+        fn1(1, 2, 3);
+
+        function fn1(a, b, c) {
+            console.log(a, b, c);
+        }
+        /* 
+            
+        */
+        console.log(global); //undefined
+        global = 100;
+        console.log(global); //100
+
+        function test() {
+            console.log(global); //undefined
+            var global = 200;
+            console.log(global); //200
+            var global = 300;
+        }
+        test();
+        var global;
+    </script>
+</body>
+
+</html>

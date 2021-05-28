@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>call方法的使用</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            1.在Function构造器的原型对象上有call,apply,bind三个方法，可以供所有的函数使用
+            2. 这三个方法使必须函数才能调用，存在的意义是改变函数的执行上下文，具体来说就是
+                改变函数执行的时候的this指向
+
+            call:
+                f.call(thisArg,arg1,arg1,...)
+                    thisArg.foo = f;  函数this执行那个thisArg
+                    thisArg.foo();
+            作用：
+
+                1.改变函数f的this指向自己的第一个参数
+                2.调用函数f
+
+                thisArg的三种情况：
+                    1.null和undefined：默认会把this指向window
+                    2.基本包装类型，把this指向当前的数据的包装对象
+                    3.对象类型，this直接指向这个对象  
+
+            传参数：
+                从第二个参数开始，依次向后面传入函数需要的参数个数
+        */
+        function fn() {
+            console.log(this);
+        }
+        fn.call(1); //Number(1)
+        fn.call('abc'); //String('abc')
+        fn.call(null); //window
+        fn.call(undefined); //window
+        fn.call(false); //Boolean(false)
+        fn.call([1, 2, 3]); //[1, 2, 3]
+        fn.call(function f1() {}); //ƒ f1(){}
+        fn.call({
+            name: 'xsx'
+        }); //{name: "xsx"}
+
+        fn.call();//Window
+    </script>
+</body>
+
+</html>

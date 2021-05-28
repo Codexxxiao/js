@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            in运算符，如果指定的属性在指定的对象或原型链中，则in运算符返回true
+
+            hasOwnProperty() :用来检测一个对象是否含有特定的自身属性，
+                该方法会忽略从原型链继承而来的属性
+        
+        */
+        function deepCopy(to, from) {
+            // 遍历from对象的所有属性，拷贝到to对象中
+            for (var key in from) {
+                //不遍历原型链上的属性
+                if (from.hasOwnProperty(key)) {
+                    // 如果值是对象，并且有值，在遍历对象
+                    if (from[key] && typeof from[key] === 'object') {
+                        // 区分是一般对象还是数组
+                        to[key] = from[key].constructor === Array ? [] : {};
+                        to[key] = deepCopy(to[key], from[key]);
+                    } else {
+                        // 如果不是，直接赋值
+                        to[key] = from[key];
+                    }
+                }
+            }
+            return to;
+        }
+
+        var obj = {
+            name: 'xsx',
+            age: 18,
+            hobby: ['play', 'eat'],
+            fn: function () {},
+            friend: {
+                name: 'xiaohong',
+                age: 16,
+                hobby: ['eat', 'sleep'],
+                fn: function () {}
+            }
+        }
+
+        var obj2 = deepCopy({}, obj);
+
+        obj2.friend.fn = 1;
+
+        obj2.friend.name = 'xxxxxxxxh';
+
+        console.log(obj);
+        console.log(obj2);
+    </script>
+</body>
+
+</html>

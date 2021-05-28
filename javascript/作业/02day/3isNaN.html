@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>请用户输入Number类型</title>
+</head>
+
+<body>
+    <input type="text" id="ipt" placeholder="请输入Number类型" autofocus><br>
+    <button id="btn">确定</button>
+
+    <script>
+        /* 
+            需求:判断用户输入的是否为Number,不是的话输入不是Number类型,是的话输入是Number类型
+        */
+
+        //1.获得元素
+        var oIpt = document.getElementById('ipt');
+        var oBtn = document.getElementById('btn');
+
+        //2.绑定点击事件
+        oBtn.onclick = function () {
+            //3.获取用户输入的值
+            var userUser = oIpt.value;
+            //4.使用判断语句
+            if (isNaN(userUser)) { //isNaN用来判断数字是否为number.其中有String到Number的隐式转换
+                alert('is not a number');
+            } else {
+                alert('is a number');
+            }
+        }
+    </script>
+</body>
+
+</html>

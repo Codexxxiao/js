@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录注册练习</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            登录注册练习
+        */
+        var userName = prompt('请输入用户名：', 'user');
+        var userPass = prompt('请输入用户密码：');
+
+        while (userName != 'xsx' || userPass != '123') {
+            var userName = prompt('请输入用户名：', 'user');
+            var userPass = prompt('请输入用户密码：');
+        }
+
+        alert('登录成功');
+    </script>
+</body>
+
+</html>

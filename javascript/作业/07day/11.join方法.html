@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数组的join方法</title>
+    <!-- 
+        Array.prototype.join([separator])
+            separator(可选):指定一个字符串来分隔数组的每个元素
+                -如果只为空,返回的字符串默认用逗号分隔数组元素
+            返回值:一个字符串
+                如果数组元素为空,则返回空串
+                如果一个元素为undefined 或 null,它会被转换为空字符串
+                虽然是空串,但是也是会用sepatator去连接起来
+
+
+        注意:方法中会把undefined和null当作空串处理的操作
+     -->
+</head>
+
+<body>
+    <script>
+        /* 
+        join 连接数组元素方法的使用
+    */
+        var arr = ['xie', 'sai', 'xiao'];
+        var re1 = arr.join();
+        var re2 = arr.join('+');
+        var re3 = arr.join('-');
+        var re4 = arr.join('~');
+        console.log(re1); //xie,sai,xiao
+        console.log(re2); //xie+sai+xiao
+        console.log(re3); //xie-sai-xiao
+        console.log(re4); //xie~sai~xiao
+
+        var arr2 = ['xie', undefined, 'sai', null, 'xiao'];
+        var re5 = arr2.join('-');
+        console.log(re5); //xie--sai--xiao
+
+        var arr3 = [undefined];
+        var arr4 = [null];
+        console.log(arr3); //[undefined]
+        console.log(arr4); //[null]
+    </script>
+</body>
+
+</html>

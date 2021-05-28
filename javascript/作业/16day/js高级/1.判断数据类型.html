@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>判断数据类型</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            判断数据类型：
+                typeof:
+                    能检测的类型：Number,String,Boolean,undefined,function
+
+                ===:
+                    null和undefined
+
+                    因为null和undefined类型中，类型的值是唯一的，因此只要判断类型，类型相同的话值一定相同
+
+                object.toString()
+                    object的toString方法返回的字符串拥有当前数据的类型，因此可以让其它
+                        类型调用object 的toString()方法
+
+                        Object.prototype.toString.call(value).slice(8,-1);
+
+                        通过slice剪切，在转变为小写
+                        Object.prototype.toString.call(value).slice(8,-1).toLowerCase();
+         */
+
+        //  拿到object的toString方法
+        Object.prototype.toString();
+        // 改变toString中的this指向，使它指向需要检测的类型
+        var re = Object.prototype.toString.call(1); //[object Number]
+        // var re = Object.prototype.toString.call('abc');//[object String]
+        // var re = Object.prototype.toString.call([1,2]);//[object Array]
+        // var re = Object.prototype.toString.call({name:'xsx'});//[object Object]
+        // var re = Object.prototype.toString.call(1n);//[object BigInt]
+        // var re = Object.prototype.toString.call(false);//[object Boolean]
+
+        console.log(Object.prototype.toString.call(1).slice(8, -1).toLowerCase());
+        console.log(re);
+    </script>
+</body>
+
+</html>

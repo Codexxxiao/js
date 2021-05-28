@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>instanceof</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            instanceof 
+                object instanceof constructor
+                用来检测constructor.prototype是否存在于参数object的原型链上
+        */
+        function Dog(name) {
+            if (!(this instanceof Dog)) {
+                return new Dog(name);
+            }
+            this.name = name;
+        }
+        var d1 = Dog('ahuang');
+        //函数没有返回值的情况下默认返回undefined
+        // console.log(d1);undefined
+
+        function Person(name) {
+            if (this instanceof Person) {
+                this.name = name;
+            } else {
+                return new Person(name);
+            }
+        }
+        var p1 = new Person('xsx1');
+        var p2 = Person('xsx2');
+    </script>
+</body>
+
+</html>

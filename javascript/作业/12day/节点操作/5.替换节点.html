@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>插入节点</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        /* 
+            替换节点
+                A.replaceChild(new,old);
+
+                使用new元素节点替换old旧元素节点    
+        */
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+        // var oLis = oBox.querySelectorAll('li');//nodeList
+        var oLis = oBox.getElementsByTagName('li'); //HTMLCollection
+
+
+        oBtn.onclick = function () {
+            // 旧元素替换(被替换的元素会消失)
+            var re = oBox.replaceChild(oLis[3], oLis[1]);
+            console.log(re);
+
+            // 新元素替换旧元素
+            /* var newLi = document.createElement('li');
+            oBox.replaceChild(newLi, oLis[1]); */
+        }
+    </script>
+</body>
+
+</html>

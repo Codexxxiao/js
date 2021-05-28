@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>两个数据的交换</title>
+    <!-- 
+        交换数据的两种方法：
+            方法一：使用temp的临时变量
+            方法二：使用运算符
+
+     -->
+</head>
+
+<body>
+    <script>
+        /* 交换a和b两个变量的值 */
+        var a = 12; //定义a变量
+        var b = 22; //定义b变量
+
+        /* 方法一：使用临时变量 */
+        var temp = a; //把a的值赋给临时变量temp
+        a = b; //把b的值赋给a
+        b = temp; //把临时变量temp的值赋给b
+
+        console.log(a);
+        console.log(b);
+
+        /* 方法二：使用算数运算符 
+            注意此时a=22，b=12
+        */
+        a = a + b; //a=34,b=12
+        b = a - b; //a=34,b=22
+        a = a - b; //a=12,b=22
+
+        console.log(a);
+        console.log(b);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>手写bind方法</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            bind方法
+                思路1：返回一个与原函数一样，但是改变this指向的函数
+                思路2：调用函数的时候，改变this指向（）
+        */
+        Function.prototype.myBind = function (con) {
+            // 1.获得实参数组
+            var arr = Array.from(arguments).slice(1);
+            // 2.获得this指针，即获得调用myBind的函数
+            var that = this;
+
+            // 简简单单的闭包？？？
+            return function () {
+                that.apply(con, arr);
+            }
+        }
+
+        function fn(a, b) {
+            console.log(this, a + b);
+        }
+        var re = fn.myBind(1, 2, 3);
+        re();
+    </script>
+</body>
+
+</html>

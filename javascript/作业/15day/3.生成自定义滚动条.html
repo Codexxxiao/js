@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自定义滚动条样式</title>
+    <link rel="stylesheet" href="./1.滚动条样式.css" type="text/css">
+</head>
+
+<body>
+
+    <div id="con"></div>
+
+    <div id="box">
+        <div id="scroll"></div>
+    </div>
+
+    <script>
+        /* 
+            实现自定义滚动条的简单拖拽功能
+                思路：
+                    鼠标到窗口上边缘的距离 - 鼠标到元素上边缘的距离 = 滚动条所在元素距离
+        */
+        var oCon = document.getElementById('con');
+        var oScroll = document.getElementById('scroll');
+        var oBox = document.getElementById('box');
+
+        for (let i = 0; i < 300; i++) {
+            oCon.innerHTML += i + '<br>';
+        }
+
+        /* 
+              生成自定义的滚动条大小
+                  思路：
+                      滚动条的总长度  /  文档的总长度 = 滚动条大小 /  窗口大小
+          */
+
+        // 滚动条总长度
+        var sumScroll = oBox.offsetHeight;
+        // 文档的总长度
+        var sumDoc = oCon.offsetHeight;
+        // 比例大小
+        var scale = sumScroll / sumDoc;
+        // 自定义滚动条大小
+        var scrollHeight = document.documentElement.clientHeight * scale;
+
+        oScroll.style.height = scrollHeight + 'px';
+
+        // 绑定鼠标按下事件
+        oScroll.onmousedown = function (event) {
+            // 阻止默认事件
+            event.preventDefault();
+
+            // 获得鼠标相对元素的距离
+            var nowPointer = event.offsetY;
+
+
+
+            // 绑定鼠标移动事件
+            document.onmousemove = function (event) {
+                // 获得元素的位置  鼠标相对窗口的位置-鼠标相对元素的位置
+                var nowLocation = event.clientY - nowPointer;
+
+                // 判断临界值
+                if (nowLocation <= 0) {
+                    nowLocation = 0;
+                } else if (nowLocation >= oBox.clientHeight - oScroll.offsetHeight) {
+                    nowLocation = oBox.clientHeight - oScroll.offsetHeight;
+                }
+
+                /* 
+                    文档内容滚动的距离
+                        滚动条可以滚动的距离 / 文档可以滚动的距离 = 滚动条滚动的距离  /  文档滚动的距离
+                */
+
+                /*
+
+                 // 滚动条可以滚动的距离
+                var canScroll = oBox.clientHeight - oScroll.offsetHeight;
+                // 文档可以滚动的距离
+                var canDocu = oCon.offsetHeight - document.documentElement.clientHeight;
+                //  固定倍数
+                // 因为scale与外部的相同，可以直接使用
+                var scale = canScroll / canDocu; 
+                
+                */
+
+                // 文档位置
+                var docLocation = nowLocation / scale;
+
+                // 给滑动块赋值
+                oScroll.style.top = nowLocation + 'px';
+
+                // 给文档赋值
+                oCon.style.transform = 'translateY(-' + docLocation + 'px)';
+            }
+
+
+            // 绑定鼠标松开事件
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

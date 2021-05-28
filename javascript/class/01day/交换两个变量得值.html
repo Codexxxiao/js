@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>交换两个变量的值</title>
+</head>
+<body>
+    <script>
+        /* 方法一：使用一个临时变量 */
+        var a=10,
+            b=20,
+            temp;
+            /* 交换值 */
+        temp=a;
+        a=b;
+        b=temp;
+
+        /* document的输出方法比alert输出方法慢 */
+        document.write('a=' + a);
+        document.write(b);
+        /* 方法二：使用运算符计算 */
+        var a=100,
+            b=200;
+        
+        a=a+b;
+        b=a-b;
+        a=a-b;
+
+        alert('a=' + a);
+        alert(b);
+    </script>
+</body>
+</html>

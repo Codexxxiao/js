@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js引入的两种方式</title>
+    <!-- 
+        方式一：script标签+代码块
+            格式：<script>
+                代码块
+            </script>
+        方式二：script标签+src(外部引入)
+            格式：<script src='./index.js'></script>
+            注意：使用了外部引入的方式，如何内部在写js代码，会被自动忽略
+
+            
+        放在不同地方的区别
+            （1）放在head中：
+                代码是从上往下，从左向右执行的，body中定义的标签无法获得
+            （2）放在body结束标签前：
+                最为规范的方法，强烈建议放在这个位置
+            （3）放在body结束标签后：
+                一：html中只包含head,body标签，在body后面放script标签会显得十分的突兀
+                二：浏览器在解析的时候，发现body结束标签后面还有script标签，会把这个结束标签删除
+                    认为是书写错误，在碰到html结束标签的时候，发现没有body结束标签，又会自动加上
+     -->
+
+    <!-- 方式一，放在head标签中 -->
+    <script>
+        //getElementById获取元素对象
+        console.log(document.getElementById('box')); //输出值为box元素对象，结果：null
+    </script>
+</head>
+
+<body>
+    <div id="box"></div>
+    <!-- 方式一，放在body结束标签前 -->
+    <script>
+        console.log(document.getElementById('box')); // 输出值为box元素对象，结果：<div id="box"></div>
+    </script>
+</body>
+<!-- 方式二，放在body结束标签后 -->
+<script src="./index.js"></script><!-- 输出值为box元素对象，结果：<div id="box"></div> -->
+
+</html>

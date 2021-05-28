@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>方法二的使用</title>
+    <!-- 
+        position + margin
+
+        方法二和方法一比较：
+            方法一不存在margin，同时left等于right,top等于bottom
+            方法二有maring，同时left不等于right，top不等于bottom
+    -->
+    <style>
+        #div0 {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+        }
+
+        #div1 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -51px;
+            margin-top: -51px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div0">
+        <div id="div1"></div>
+    </div>
+</body>
+
+</html>

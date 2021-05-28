@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>超时调用定时器练习</title>
+    <style>
+        #outer {
+            margin: 100px auto;
+            width: 300px;
+        }
+
+        #title {
+            margin: 0;
+            padding: 0;
+            height: 50px;
+            line-height: 50px;
+            background-color: burlywood;
+
+            text-align: center;
+        }
+
+        #con {
+            height: 300px;
+            background-color: hotpink;
+
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <h2 id="title">标题</h2>
+        <div id="con">内容</div>
+    </div>
+
+    <script>
+        var oOuter = document.getElementById('outer');
+        var oCon = document.getElementById('con');
+        var timer = null;
+        // 绑定鼠标移入事件
+        oOuter.onmouseenter = function () {
+            // 清除延时定时器
+            clearTimeout(timer);
+            oCon.style.display = 'block';
+        }
+
+        // 绑定鼠标移除事件
+        oOuter.onmouseleave = function () {
+            // 使内容延时消失
+            timer = setTimeout(function () {
+                oCon.style.display = 'none';
+            }, 500)
+        }
+    </script>
+</body>
+
+</html>

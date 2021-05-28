@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>设计位置</title>
+    <style>
+        #outer {
+            width: 500px;
+            height: 500px;
+            margin: 50px;
+            padding: 10px;
+            border: 2px solid #000;
+
+            background-color: chocolate;
+        }
+
+        #inner {
+            width: 300px;
+            height: 300px;
+            margin: 50px;
+            padding: 10px;
+            border: 2px solid #000;
+
+            background-color: darkgray;
+
+            position: relative;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            padding: 10px;
+            border: 2px solid #000;
+
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="box"></div>
+        </div>
+    </div>
+    <script>
+        /* 
+            设计位置
+                offsetLeft/offsetTop
+                    -当前元素的边框外边缘 到 最近定位祖级元素边框的内边缘
+                    -如果没有的话，就是以文档为基准
+
+                scrollLeft(一般不考虑)/
+                scrollTop
+                    -元素滚动条到元素左边的距离(一般不考虑)/
+                    -元素滚动条到元素上边的距离
+
+                clientLeft/clientTop
+                    -元素的左边框和上边框的大小
+
+                
+        */
+        var oBox = document.getElementById('box');
+        console.log(oBox.offsetLeft); //60
+        console.log(oBox.offsetTop); //60
+
+        console.log(oBox.clientLeft); //2
+        console.log(oBox.clientTop); //2
+    </script>
+</body>
+
+</html>

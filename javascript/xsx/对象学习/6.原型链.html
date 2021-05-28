@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>原型链</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            1.js规定，所有的对象都有自己的原型对象
+            2.根据原型链查找，如果一层一层往上查找,所有对象的原型最终都可以找到Object.prototype
+            3.所有的对象都继承了Object.prototype上的属性和方法
+            4.读取属性和方法的规则：js引擎会先寻找对象本身的属性和方法
+                如果没找到，就去它的原型对象上找，如果直到最顶层Object.prototype
+                还没找到，就会返回undefined。
+            5.如果对象和它的原型，都拥有了同名的属性
+                优先读取自身的，也叫做覆盖
+        */
+
+        function Person(name) {
+            console.log(this);
+            this.name = name;
+        }
+
+        Person.prototype.age = 12;
+        Person.prototype.show = function () {
+            //指向调用这个函数的对象
+            console.log(this.age);
+        };
+        var p1 = new Person('xsx');
+        //p1中show继承自原型对象，这种情况下this指向对象本身
+        p1.show();
+        // 使用原型对象调用show，这种情况下this指向原型对象
+        Person.prototype.show();
+        p1.__proto__.show();
+    </script>
+</body>
+
+</html>

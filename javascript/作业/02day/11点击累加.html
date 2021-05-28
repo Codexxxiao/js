@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击累加练习</title>
+</head>
+<body>
+    <p id="p">0</p>
+    <button id="btn">点击</button>
+
+    <script>
+        /* 
+            需求：点击按钮，每次加2
+        */
+       //1.获取元素
+        var oP = document.getElementById('p');
+        var oBtn = document.getElementById('btn');
+
+        //2.绑定点击事件
+        oBtn.onclick = function() {
+            //3.获取元素的值
+            var userP = Number(oP.innerText);
+            //4.元素值累加
+            userP+=2;
+            //5.设置元素的值
+            oP.innerText = userP;
+        }
+    </script>
+</body>
+</html>

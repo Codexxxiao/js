@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            ES6新增箭头函数(分为以下几种情况)：
+                1.只有一个参数，并且函数是一句话的时候
+                2.没有参数或多个参数的时候，参数的括号不能省略
+                3.当函数体不是一句话的时候
+
+            箭头函数:是函数表达式,并不会做函数提升
+            
+        注意事项:
+            关于this:箭头函数没有自己的this,箭头函数内部的this不是调用的时候指向的对象
+                而是定义的时候指向的对象
+        */
+        // 1.只有一个参数，并且函数是一句话的时候(如果是返回值，则可以忽略return)
+        //  let 函数名 = 形参 => 函数体;
+        // function fn(n) {
+        //     console.log(n + 1);
+        // }
+        // fn(1);
+        let fn = n => console.log(n + 1);
+        fn(1);
+
+        // 2.有多个参数的时候,并且函数是一句话的时候(括号不能省略)
+        // 有多个参数的时候
+        let foo = (a, b) => console.log(a + b);
+        foo(1, 2)
+        // 没有参数的时候
+        let foo1 = () => console.log(this);
+        foo1();
+
+        // 3.当函数体不是一句话的时候
+        let foo2 = (a, b) => {
+            console.log(a);
+            console.log(b);
+            console.log(a + b);
+        }
+        foo2(12, 24)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>innerText/innerHTML</title>
+    
+</head>
+<body>
+    <p id="bP"><span>   2</span></p>
+    <!-- <button id="bBt">累加</button> -->
+    <!-- <script>
+        //获取标签属性
+        var xP = document.getElementById('bP');
+        var xBt = document.getElementById('bBt');
+
+        //点击事件
+        xBt.onclick = function(){
+            //获得p标签中的字符串,转变为Number
+            var vP = Number(xP. innerHTML);
+            //每次加二
+            vP+=2;
+            //返回其中的值
+            xP.innerHTML = vP;
+        }
+    </script> -->
+
+    <script>
+         /* 获取标签属性 */
+         var xP = document.getElementById('bP');
+
+         /* 使用innerHTML,获得p标签中的字符串*/
+
+            /* innerHTML获取标签从起始标签到终止标签所有内容包括空格和标签名 */
+            /* innerHTML可以解析标签 */
+        xP.innerHTML = "<b>2</b>";
+        var vP = xP. innerHTML;
+
+       
+        console.log(vP);
+
+        /* 使用innerText，获得p标签中的字符串 */
+            /* innerText获取标签从起始标签到终止标签中的文本内容，自动省略标签名和空格。但是使用&nbsp;的空格不能省略 */
+            /* innerText无法解析标签 */
+        xP.innerText = "<b>2</b>";
+        var vvP = xP.innerText;
+        console.log(vvP);
+  
+    </script>
+</body>
+</html>

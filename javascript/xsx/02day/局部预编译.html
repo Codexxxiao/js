@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>局部预编译</title>
+</head>
+
+<body>
+    <script>
+        /* 三部曲：语法分析，预编译，解释执行 */
+        /* 
+            局部预编译的四个步骤
+                1.创建AO对象（Activation Object）执行期上下纹
+                2.找到形参和变量声明，将形参和变量名作为AO的属性名，赋值为undefined
+                3.将实参值和形参值统一
+                4.在函数体中找函数声明，赋值函数体
+
+            函数执行完毕，销毁AO对象
+         */
+        // 函数
+        function fn(a) {
+            console.log(a);
+            // 变量声明+变量赋值（只提升变量声明，不提升变量赋值）
+            var a = 123;
+            console.log(a);
+            // 函数声明
+            function a() {};
+            console.log(a);
+            // 函数表达式
+            console.log(b);
+            var b = function () {};
+            console.log(b);
+            // 函数
+            function d() {};
+            console.log(d);
+        }
+        //调用函数
+        fn(1);
+    </script>
+</body>
+
+</html>

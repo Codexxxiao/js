@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部通用版</title>
+    <style>
+        #outer {
+            height: 2000px;
+        }
+
+        #box {
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            width: 200px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 50%;
+            background-color: hotpink;
+
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="box">回到顶部</div>
+    </div>
+
+    <script>
+        var oOuter = document.getElementById('outer');
+        var oBox = document.getElementById('box');
+
+        // 当竖直下滑页面400px,后显示出返回顶部
+        window.onscroll = function () {
+            if (document.documentElement.scrollTop > 400) {
+                oBox.style.display = "block";
+            } else {
+                oBox.style.display = "none";
+            }
+        }
+
+        // 创建定时器变量
+        var timer = null;
+        // 给oBox绑定点击事件
+        oBox.onclick = function () {
+            // 清除定时器
+            clearInterval(timer);
+            // 获取滚动条的起始位置
+            var startScroll = window.pageYOffset;
+            // 获取滚动条的终止位置
+            var endScroll = 0;
+            // 设置起始步数
+            var startStep = 0;
+            // 设置终止步数
+            var endStep = 40;
+            // 每步的位移量
+            var everyStep = (endScroll - startScroll) / endStep;
+            // 设置定时器
+            timer = setInterval(function () {
+                startStep++;
+                if (startStep >= endStep) {
+                    clearInterval(timer)
+                }
+                startScroll += everyStep;
+                window.scrollTo(0, startScroll);
+            }, 10);
+
+        }
+    </script>
+</body>
+
+</html>

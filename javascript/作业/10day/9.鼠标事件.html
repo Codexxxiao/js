@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 500px;
+            background-color: saddlebrown;
+
+            overflow: hidden;
+        }
+
+        .div1 {
+            height: 100px;
+            margin: 100px 0;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="div1"></div>
+        <div class="div1"></div>
+    </div>
+    <script>
+        /* 
+            鼠标事件
+                mousedown:鼠标按下事件
+                mouseup：鼠标抬起事件
+                mousemove:鼠标移动事件
+                mouseover:鼠标移入事件（会触发冒泡）
+                mouseout:鼠标移出事件（会触发冒泡）
+                mouseenter:鼠标移入事件
+                mouseleave:鼠标移出事件
+
+        */
+        var oBody = document.body;
+        var oBox = oBody.querySelector('#box');
+        var oDivs = oBox.querySelectorAll('.div1');
+
+        // 绑定鼠标移入事件
+        oDivs.forEach(function (item, index) {
+            item.onmouseover = function () {
+                item.style.backgroundColor = 'red';
+            }
+        })
+
+        // 绑定鼠标移出事件
+        oDivs.forEach(function (item, index) {
+            item.onmouseout = function () {
+                item.style.backgroundColor = 'skyblue';
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图样式</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #outer {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            margin: 100px auto 0;
+        }
+
+        #inner {
+            overflow: auto;
+        }
+
+        #inner .con {
+            width: 2000px;
+            height: 600px;
+            display: flex;
+        }
+
+        #inner .con img {
+            width: 400px;
+            height: 600px;
+        }
+
+        .left,
+        .right {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: rgba(100, 100, 100, .8);
+
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .left {
+            left: 20px;
+        }
+
+        .right {
+            right: 20px;
+        }
+
+        #inner .list {
+            display: flex;
+
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #inner .list li {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-color: rgba(100, 100, 100, .4);
+
+            cursor: pointer;
+        }
+
+        #inner .list li.active {
+            background-color: rgba(100, 100, 100, .9);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div class="con">
+                <img src="../img/1.jpg" alt="">
+                <img src="../img/2.jpg" alt="">
+                <img src="../img/3.jpg" alt="">
+                <img src="../img/4.jpg" alt="">
+                <img src="../img/5.jpg" alt="">
+            </div>
+            <p class="left">&lt;</p>
+            <p class="right">&gt;</p>
+            <ul class="list">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        /* 
+            需求：设置轮播图每隔两秒跳一张
+        */
+        // 获取元素
+        var oInner = document.getElementById('inner');
+        var oImgs = oInner.querySelectorAll('img');
+
+
+        // 声明定时器
+        var timer = null;
+
+        // 声明变量i，i为每张图片的下标
+        var i = 0;
+
+        // 设置定时器
+        timer = setInterval(function () {
+            // 声明起始位置
+            i++;
+            if (i > oImgs.length - 1) {
+                i = 0;
+            }
+            oInner.scrollLeft = i * oImgs[0].offsetWidth;
+        }, 2000);
+    </script>
+</body>
+
+</html>

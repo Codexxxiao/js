@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>栈操作十进制转任意进制</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            栈操作：十进制转任意进制
+        */
+
+        function foo(num, p) {
+            // 声明变量储存每个余数
+            var arr = [];
+            // 声明变量拼接返回的余数
+            var str = '';
+            //声明变量接收返回的余数
+            var r = null;
+
+            var base = '0123456789abcdefghijklmkopqrstuvwxyz';
+            //判断num是否大于0
+            while (num > 0) {
+                r = num % 2;
+                arr.push(r);
+                num = parseInt(num / 2);
+            }
+
+            while (arr.length > 0) {
+                //base[num]  返回字符串中下标为num的字符
+                str += base[arr.pop()];
+            }
+            return str;
+        }
+        var re = foo(110, 12);
+        console.log(re);
+    </script>
+</body>
+
+</html>

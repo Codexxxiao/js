@@ -1,0 +1,38 @@
+div {
+  width: 500px;
+  height: 500px;
+  border: 1px solid red;
+  background-color: red;
+  background: url("https://tva1.sinaimg.cn/large/00831rSTgy1gdnerxegkhj30j008d3yj.jpg");
+}
+div p {
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  height: 50%;
+  border: 1px solid red;
+  background-color: red;
+}
+div p span {
+  color: saddlebrown;
+  font-size: 20px;
+  border: 1px solid red;
+  background-color: red;
+}
+/* 
+// less中变量延迟加载
+@var: 0;
+
+.class {
+    @var : 1;
+
+    .brass {
+        // 在less中，会优先把块内全部的变量读取完成，才会选择使用哪一个
+        // 可以说是变量的延迟加载
+        @var: 2;
+        three: @var; //3
+        @var: 3;
+    }
+
+    one:@var; //1
+} */

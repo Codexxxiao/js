@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Number类型</title>
+</head>
+
+<body>
+
+    <script>
+        /* 
+            Number类型的数据
+                1.数学直接量
+                    -整数
+                    -浮点数
+                2.不同进制
+                    -二进制(0b)
+                    -八进制(0o)
+                    -16进制(0x)
+                3.科学计数法
+                4.无穷大和无穷小
+                    -除数为零的情况
+                    -数值大于2的1024次方,js用无穷大表示
+                5.最大值和最小值(正数)
+                6.2的53次方是最大精确数    
+                7.NaN
+        */
+
+        //1.数学直接量
+        console.log(1); //整数  1
+        console.log(1.2); //浮点数  1.2
+
+        //2.进制
+        console.log(0b1011); //二进制  11
+        console.log(0o123334); //八进制  42716
+        console.log(0xab123); //十六进制  700707
+
+        //3.科学计数法
+        console.log(1.2e12); //1200000000000
+        console.log(1.2e-5); //0.000012
+        console.log(1.2E-5); //0.000012
+
+        //4.无穷大和无穷小
+        console.log(-1 / 0); //-Infinity
+        console.log(2 ** 1024); //Infinity
+
+        //5.最大值和最小值
+        console.log(Number.MAX_VALUE); //1.7976931348623157e+308
+        console.log(Number.MIN_VALUE); //5e-324
+
+        //6.2的53次方是js的最大精确数
+        console.log(2 ** 53); //9007199254740992
+        console.log(2 ** 53 + 1); //9007199254740992
+        console.log(2 ** 53 + 2); //9007199254740994
+        console.log(2 ** 53 + 3); //9007199254740996
+        console.log(2 ** 53 + 4); //9007199254740996
+        console.log(2 ** 53 + 5); //9007199254740996
+
+        //7.NaN
+        var a = 'a' - 1;
+        console.log(a); //NaN
+    </script>
+</body>
+
+</html>

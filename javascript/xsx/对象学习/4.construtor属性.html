@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>constructor属性</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            每个对象在创建时都会自动拥有一个构造函数属性constructor
+
+            注意：对象的constructor继承自原型对象
+        */
+        function Person(name) {
+            this.nam = name;
+        }
+        var p1 = new Person('xsx');
+        console.log(p1);
+
+        //constructor继承自原型对象，指向了构造函数的引用
+        console.log(p1.constructor === Person); //true
+
+        console.log(Person.prototype);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+@bgc: background-color;
+
+#outer {
+    width: 200px;
+
+    // if()  条件非not
+    height: if(not (true), 300px, 400px);
+    //条件与 and
+    height: if((true) and (2>1), 100px, 200px);
+    // 条件或 or
+    height: if((false) or (2>1), 200px, 300px);
+
+    @{bgc}: if(2<1, red, green);
+
+
+}

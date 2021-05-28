@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>点操作符和中括号操作符</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            点操作符和中括号操作符
+                点操作符：
+                    -成员访问符
+                    -当.去获取一个对象的属性的时候，.后面跟的也是一个字符串
+                        只不过必须省略了引号
+                    -点操作符可以访问对象的属性，但是一个不规则字符串不能获取
+                
+                中括号操作符：
+                    -获取对象的属性，但是是万能的
+                    -中括号可以进行运算，也可以解析变量，也可以直接书写字符串
+
+                使用：
+                    -一般情况下都使用点操作符
+                    -当点操作符不能使用的时候，使用中括号操作符    
+        */
+        //创建一个person1对象
+        function foo() {
+            return 1;
+        }
+        var person1 = {
+            //对象中标识符为数字的时候
+            0123: 1,
+            name: {
+                first: 'x',
+                last: 'sx'
+            },
+            age: 18,
+            gender: 'male',
+            foo: foo
+        }
+        console.log(person1.age); //18
+        console.log(person1['age']); //18
+        // 对象中标识符为数字的时候，使用中括号访问的时候可以不使用引号
+        console.log(person1[0123]); //1
+        console.log(person1.name.first); //x
+        console.log(person1['name']['first']); //x
+        console.log(person1.foo()); //1
+        console.log(person1['foo']()); //1
+
+        var a = 'gender';
+        //当·后面跟了变量，并不会去解析这个变量，而是会去对象里面查找
+        // 对象里面没有这个属性，就返回undefined
+        console.log(person1.a); //undefined
+        // 中括号会去解析变量
+        console.log(person1[a]); //male
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>类型转换</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            类型转换
+                -其它类型转Boolean类型
+                    -Number类型转Boolean
+                        只有0和NaN为false,其它为true
+                    -String类型转Boolean
+                        只有空串为false,其它为true
+                    -null和undefined转Boolean
+                        都是false
+                    复杂类型转Boolean  
+                        都是true
+                -其它类型转String类型
+                    -都是转为字符串原样输出
+                    -对象:[object Object]
+                -其它类型转Number类型
+                    -Boolean类型转Number
+                        true为1,flase为0
+                    -undefined和null转Number类型
+                        undefined为NaN,null为0
+                    -String转Number类型
+                        全为数字,输出数字
+                        空串,空白字符串为0
+                        其它都为NaN
+            
+            parseInt()和parseFloat()
+                -parseInt()
+                    本质:转变为字符串,然后依次读取第一位,如果为数字
+                        继续读取,直到碰到非数字后返回.会忽略最前面的空格,
+                        第一位为字符,直接返回NaN.
+                        注意: 小数点 也算字符
+                     parseInt(v1,v2)把v2的进制转换为十进制数
+                        0进制默认为十进制
+                        1进制不存在
+                        最高进制为36进制   
+
+                -parseFloat()
+                    本质:转变为字符串,跟parseInt()一样,但是允许碰到第一个
+                    小数点,认为第二个小数点为字符串
+
+                注意：如果为空的话直接返回NaN
+                
+        */
+
+        //其它类型转Boolean类型
+        //Number类型转Boolean
+        console.log(Boolean(1)); //true
+        console.log(Boolean(0)); //false
+        console.log(Boolean(1.2)); //true
+        console.log(Boolean(NaN)); //false
+        //String类型转Boolean
+        console.log(Boolean('')); //false
+        console.log(Boolean(' ')); //true
+        console.log(Boolean('123')); //true
+        //null和undefined类型转Boolean
+        console.log(Boolean(null)); //false
+        console.log(Boolean(undefined)); //false
+        //复杂类型转Boolean
+        console.log(Boolean([])); //true
+        console.log(Boolean({})); //true
+        console.log(Boolean(function () {})); //true
+
+        //其它类型转Number
+        //Boolean转Number
+        console.log(Number(false)); //0
+        console.log(Number(true)); //1
+        //undefined和null转Number
+        console.log(Number(undefined)); //NaN
+        console.log(Number(null)); //0
+        //String类型转Number
+        console.log(Number('1')); //1
+        console.log(Number('1a')); //NaN
+        console.log(Number('    1')); //1
+        console.log(Number('')); //0
+        console.log(Number(' ')); //0
+        console.log(Number('asdfasd')); //NaN
+
+        //parseInt()
+        console.log(parseInt(1.23)); //1
+        console.log(parseInt('    123')); //123
+        console.log(parseInt('123a')); //123
+        console.log(parseInt('a123a')); //NaN
+        console.log(parseInt('12.3')); //12
+        //pardeInt(v1,v2)把v2规定的进制转变为十进制
+        console.log(parseInt(111, 0)); // 零进制默认为十进制
+        console.log(parseInt(1, 1)); //NaN  不存在1进制
+        console.log(parseInt(1, 2)); //1
+
+        //parseFloat()
+        console.log(parseFloat(1.23)); //1.23
+        console.log(parseFloat('1.23.1')); //1.23
+        console.log(parseFloat('1.2a3.1')); //1.2
+        console.log(parseFloat('a1.2a3.1')); //NaN
+        console.log(parseFloat('   1.2a3.1')); //1.2
+        console.log(parseFloat('   1.23.1')); //1.23
+    </script>
+</body>
+
+</html>

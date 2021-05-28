@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>上中下布局</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        #outer {
+            height: 100%;
+            flex-direction: column;
+            display: flex;
+        }
+
+        .tb {
+            width: 100%;
+            height: 200px;
+            background-color: navy;
+        }
+
+        #center {
+            background-color: olive;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div class="tb"></div>
+        <div id="center"></div>
+        <div class="tb"></div>
+    </div>
+</body>
+
+</html>

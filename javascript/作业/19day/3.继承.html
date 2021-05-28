@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            继承:子类继承父类中的方法
+
+                思路：
+                    1.创建父类型的实例化对象赋值给子类型的原型对象
+                    2.将子类型原型对象的构造器属性设置为子类型
+                    3.给子类型原型添加方法
+        */
+
+        // 声明Person构造函数作为父类
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.eat = function () {
+            console.log('eat');
+        }
+
+        // 声明Student构造函数作为子类
+        function Student(subject, name, age) {
+            // 调用父类构造函数，并将this指向子类的实例化对象
+            Person.call(this, name, age)
+            this.subject = subject;
+        }
+
+        // 1.将父类型实例化对象赋值给子类型原型对象
+        Student.prototype = new Person();
+
+        // 2.将子类型原型对象的构造器设置为子类型
+        Student.prototype.constructor = Student;
+
+        // 3.给子类型原型对象添加方法
+        Student.prototype.time = function () {
+            console.log('996');
+        }
+
+        // 实例化一个子类型对象
+        var s1 = new Student('h5', 'xsx', 18);
+        console.log(s1);
+
+        console.log(s1.constructor === Student); //true
+    </script>
+</body>
+
+</html>

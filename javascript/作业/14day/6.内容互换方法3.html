@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>内容互换方法三</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #outer {
+            width: 50%;
+            height: 50%;
+            margin: 50px auto;
+
+            display: flex;
+        }
+
+        #left,
+        #right {
+            width: 40%;
+            height: 100%;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        #left {
+            background-color: rosybrown;
+        }
+
+        #right {
+            background-color: sandybrown;
+        }
+
+        #change {
+            width: 20%;
+            height: 100%;
+            text-align: center;
+            background-color: slateblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <ul id="left">
+            <li>left的内容1</li>
+            <li>left的内容2</li>
+            <li>left的内容3</li>
+            <li>left的内容1</li>
+        </ul>
+        <div id="change">
+            <button>&gt;&gt;&gt;&gt;</button><br>
+            <button>&lt;&lt;&lt;&lt;</button>
+        </div>
+        <ul id="right">
+            <li>right的内容1</li>
+            <li>right的内容2</li>
+            <li>right的内容3</li>
+            <li>right的内容4</li>
+        </ul>
+    </div>
+    <script>
+        /* 
+            内容互换方法三：
+                思路：事件托管，也叫事件代理
+                    因为事件流有冒泡的机制，因此可以把重复子元素的点击事件绑定在父元素上，
+                    使父元素代理这个事件
+                        event对象中有一个target 属性，代表点击的最精确的元素
+        */
+        var oOuter = document.getElementById('outer');
+
+        var oLeft = document.getElementById('left');
+        var oRight = document.getElementById('right');
+
+        var oleLis = oLeft.querySelectorAll('li');
+        var oriLis = oRight.querySelectorAll('li');
+
+        var oBtns = document.querySelectorAll('#change button');
+
+        // 给li绑定点击事件
+        oOuter.onclick = function (event) {
+            if (event.target.nodeName === 'LI') {
+                event.target.style.background = 'red';
+                event.target.dataset.checked = true;
+            }
+        }
+
+        // 绑定点击事件
+        oBtns[0].onclick = function () {
+
+            var oleLis = oLeft.querySelectorAll('li');
+            var oriLis = oRight.querySelectorAll('li');
+
+            oleLis.forEach(function (item, index) {
+                if (item.dataset.checked) {
+                    oRight.appendChild(item);
+                    item.style.background = 'transparent';
+                    delete item.dataset.checked;
+                }
+            })
+        }
+
+        // 绑定点击事件
+        oBtns[1].onclick = function () {
+
+            var oleLis = oLeft.querySelectorAll('li');
+            var oriLis = oRight.querySelectorAll('li');
+
+            oriLis.forEach(function (item, index) {
+                if (item.dataset.checked) {
+                    oLeft.appendChild(item);
+                    item.style.background = 'transparent';
+                    delete item.dataset.checked;
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

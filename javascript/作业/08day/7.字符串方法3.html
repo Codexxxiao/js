@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>其它的一些字符串操作</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            字符串转换:
+                toLowerCase()
+                    字符串转小写
+                
+                toUpperCase()
+                    字符串转大写
+                    
+                split() 
+                    指定的分隔字符串将一个String对象分割成子字符串数组
+                    str.split([separator[, limit]])
+                    -spearator  以什么字符串分割字符串
+                    -limit  限定返回的分割片段数量
+                注意：没有参数的情况下，默认把字符串当成一个整体
+
+                trim()
+                    -前后去空格
+                trimEnd();
+                    -去除后面的空格
+                trimStart();
+                    -去除前面的空格
+
+        
+        */
+
+        var str = 'Xie Sai Xiao';
+        console.log(str.toLowerCase()); //xie sai xiao
+        console.log(str.toUpperCase()); //XIE SAI XIAO
+
+        //split()
+
+        console.log(str.split()); //["Xie Sai Xiao"]
+        console.log(str.split(' ')); // ["Xie", "Sai", "Xiao"]
+        console.log(str.split('')); // ["X", "i", "e", " ", "S", "a", "i", " ", "X", "i", "a", "o"]
+
+        //小练习str反转
+        console.log(str.split('').reverse().join(''));
+
+
+        var str1 = '  sfas  sfas  '
+        console.log(str1.trim()); //sfas  sfas
+        console.log(str1.trimEnd()); //  sfas  sfas
+        console.log(str1.trimStart()); //sfas  sfas  
+    </script>
+</body>
+
+</html>

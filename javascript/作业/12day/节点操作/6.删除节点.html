@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>删除节点</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <ul id="box">
+        <li>1<a href="###">xxx</a></li>
+        <li>2<a href="###">xxx</a></li>
+        <li>3<a href="###">xxx</a></li>
+        <li>4<a href="###">xxx</a></li>
+        <li>5<a href="###">xxx</a></li>
+        <script>
+            /*  删除节点
+                A.removeChild(B)
+                    A是父元素，删除父元素中的B
+
+                A.remove()
+                     删除A
+
+                区别：A.removeChild(B) 删除子节点；  A.remove() 删除本节点
+         */
+
+            var oBtn = document.getElementById('btn');
+            var oBox = document.getElementById('box');
+            // var oLis = oBox.querySelectorAll('li');//nodeList
+            var oLis = oBox.getElementsByTagName('li'); //HTMLCollection
+
+            var oDele = oBox.querySelectorAll('li a');
+            oDele.forEach(function (item, index) {
+                item.onclick = function () {
+                    this.parentNode.remove();
+                }
+            });
+        </script>
+</body>
+
+</html>

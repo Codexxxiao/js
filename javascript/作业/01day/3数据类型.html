@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型typeof</title>
+    <!-- 
+        使用typeof获得的值：number,string,boolean,undefined,object,function
+        
+        js存在的数据类型：、
+            基本类型：number,string,boolean,undefined,null
+            复杂类型：object（函数，对象，数组）
+
+        typeof输出的正确类型：number,string,boolean,undefined
+
+     -->
+</head>
+
+<body>
+    <script>
+        //分别定义变量a,b,c,d,e,f,g,h
+        var a = 1;
+        var b = "xxxxsx";
+        var c;
+        var d = null;
+        var e = [];
+        var f = {};
+        var g = function () {}
+        var h = true;
+
+        //使用typeof获取变量的类型
+        console.log(typeof a); //number
+        console.log(typeof b); //string
+        console.log(typeof c); //undefined
+        console.log(typeof d); //object
+        console.log(typeof e); //object
+        console.log(typeof f); //object
+        console.log(typeof g); //function
+        console.log(typeof h); //boolean
+    </script>
+</body>
+
+</html>

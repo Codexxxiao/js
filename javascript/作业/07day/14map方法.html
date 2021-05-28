@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>map使用映射来遍历数组并创建新的数组</title>
+    <!-- 
+        Array.prototype.map(callback(currentValue [, index [, array]])[, thisArg])
+            callback:为数组中每个元素执行的函数,该函数接收一至三个参数
+            currentValus(必有):数组中正在处理的当前元素
+            index(可选):数组中正在处理的当前元素的索引
+            array(可选):forEach方法正在操作的数组
+        
+        创建一个新数组,其结果是该数组中每个元素调用一次提供的函数的返回值
+
+        注意:callback回调函数只有在有值的元素上被调用
+
+     -->
+</head>
+
+<body>
+    <script>
+        /* 
+            map创建一个新数组
+        */
+        var arr = [2, 3, 4, , 5, 6, undefined, 7, null, 8, 9];
+        var newArr = arr.map(function (item, index, array) {
+            return item * 2; //item被隐式转换为Number类型
+        });
+        console.log(arr);
+        console.log(newArr);
+    </script>
+</body>
+
+</html>

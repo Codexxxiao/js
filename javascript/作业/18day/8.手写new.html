@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>手写new</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            new的原理
+                1.创建一个空对象
+                2.调用构造函数，是构造函数的this指向这个对象
+                3.将这个对象的隐式原型指向构造函数的显示原型
+                4.判断构造函数返回值的类型（如果构造函数返回值为对象类型则返回这个对象，否则返回创建的对象）
+         */
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        Person.prototype.run = function () {
+            console.log('run');
+        }
+        Person.prototype.say = function () {
+            console.log('say');
+        }
+
+        function writeNew(constru) {
+            //1.创建一个空对象
+            var obj = {};
+            // 2.调用构造函数，并使构造函数this指向o，接收构造函数的返回值
+            // 接收实参
+            var arg = Array.from(arguments).slice(1);
+            var re = constru.apply(obj, arg);
+
+            // 3.使obj的隐式原型指向构造器的显示原型
+            obj.__proto__ = constru.prototype;
+
+            //4.判断构造函数返回值的类型,并返回一个对象
+            if (re !== null && typeof re === 'object' || typeof re === 'function') {
+                return re;
+            }
+
+            return obj;
+
+        }
+
+        var p1 = new Person('xsx', 18);
+        var p2 = writeNew(Person, 'cyk', 28);
+        console.log(p1);
+        console.log(p2);
+
+        console.log(p1.say === p2.say); //true
+    </script>
+</body>
+
+</html>

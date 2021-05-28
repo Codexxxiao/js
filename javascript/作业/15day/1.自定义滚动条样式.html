@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自定义滚动条样式</title>
+    <link rel="stylesheet" href="./1.滚动条样式.css" type="text/css">
+</head>
+
+<body>
+
+    <div id="con"></div>
+
+    <div id="box">
+        <div id="scroll"></div>
+    </div>
+
+    <script>
+        /* 
+            实现自定义滚动条的简单拖拽功能
+                思路：
+                    鼠标到窗口上边缘的距离 - 鼠标到元素上边缘的距离 = 滚动条所在元素距离
+
+                
+        */
+        var oCon = document.getElementById('con');
+        var oScroll = document.getElementById('scroll');
+
+        for (let i = 0; i < 100; i++) {
+            oCon.innerHTML += i + '<br>';
+        }
+
+        // 绑定鼠标按下事件
+        oScroll.onmousedown = function (event) {
+            // 阻止默认事件
+            event.preventDefault();
+
+            // 获得鼠标位置
+            var nowPointer = event.offsetY;
+
+            // 绑定鼠标移动事件
+            document.onmousemove = function (event) {
+                var moveLocation = event.clientY - nowPointer;
+
+
+                oScroll.style.top = moveLocation + 'px';
+
+            }
+
+
+            // 绑定鼠标松开事件
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

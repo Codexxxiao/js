@@ -1,0 +1,33 @@
+div {
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+}
+div p {
+  width: 50px;
+  height: 50px;
+  border: 1px solid green;
+}
+div {
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+}
+div p {
+  width: 50px;
+  height: 50px;
+  border: 1px solid green;
+}
+div p > p {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+div p:nth-child(1) {
+  width: 200px;
+  height: 300px;
+  border: 1px solid red;
+}
+div p:hover {
+  background-color: burlywood;
+}

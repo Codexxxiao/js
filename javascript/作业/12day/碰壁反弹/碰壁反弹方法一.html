@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>碰壁反弹</title>
+    <style>
+        #box {
+            position: relative;
+            width: 600px;
+            height: 500px;
+            margin: 50px auto 0;
+            border: 1px solid #000;
+        }
+
+        #ball {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 60px;
+            height: 60px;
+            background-color: saddlebrown;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="ball"></div>
+    </div>
+
+    <script>
+        // 获取元素
+        var oBox = document.getElementById('box');
+        var oBall = document.getElementById('ball');
+
+        // 声明定时器
+        var timer = null;
+
+        // 声明左边距离
+        var l = 40;
+        var t = 40;
+
+        // 声明开关
+        var flagX = true;
+        var flagY = true;
+
+        timer = setInterval(function () {
+            if (flagX) {
+                l += 5;
+                if (l >= oBox.clientWidth - oBall.offsetWidth) {
+                    l = oBox.clientWidth - oBall.offsetWidth;
+                    flagX = !flagX;
+                }
+            } else {
+                l -= 5;
+                if (l <= 0) {
+                    l = 0;
+                    flagX = !flagX;
+                }
+            }
+
+            if (flagY) {
+                t += 5;
+                if (t >= oBox.clientHeight - oBall.offsetHeight) {
+                    t = oBox.clientHeight - oBall.offsetHeight;
+                    flagY = !flagY;
+                }
+            } else {
+                t -= 5;
+                if (t <= 0) {
+                    t = 0;
+                    flagY = !flagY;
+                }
+            }
+
+            oBall.style.left = l + 'px';
+            oBall.style.top = t + 'px';
+        }, 10)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数定义</title>
+    <!--     
+        函数定义：
+            方式一：函数声明方式声明函数
+                function fnName(){}
+                （1）调用函数可以在声明之前，也可以在声明之后
+                在预编译阶段会出现声明函数提升的情况
+                （2）可以重复声明，后面会覆盖前面
+
+            方式二：函数表达式声明函数
+                var myFunction = function fnName(){}
+                (1)调用函数必须在声明之后，
+                在预编译阶段不会出现函数提升的情况
+                （2）myFunction为变量，可以修改它的值
+                    fnName为函数名，不能修改
+
+            方式三：使用构造器来声明函数
+                var myFunction = new Function();
+     -->
+</head>
+
+<body>
+    <script>
+        /* 方式一  函数声明方式来声明*/
+        /* console.log(printTable);
+
+        function printTable() {
+            var str = '<table border="1" width ="800">';
+            for (var i = 0; i <= 5; i++) {
+                str += '<tr>'
+                for (var j = 1; j <= 5; j++) {
+                    str += '<td>&nbsp;</td>'
+                }
+                str += '</tr>';
+            }
+            str += '</table>'
+            document.write(str);
+        }
+
+        function printTable() {} //重复声明，后面覆盖前面
+        console.log(printTable); */
+
+        /* 方式二 函数表达式来声明*/
+        /* console.log(printTable);
+        var printTable = function () {
+            var str = '<table border="1" width ="800">';
+            for (var i = 0; i <= 5; i++) {
+                str += '<tr>'
+                for (var j = 1; j <= 5; j++) {
+                    str += '<td>&nbsp;</td>'
+                }
+                str += '</tr>';
+            }
+            str += '</table>'
+            document.write(str);
+        }
+
+        function printTable() {
+            console.log('我是第二次声明');
+        }
+        console.log(printTable);
+        printTable(); */
+
+        /* 方式三 函数构造器声明 */
+        /* var say = new Function("console.log('you a boy...')");
+        say(); */
+
+        /* test */
+        var y = function x() {
+            alert(x);
+        };
+        /*  
+            函数通过var语句什么，此时函数名只能在函数内部使用，
+            外部调用的话会报错is no defined
+         */
+        alert(y); // throws an error x is not defined
+
+        var foo = new Function("alert(anonymous);");
+        foo();
+    </script>
+</body>
+
+</html>

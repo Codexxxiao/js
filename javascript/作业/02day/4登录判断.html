@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录判断</title>
+</head>
+
+<body>
+    <input type="text" id="user" autocomplete="off" autofocus><br>
+    <input type="password" id="passwd"><br>
+    <button id="btn">登录</button>
+
+    <script>
+        /* 
+            需求：判断输入的用户和密码是否正确
+        */
+        //1.获取元素
+        var oUser = document.getElementById('user');
+        var oPass = document.getElementById('passwd');
+        var oBtn = document.getElementById('btn');
+
+        //2.绑定点击事件
+        oBtn.onclick = function () {
+            // 3.获取用户输入的值
+            var userUser = oUser.value;
+            var userPass = oPass.value;
+            //4.判断语句
+            //判断用户名是否等于xsx
+            if (userUser === 'xsx') {
+                //判断用户密码是否为123
+                if (userPass == '123') {
+                    alert('成功登录!');
+                } else {
+                    alert('输入密码错误');
+
+                    oPass.value = ""; //输入错误之后内容清空
+                    oPass.autofocus(); //自动聚焦到此处
+                }
+            } else {
+                alert('输入账号错误');
+
+                oUser.value = ""; //输入错误之后内容情况
+                oUser.autofocus(); //自动j聚焦
+
+            }
+        }
+    </script>
+</body>
+
+</html>

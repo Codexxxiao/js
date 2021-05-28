@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>for语句练习</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        ul>li {
+            height: 40px;
+            line-height: 40px;
+            margin-top: 10px;
+            text-align: center;
+            background-color: rosybrown;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        /* 
+            需求:给每一个li绑定点击事件，弹出"hello"
+
+            使用gerElementsByTagName(value)获得标签名为value的元素
+
+            注意:使用循环的时候记住灵活使用++ --
+        */
+        //获取li标签
+        var oBox = document.getElementById('box');
+        /* console.log(oBox); */
+        var oLi = oBox.getElementsByTagName('li');
+
+        console.log(oLi);
+        var i = 0;
+
+        //1.使用while为每个li添加点击事件
+        /* while (i < oLi.length) {
+            oLi[i++].onclick = function () {
+                alert("hello word!");
+            }
+            // i++;
+        } */
+
+        //2.使用for为每个li添加点击事件
+        /* for (; i < oLi.length;) {
+            oLi[i++].onclick = function () {
+                alert("hello word!");
+            }
+        } */
+
+        //3.使用do while为每个li添加点击事件
+        do {
+            oLi[i++].onclick = function () {
+                alert('hello world!');
+            }
+        }
+        while (i < oLi.length);
+    </script>
+</body>
+
+</html>

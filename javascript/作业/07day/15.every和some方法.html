@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>every和some方法 </title>
+    <!-- 
+        arr.every(callback(element[, index[, array]])[, thisArg])
+            不会改变原数组
+            返回值:如果回调函数每一次都返回true,则返回true,否则返回false
+
+        
+        arr.some(callback(element[, index[, array]])[, thisArg])
+            不会改变原数组
+            返回值:如果回调函数都返回false,则返回false,否则返回true
+
+     -->
+</head>
+
+<body>
+    <script>
+        /* 
+            every和some方法
+        */
+        var persons = [{
+                name: "lily1",
+                sex: "女",
+                age: 18
+            },
+            {
+                name: "lily2",
+                sex: "男",
+                age: 19
+            },
+            {
+                name: "lily3",
+                sex: "女",
+                age: 11
+            },
+            {
+                name: "lily4",
+                sex: "男",
+                age: 28
+            },
+            {
+                name: "lily5",
+                sex: "女",
+                age: 22
+            },
+        ];
+
+        //判断是否所有人都满18岁
+        var re1 = persons.every(function (item, index, array) {
+            if (item.age >= 18) {
+                return true;
+            } else {
+                console.log(index + 1); //输入未满18 岁的人  3
+                return false;
+            }
+            // return item.age >= 18;
+        });
+        console.log(re1); //false
+
+        //判断是否有人未满18岁
+        var re2 = persons.some(function (item, index, array) {
+            if (item.age < 18) {
+                console.log(index + 1); //3
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        console.log(re2); //true
+    </script>
+</body>
+
+</html>

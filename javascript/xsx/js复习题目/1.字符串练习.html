@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            给定一个字符串，例如：abaacbcjdedkkdjfjj,选出其中最早出现且只出现过一次的字符。
+         */
+        var str = 'abaacbcjdedkkdjfjj';
+        // 把字符串变为数组处理
+        var arr = str.split('');
+        //用一个数组存储每个字母出现的次数
+        var newArr = [];
+        // console.log(arr);
+        arr.forEach(function (item, index) {
+            // 判断元素是否是第一次出现
+            if (arr.indexOf(item) === index) {
+                newArr.push(1);
+            } else {
+                var reIndex = arr.indexOf(item);
+                newArr[reIndex]++;
+                newArr.push(null);
+            }
+        });
+        for (var i = 0; i < newArr.length; i++) {
+            if (newArr[i] === 1) {
+                console.log(arr[i]);
+                break;
+            }
+        }
+        console.log(newArr);
+    </script>
+</body>
+
+</html>

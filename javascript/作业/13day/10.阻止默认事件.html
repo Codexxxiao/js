@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>阻止默认事件</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            阻止默认事件
+                主流：
+                    e.preventDefault();
+                IE:
+                    e.returnValue = false;
+
+            简单粗暴的写法
+                return false;（书写在末尾）
+        */
+
+        document.oncontextmenu = function (event) {
+            console.log(event);
+            // 使用event.preventDefault()阻止默认事件
+            // event.preventDefault();
+
+            //使用return false阻止默认事件 
+            return false;
+        }
+    </script>
+</body>
+
+</html>

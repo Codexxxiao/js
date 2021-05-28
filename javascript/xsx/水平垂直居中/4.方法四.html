@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>方法四</title>
+    <!-- 
+        position + 0000 + margin:auto
+    -->
+    <style>
+        #div0 {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+        }
+
+        #div1 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            margin: auto;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div0">
+        <div id="div1"></div>
+    </div>
+</body>
+
+</html>

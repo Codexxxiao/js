@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素的方式</title>
+    <!-- 
+        获取元素
+            旧方法：
+                -getElementById ()
+                    返回一个匹配ID的DOM元素对象，如果没找到，返回null
+                -getElementsByTagName()
+                    返回一个包括所有给定标签名称的元素的Html集合(HTMLCollection)
+                    放回的HTML集合是动态的，会自动更新保持跟DOM树的同步，而不用再次调用
+                getElememtsByClassName()
+                    返回一个包括所有给定标签名称的元素的HTML集合
+
+            新方法：
+                -querySelector('选择器')
+                    返回指定一组css选择器匹配的第一个元素，一个元素对象
+                -querySelectorAll('选择器')
+                    返回一个静态NodeList,包含一个或多个指定选择器匹配的元素对象
+
+            注意：HTMLCollection 和  NodeList都是集合（类数组） 原型为NodeList  原型的原型为 Object
+
+    -->
+</head>
+
+<body>
+    <ul id="box">
+        <li class="cli">1</li>
+        <li>2</li>
+        <li class="cli">3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        /* 
+            获取元素
+         */
+        // 旧方法
+        //  getElementById
+        var oBox = document.getElementById('box');
+        console.log(oBox);
+
+        // getElementsByTagName
+        var oLis = oBox.getElementsByTagName('li');
+        console.log(oLis);
+
+        // getElementsByClassName
+        var oCli = oBox.getElementsByClassName('cli');
+        console.log(oCli);
+
+        // 新方法
+        var oLiss = document.querySelector('li');
+        console.log(oLiss);
+
+        var oLisss = document.querySelectorAll('li');
+        console.log(oLisss);
+    </script>
+</body>
+
+</html>

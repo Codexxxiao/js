@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>开关思想练习</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <button id="btn">点击</button>
+    <script>
+        /* 
+            需求：点击之后改变盒子的颜色
+        */
+
+        //1.获得元素
+        var oBox = document.getElementById('box');
+        var oBtn = document.getElementById('btn');
+
+        var exchange = true; //盒子默认红色，exchange默认true，红色相当于true
+        // 2.点击事件
+        oBtn.onclick = function () {
+
+
+            //3.使用if语句进行判断
+            if (exchange) {
+                //转变背景颜色的值
+                oBox.style.backgroundColor = "red"; //注意css中属性存在-的情况下都用字母大写代替
+                //把exchage赋值为false
+                exchange = false;
+            } else {
+                //转变背景颜色的值
+                oBox.style.backgroundColor = "blue";
+                //把exchage赋值为true
+                exchange = true;
+            }
+        }
+    </script>
+</body>
+
+</html>

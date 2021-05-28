@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>null的使用情况</title>
+    <!-- 
+        注意：undefined时意料之外的空值，也可以看成是一种错误。
+            null是意料之中的空值。
+
+        null的使用场景：
+            场景一：现在声明一个变量，但是未来赋值的时候
+            场景二：函数需要形参，但是不想传递参数的时候
+            场景三：对象不需要在使用的时候
+
+            4.原型链的终点是null
+     -->
+</head>
+
+<body>
+    <script>
+        /* 场景一：在未来赋值的时候，可以先给变量定义为null */
+        var a = null;
+
+        console.log(a); //null
+
+        /* 场景二：函数需要形参，但是不想传递参数的时候，可以使用null代替 */
+        function add(a, b) {
+            return a + b; //返回两数之和   隐式转换：此处null转变成了0
+        }
+
+        console.log(add(1, null)); //1 
+
+        /* 场景三：把一个对象变成垃圾对象*/
+        var people = {
+            name: "xsx",
+            age: 18,
+        }
+        console.log(people); //object
+        //再也不需要people的时候，把people变成垃圾对象，减少计算机运行内存的消耗
+        people = null;
+        console.log(people); //null
+    </script>
+</body>
+
+</html>

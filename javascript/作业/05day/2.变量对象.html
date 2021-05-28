@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>执行上下文-确定变量对象</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            执行上下文-确定变量对象、
+                1.全局执行上下文
+                    函数声明提升
+                    变量声明提升
+                2.函数执行上下文
+                    形参和实参(在调用函数的时候,其实就已经给形参赋值了,所有形参是有值的)
+                    函数声明提升
+                    变量声明提升
+            注意：在有同名的情况下：函数优先级>形参优先级>变量优先级
+        */
+
+        //全局执行上下文确定变量对象
+        /* 
+            创建一个Go对象
+            var Go = {
+                //先提升函数声明(并赋值函数体)
+                foo:function(){},
+                bar:function(){},
+
+                //在提升变量声明(并赋值undefined)
+                a:undefined,
+                //foo:undefined//与函数foo同名,根据优先级被覆盖
+            }
+
+            因此下面代码等价于:
+            function foo(){};
+            function bar(){};
+
+            var a;
+            //var foo;
+            consoleo.log(a);
+            a = 1;
+        */
+        console.log(a); //undefined
+        var a = 1;
+
+        function foo() {};
+        var foo = {};
+
+        function bar() {};
+
+
+        //函数执行上下文确定变量
+        /* 
+            函数执行上下文确定变量
+            var Ao{
+                //形参实参结合
+                a:1,
+                b:'xsx',
+                c:2,
+
+                // 函数声明提升
+                foo:function(){},
+                b:function(){},//把形参b覆盖,优先级
+
+                // 变量声明提升
+                a:undefined
+
+            }
+
+            以下代码等价于:
+            function foo(a,b,c){
+                functin foo(){};
+                function b(){};
+                var a;
+                console.log(a);
+                a=1;
+            }
+            foo(1,'xsx',2)
+        */
+        function foo(a, b, c) {
+            console.log(a);
+            var a = 1;
+
+            function foo() {};
+
+            function b() {};
+        }
+        foo(1, 'xsx', 2)
+    </script>
+</body>
+
+</html>

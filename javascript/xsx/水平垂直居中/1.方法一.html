@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>水平垂直居中方法一</title>
+    <!-- 
+        已知居中元素得宽和高时，实用calc+position方法
+    -->
+    <style>
+        #div0 {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+        }
+
+        #div1 {
+            /* 
+                使用 calc 计算父元素的一半减资源的一半
+             */
+            position: absolute;
+            left: calc(50% - 51px);
+            top: calc(50% - 51px);
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div0">
+        <div id="div1"></div>
+    </div>
+</body>
+
+</html>

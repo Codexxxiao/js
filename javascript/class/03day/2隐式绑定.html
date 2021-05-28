@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>this的隐式绑定</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            this的隐式绑定
+                -当函数被当作了方法调用的时，
+                    this指向它的直接对象
+        */
+
+        // 情况一：
+        /* var a = 10;
+
+        function foo() {
+            console.log(this); //Object obj
+            console.log(this.a); //2
+        }
+
+        var obj = {
+            a: 2,
+            foo: foo
+        }
+
+        obj.foo(); //foo的直接对象为obj，this指针指向它的直接对象obj */
+
+        // 情况二：
+        var a = 2;
+
+        function foo() {
+            console.log(this);
+            console.log(this.a);
+        }
+
+        var obj = {
+            a: 4,
+            foo: foo,
+            obj2: {
+                a: 6,
+                foo: foo
+            }
+        }
+        obj.foo(); //Object obj  3
+        // foo函数的直接对象obj2，this指针指向它的直接对象obj2
+        obj.obj2.foo(); //Object obj2  6
+    </script>
+</body>
+
+</html>

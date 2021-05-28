@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>手写call的不传参数的版本</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            (1)在Function的原型对象上声明一个myCall的函数
+            (2)判断传入数据的类型
+              
+        */
+        //1.在Function原型对象上声明myCall方法    
+        Function.prototype.myCall = function (obj) {
+            // 2.判断是否是undefined类型或null类型
+            if (obj === undefined || obj === null) {
+                // 如果是undefined 或 null类型，则把这个值指向windwo对象
+                obj = window;
+            }
+
+            // 判断是否是基本包装类型
+            if (typeof obj != 'object' && typeof obj != 'function') {
+                // 如果是基本包装类型，则把这个值指向它的包装对象
+                obj = Object(obj);
+            }
+
+            // 如果本身为obj类型，则不改变对象指向
+
+            // 3.给这个对象扩展方法,this指向调用myCall方法的 对象方法
+            obj.foo = this;
+
+            // 4.执行调用myCall方法的 对象方法
+            // 此时调用myCall方法的 对象方法中this指向obj对象
+            obj.foo();
+
+            // 5.清除foo属性  （因为对象扩展的属性中存在这个方法）
+            delete obj.foo;
+        }
+
+        function fn() {
+            console.log(this);
+        }
+
+        fn.myCall(1);
+    </script>
+</body>
+
+</html>

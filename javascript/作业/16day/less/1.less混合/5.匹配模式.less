@@ -1,0 +1,31 @@
+// 需求:要一个向不同方向的三角形
+
+// 需要跟匹配的triangle参数对应
+.triangle(@_, @w: 10px, @c: black) {
+    width: 0px;
+    height: 0px;
+}
+
+.triangle(t, @w: 10px, @c: black) {
+    border: @w solid transparent;
+    border-top-color: @c;
+}
+
+.triangle(bo, @w: 10px, @c: black) {
+    border: @w solid transparent;
+    border-bottom-color: @c;
+}
+
+.triangle(l, @w: 10px, @c: black) {
+    border: @w solid transparent;
+    border-left-color: @c;
+}
+
+.triangle(r, @w: 10px, @c: black) {
+    border: @w solid transparent;
+    border-right-color: @c;
+}
+
+#outer {
+    .triangle(r, 10px, red);
+}

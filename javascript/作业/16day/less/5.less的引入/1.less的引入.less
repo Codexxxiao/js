@@ -1,0 +1,21 @@
+/* 
+    注意：
+        less文件中用@import引入less文件，这个是less提供的@import,跟css中@import不一样
+*/
+@import url(./public.less);
+
+#outer {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border: 1px dotted red;
+
+    margin: 0 auto;
+
+    #inner {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        .center;
+    }
+}

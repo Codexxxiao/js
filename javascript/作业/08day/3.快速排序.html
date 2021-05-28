@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>快速排序</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            快速排序：
+                升序思路：（1）任意选取数组中的一个数，以这个元素作为中心数
+                            依次对比数组中的其它元素，小于这个元素的放在左边数组，
+                            大于这个元素的，放在右边数组。
+                        （2）继续多左右数组执行相同的操作。
+                        （3）当数组的长度为1或者数组的长度为空的时候
+                            返回这个数组，并依次返回拼接起来
+        */
+        function quickSort(arr) {
+
+            //判断数组的长度是否为1或者为0
+            if (arr.length <= 1) {
+                return arr;
+            }
+
+            var newArr = [];
+            //数组最后一个数作为基数
+            var center = arr.pop();
+            //声明放在左边的数
+            var left = [];
+            // 声明放在右边的数
+            var right = [];
+            // 遍历数组
+            arr.forEach(function (item, index, array) {
+                // 如果元素小于基数，则放在左边数组
+                if (center >= item) {
+                    left.push(item);
+                    // 如果元素大于基数，则放在右边数组
+                } else {
+                    right.push(item);
+                }
+            });
+            // 使用函数递归，对左右进行快速排序，直到只剩下空串或数组长度为1的时候开始拼接
+            newArr = quickSort(left).concat(center, quickSort(right));
+
+            return newArr;
+        }
+        var arr = [7, 4, 32, 2, 6, 4, 4, 56, 3, 43, 18];
+        quickSort(arr);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>手写apply方法</title>
+</head>
+
+<body>
+    <script>
+        /*
+            实际上call 和 apply做了两件事情
+                1.使调用call/apply的函数中this指向其第一个参数
+                2.调用这个函数
+
+            手写apply方法
+                思路：
+                    1.在Function原型对象上声明一个myApply的函数
+                    2.判断传入的数据类型
+                        -如果是undefined 或 null，则改变其指向window
+                        -如果是基本包装类型，则改变其为包装对象
+                        -如果是对象，则不做任何改变
+                    3.创建一个不重复名称的方法名（时间戳转36进制）
+                    4.添加对象的方法，方法名为不重复名方法名，方法值为调用myApply的函数（this）
+                    5.获取实参
+                    6.执行对象的这个方法
+                    7.删除对象的这个方法
+         */
+
+        //  1.在Function的原型对象上声明一个myApply的函数
+        Function.prototype.myApply = function (con) {
+            // 2.判断传入的是什么类型的数据
+            if (con === undefined || con === null) {
+                // 如果是undefined 或 null，则变为window对象
+                con = window;
+            }
+            //判断传入的是否为基本包装类型
+            if (typeof con != 'object' && typeof con != 'function') {
+                // 如果是基本包装类型，则变为包装对象
+                con = Object(con);
+            }
+            // 如果传入的是对象，则不做任何改变
+
+            // 3.创建一个不重名的方法名（时间戳  转为36进制）
+            var fnName = Date.now().toString(36);
+
+            // 4.给传入数据已改变成的对象扩展方法，方法名为fnName，方法值为调用myApply的函数（this）
+            con[fnName] = this;
+
+            // 5.获取传入的实参  , 并使用toString转为字符串
+            var arr = arguments[1];
+
+            // 6.使用eval调用con对象的fnName方法
+            eval('con[fnName](' + arr + ')');
+
+            // 7.删除con中的fnName方法
+            delete con[fnName];
+
+        }
+
+        function fn(a, b) {
+            console.log(this, a + b);
+        }
+
+        fn.myApply(1, [1, 2]);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>对象的公有私有静态特权概念</title>
+</head>
+
+<body>
+    <script>
+        function Person(name, age) {
+            // 共有属性
+            this.name = name;
+            this.age = age;
+
+            // 私有属性
+            var that = this;
+            // 私有方法
+            function checkType() {
+
+            }
+
+        }
+        // 对象的公有方法
+        Person.prototype.run = function () {
+            console.log('run');
+        }
+
+        // 静态属性
+        Person.hello = 'world';
+        // 静态方法
+        Person.say = function () {
+            console.log('say');
+        }
+
+        //特权方法：直接给实例化对象设置的方法 
+    </script>
+</body>
+
+</html>

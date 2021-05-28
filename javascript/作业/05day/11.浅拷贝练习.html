@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>浅拷贝练习</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            浅拷贝：把某个对象复制一份
+
+            问题：深拷贝是什么
+        */
+        function foo() {
+            return 1;
+        }
+        var person1 = {
+            name: {
+                first: 'x',
+                last: 'sx'
+            },
+            age: 18,
+            gender: 'male',
+            foo: foo
+        }
+        var person2 = {}
+        for (var key in person1) {
+            person2[key] = person1[key];
+        }
+        console.log(person1);
+        console.log(person2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>代码的同步和异步</title>
+</head>
+
+<body>
+    <ul id="box">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        /*  
+            代码的同步和异步:
+                目前来说:事件函数执行是异步的
+                其它都市同步的(绑定事件也是同步的)
+                异步代码只有等同步代码执行完成之后才会执行
+        */
+        var oBox = document.getElementById('box');
+        // oLis是一个伪数组
+        var oLis = oBox.getElementsByTagName('li');
+        // 为每个li绑定点击事件
+        for (var i = 0; i < oLis.length; i++) {
+            oLis[i].onclick = function () {
+                console.log(i); // 3  3  3
+
+                //报错:TypeError:此时下标为3,oLis[3]返回值为undefined,undefined.style是一个不存在的属性
+                //oLis[i].style.background = 'red';
+            }
+        }
+    </script>
+</body>
+
+</html>

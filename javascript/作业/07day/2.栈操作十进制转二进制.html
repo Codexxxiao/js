@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>栈操作十进制转二进制</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            十进制转二进制
+                方法一：栈操作
+                    思路：每次获得余数，使用push从数组尾部添加余数
+                            然后使用pop依次得到尾部的元素，并用字符串拼接
+                方法二：字符串操作
+                    思路：每次获得余数，直接使用字符串拼接
+        */
+        //方法一：栈操作
+        function toBinary(num) {
+            //声明变量，获得每次余数
+            var re = null;
+            // 声明数组，依次存每次余数
+            var arr = [];
+            //声明字符串类型，作为返回值
+            var str = '';
+            //判断num是否大于0
+            while (num > 0) {
+                re = num % 2;
+                arr.push(re);
+                num = parseInt(num / 2);
+            }
+            //判断数组的长度是否大于0
+            while (arr.length > 0) {
+                //每次pop尾部的元素，使用str拼接 
+                str += arr.pop();
+            }
+
+            return str;
+        }
+        var str = toBinary(100);
+        console.log(str);
+
+        // 方法二：字符串操作
+        function toBinary1(num) {
+            //声明变量，获得每次余数
+            var re = null;
+            // 声明字符串，拼接每次的余数
+            var str = '';
+            while (num > 0) {
+                str = num % 2 + str;
+                num = parseInt(num / 2);
+            }
+            return str;
+        }
+        var str1 = toBinary1(100);
+        console.log(str1);
+    </script>
+</body>
+
+</html>

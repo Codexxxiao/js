@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数方法</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                1.call()
+                    call(thisArg,arg1,arg2,...)
+                    call方法可以传入多个参数
+                2.apply()
+                    apply(thisArg,[arg1,arg2,...])
+                    apply传入一个数组
+        */
+        //1.call()
+        var obj = {
+            a: 2,
+            b: 3
+        }
+
+        /* function add(a, b) {
+            var sum = a + b + this.a + this.b;
+            return sum;
+        }
+        //使用 call函数将add原本的this从window指向obj
+        var sum = add.call(obj, 1, 1);
+        console.log(sum); */
+
+        //2.apply()
+        function add(a) {
+            var sum = 0;
+            for (var i = 0; i < add.length; i++) {
+                sum += a[i];
+            }
+            sum = sum + this.a + this.b;
+        }
+        var a = [1, 2, 3];
+        var sum = add.apply(obj, a)
+        console.log(sum);
+    </script>
+</body>
+
+</html>

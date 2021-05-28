@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>location对象</title>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <script>
+        /* 
+            location对象
+            
+            属性：
+                -href:声明或获取当前文档的完整的url
+                -protocol:协议部分包括后缀的冒号
+                -host:主机和端口名称
+                -hostname:主机名称
+                -port:端口号
+                -pathname: 路径部分
+                -search:url的查询部分
+                -hash:锚部分包括前面#
+
+            方法：
+                -assign()  与href相当，只是把相当于把href封装为一个方法
+                -reload(boolean)  重新加载文档
+                    -boolean:false时或不传参数时，浏览器可能从缓存中读取页面
+                    -boolean:true时，将强制浏览器从服务器端重新获取当前页面资源
+                -replace()  装载一个新文档而无需为它创建一个新的历史记录。替换当前文档的历史记录
+        */
+        var oBtn = document.getElementById('btn');
+        oBtn.onclick = function () {
+
+            // location.href可以声明或获取文档的完整url
+            // location.href = 'http://www.baidu.com';
+
+            /*  // 获取当前文档的完整url
+             console.log(location.href);
+
+             // 获取协议部分包括后缀的冒号  protocol
+             console.log(location.protocol);
+
+             // 获得主机名和端口名  host
+             console.log(location.host);
+
+             // 获得主机名  hostname
+             console.log(location.hostname);
+
+             // 获得端口号  port
+             console.log(location.port);
+
+             // 获得路径部分  pathname
+             console.log(location.pathname);
+
+             // 获得查询字符串
+             console.log(location.search);
+
+             // 获得锚点
+             console.log(location.hash); */
+
+            //  使用location.assign 设置 文档url地址
+            location.assign('http://www.baidu.com');
+
+            // 使用location.reload 重新加载文档
+            // location.reload();
+
+            // 使用location.replace  替换当前文档 (连历史记录都替换)
+            // location.replace('http://www.baidu.com');
+        }
+    </script>
+</body>
+
+</html>

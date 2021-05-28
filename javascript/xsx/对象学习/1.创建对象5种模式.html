@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>创建对象的5种模式</title>
+    <!-- 
+        在java中的概念：类（class）就是对象的模板
+        js中：js不是基于类的， 而是基于构造函数(constructor)和原型链(prototype)
+     -->
+</head>
+
+<body>
+    <script>
+        /* 
+            创建对象的五种模式
+         */
+        //  Dog是构造函数，为了与普通函数区别，构造函数首写字母一般大写
+        function Dog(name, age) {
+            // name,age是实例化对象的属性
+            this.name = name;
+            this.age = age;
+        }
+        // 生成对象，必须使用new关键字实例化
+        var dog1 = new Dog('阿黄', 10);
+        console.log(dog1);
+        //1.构造函数生成对象
+    </script>
+</body>
+
+</html>

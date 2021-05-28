@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>判断闰年的练习</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            闰年：能被4整除但不能被100整除，或能被400整除的年份
+        */
+        function fn() {
+            //定义一个对话框，让用户输入需要查询的年份      
+            var userV = prompt("请输入你需要查询的年份：");
+            if (+userV % 4 === 0 && +userV % 100 !== 0 || +userV % 400 === 0) {
+                alert(userV + "是闰年");
+                fn();
+            } else {
+                alert(userV + "不是闰年")
+                fn();
+            }
+        }
+        fn();
+    </script>
+</body>
+
+</html>

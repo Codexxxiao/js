@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>击鼓传花练习</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        击鼓传花练习
+            描述：
+                有m只猴子，依次踢出第n只猴子，剩下的最后一只为猴子王
+            思路：
+                依次把第1到第n-1只猴子放在后面，提出第n只猴子
+
+    */
+        function findMonkeyKing(m, n) {
+            //定义一个数组，存储猴子的数量
+            var arr = [];
+
+            // 使用for循环依次为arr数组中添加值
+            for (var i = 1; i <= m; i++) {
+                arr.push(i);
+            }
+
+            //判断arr中是否只剩下最后一只猴子
+            while (arr.length > 1) {
+                for (var i = 0; i < n - 1; i++) {
+                    //把第1只和第n-1只猴子依次放在尾部
+                    arr.push(arr.shift());
+                }
+                // 提出第一只猴子
+                arr.shift();
+            }
+            // 放回猴子王
+            return arr[0];
+        }
+        var re = findMonkeyKing(10, 3);
+        console.log(re);
+    </script>
+</body>
+
+</html>

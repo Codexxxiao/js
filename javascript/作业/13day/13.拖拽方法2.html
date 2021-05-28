@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽方法2</title>
+    <style>
+        div {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            background-color: chocolate;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            拖拽方法二：
+                思路： 
+                    鼠标点击后到元素边缘的距离固定,因此
+                    box的位置 = 鼠标相对浏览器窗口位置 - 鼠标到元素边缘的距离；
+        */
+        var oBox = document.getElementById('box');
+
+        // 给box绑定点击事件
+        oBox.onmousedown = function (event) {
+            // 获取鼠标按下后到元素边缘的距离
+            var boxPointer = {
+                left: event.offsetX,
+                top: event.offsetY
+            }
+
+            // 绑定鼠标移动事件
+            document.onmousemove = function (event) {
+                // 获取元素移动后的位置
+                var newLoction = {
+                    x: event.clientX - boxPointer.left,
+                    y: event.clientY - boxPointer.top
+                }
+
+                // 判断窗口的临界值
+                if (newLoction.x <= 0) {
+                    newLoction.x = 0;
+                } else if (newLoction.x >= document.documentElement.clientWidth - oBox.offsetWidth) {
+                    newLoction.x = document.documentElement.clientWidth - oBox.offsetWidth;
+                }
+
+                if (newLoction.y <= 0) {
+                    newLoction.y = 0;
+                } else if (newLoction.y >= document.documentElement.clientHeight - oBox.offsetHeight) {
+                    newLoction.y = document.documentElement.clientHeight - oBox.offsetHeight;
+                }
+
+                // 设置元素的位置
+                oBox.style.left = newLoction.x + 'px';
+                oBox.style.top = newLoction.y + 'px';
+            }
+
+            // 当鼠标抬起的时候清除移动事件
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+            
+        }
+    </script>
+</body>
+
+</html>

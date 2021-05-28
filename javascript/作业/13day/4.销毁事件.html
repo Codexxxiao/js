@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>销毁事件</title>
+    <style>
+        #outer {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background-color: burlywood;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #inner {
+            width: 300px;
+            height: 300px;
+            background-color: aquamarine;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #box {
+            position: absolute;
+            left: 600px;
+            width: 100px;
+            height: 100px;
+            background-color: chocolate;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="box"></div>
+        </div>
+    </div>
+    <button id='btn'>销毁</button>
+    <script>
+        /* 
+            销毁事件：
+                DOM0: 
+                    e.onclick = null;
+                    在DOM0中各种事件属性时默认存在的，只不过是被赋值为了null，
+                    销毁这个事件，重新赋值为0就可以了
+
+                DOM2:(注意需要把listener函数写在外面，这样才可以删除监听器)
+                    removeEventListner(type,listener[,useCapture])
+                        -type:需要移除的事件类型
+                        -listener: 需要从目标使劲按移除的EventListener函数
+                        -userCapture：默认值为false，如果同一个监听事件同时为“事件捕获”和“事件冒泡”注册了一次
+                                            则需要分别移除
+                    返回值：undefined
+
+
+                IE:
+                    delachEvent()
+                        -移除 attachEvent注册的监听器
+        */
+
+        var oOuter = document.getElementById('outer');
+        var oInner = document.querySelector('#inner');
+        var oBox = document.querySelector('#box');
+        var oBtn = document.getElementById('btn');
+
+        //DOM0   oOuter的绑定和销毁事件
+        /* oOuter.onclick = function () {
+            console.log('outer');
+        }
+        oBtn.onclick = function () {
+            oOuter.onclick = null;
+            oBtn.onclick = null;
+        } */
+
+        // DOM2   oOuter的绑定和销毁事件
+        function listen() {
+            console.log('outer');
+        }
+        oOuter.addEventListener('click', listen, true);
+
+        oOuter.addEventListener('click', listen, false);
+
+        oBtn.onclick = function () {
+            oOuter.removeEventListener('click', listen);
+            oOuter.removeEventListener('click', listen, true);
+        }
+    </script>
+</body>
+
+</html>

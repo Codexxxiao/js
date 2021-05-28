@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时效果</title>
+    <style>
+        body {
+            background-color: rosybrown;
+        }
+
+        #box {
+            margin-top: 100px;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        /* 
+            倒计时效果
+        */
+        var oBox = document.getElementById('box');
+        // 获取端午的时间
+        var duanWu = new Date('2021-9-15');
+
+        // 封装当小于10的时候
+        function foo(num) {
+            return num < 10 ? ('0' + num) : num;
+        }
+
+        setInterval(function () {
+            // 现在到端午有多少毫秒
+            var milliSe = duanWu.getTime() - Date.now();
+
+            //还有多少天
+            var day = Math.floor(milliSe / (1000 * 60 * 60 * 24));
+            day = foo(day);
+            var _day = milliSe % (1000 * 60 * 60 * 24);
+
+            // 还有多少个小时
+            var hours = Math.floor(_day / (1000 * 60 * 60));
+            hours = foo(hours);
+            var _hours = _day % (1000 * 60 * 60);
+
+            //还有多少分钟
+            var minutes = Math.floor(_hours / (1000 * 60));
+            minutes = foo(minutes);
+            var _minutes = _hours % (1000 * 60);
+
+            //还有多少秒
+            var seconds = Math.floor(_minutes / 1000);
+            seconds = foo(seconds);
+
+            oBox.textContent = '离毕业还有' + day + '天' + hours + '时' + minutes + '分' + seconds + '秒';
+        }, 999)
+    </script>
+</body>
+
+</html>

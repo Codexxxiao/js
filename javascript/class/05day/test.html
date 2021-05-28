@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function foo() {
+            /* var a = 5,
+                b = 5; */
+            // 这种情况表示为定义，为全局变量
+            var a = b = 5;
+        }
+        foo();
+        console.log(b);
+
+        function Person() {
+            this.name = 'xsx';
+            console.log(this);
+        }
+        var p1 = new Person();
+        console.log(p1);
+    </script>
+</body>
+
+</html>

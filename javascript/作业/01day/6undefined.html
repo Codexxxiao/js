@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>undefined的使用场景</title>
+</head>
+
+<body>
+    <script>
+        /* 场景一：变量声明，但是为定义的情况 */
+        var a;
+        console.log(a); //undefined
+
+        /* 场景二：传递的实参比形参少 */
+        //定义一个show函数，输出a，b
+        function show(a, b) {
+            console.log(a); //1
+            console.log(b); //undefined
+        }
+        show(1);
+
+        /* 场景三：访问对象中不存在的属性时 */
+        // 定义一个people对象
+        var people = {
+            name: 'xsx',
+            sex: 'male',
+            age: 18,
+        }
+
+        console.log(people.name); //xsx
+        console.log(people.height); //undefined
+
+        /* 场景四：函数没有返回值 */
+        //定义一个add函数，实现两个数字相加
+        function add(a, b) {
+            var sum = a + b;
+            return sum; // 返回相加的结果
+        }
+
+        console.log(add(1, 2)); //没加返回值的时候,undefined
+        console.log(add(1, 2)); //加返回值的时候,3
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>原型对象</title>
+    <!-- 
+        构造函数声明对象的利与弊
+            弊端：相同的行为会被多次声明，浪费计算机运行空间
+            利：可以使用原型对象，把相同行为放在原型对象上
+
+        prototype属性的作用
+            js继承机制
+            每个函数创建时就会被赋予的属性
+            通过原型对象实现继承
+            原型对象作用：定义所有实例对象共享的属性和方法
+     -->
+</head>
+
+<body>
+    <script>
+        /*
+            原型对象：三角链关系
+                1.原型对象:每一个原型对象都有一个__proto__和contructor属性
+                2.实例对象：每个实例对象都自动赋予__proto__属性指向构造函数 的原型对象，constructor属性
+                    指向实例对象的构造函数，constructor是继承自原型对象的
+                3.构造函数：自动给构造函数赋予prototype属性，这个属性指向构造函数的原型对象
+         */
+        function Person() {
+
+        }
+        Person.prototype.show = function () {
+            console.log('this is show');
+        };
+        var p1 = new Person();
+        //从原型中把show方法继承下来（理解：当前找不到，去它的原型链上找）
+        console.log(p1);
+        p1.show();
+        console.log(Person.prototype);
+        console.log(p1.__proto__ === Person.prototype); //true
+        console.log(Person.prototype.constructor === p1.constructor); //true
+    </script>
+</body>
+
+</html>

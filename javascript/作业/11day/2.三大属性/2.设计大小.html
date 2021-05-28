@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素的大小</title>
+    <style>
+        #outer {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #000;
+
+            padding: 10px;
+            overflow: auto;
+        }
+
+        #inner {
+            width: 1000px;
+            height: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner"></div>
+    </div>
+    <script>
+        /* 
+            获取元素的宽度或高度：
+                -offsetWidth/offsetHeight:
+                    获取元素的宽度：border + padding + [竖直滚动条] + css设置的width
+                -clientWidth/clientHeight;
+                    获取元素的宽度: 元素内部宽度，包括padding , 但不包括border，和[垂直滚动条]
+                -scrollWidth/scrollHeight
+                    获取元素内容宽度，包括overflow溢出屏幕不可见的内容
+
+        */
+
+        var oOuter = document.getElementById('outer');
+        // offsetWidth  offsetHeight
+        console.log(oOuter.offsetWidth); //224
+        console.log(oOuter.offsetHeight); //224
+
+        // clientWidth  clientHeight
+        console.log(oOuter.clientWidth); //220
+        console.log(oOuter.clientHeight); //220
+
+        // scrollWidth  scrollHeight
+        console.log(oOuter.scrollWidth); //1010
+        console.log(oOuter.scrollHeight); //1020
+    </script>
+</body>
+
+</html>

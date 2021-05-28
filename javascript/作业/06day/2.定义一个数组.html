@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>定义一个数组的两种方式</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            定义一个数组的两种方式
+                -字面量法
+                    var arr = [];
+                -构造函数创建数组
+                    var arr = new Array();
+                    注意:1.var arr = new Array(+number);
+                            这种情况认为创建了一个长度为number的数组,数组内容为empty
+                        2.var arr = new Array(3.2/NaN);
+                            这种情况程序会报错:RangeError:Invalid array length    
+        */
+        //字面量法创建数组
+        var arr1 = []; //创建了一个空数组
+        console.log(arr1); //[]
+        var arr2 = [undefined, null, 1, 'xsx', false, {},
+            []
+        ];
+        console.log(arr2); //定义一个包含了多种数据类型的数组[undefined, null, 1, 'xsx', false, {}, []]
+
+        //使用构造函数创建数组
+        var arr3 = new Array(); //使用构造函数创建了一个空数组
+        console.log(arr3);
+        var arr4 = new Array(1, 2, 3, 'xsx');
+        console.log(arr4); //使用构造函数创建了一个有数据的数组
+
+        //特殊情况
+        // 注意:使用构造函数创建数组的时候,如果里面只有一位且为Number类型的正整数时,认为创建长度为num的数组
+        var arr5 = new Array(3);
+        //这是一个长度为3的空数组
+        console.log(arr5); //empty*3
+
+        // RangeError:Invalid array length
+        var arr6 = new Array(3.2); //程序报错
+        /* console.log(arr6); */
+    </script>
+</body>
+
+</html>

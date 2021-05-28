@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>斐波那契数列</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            斐波那契数列
+                f(0) = 0
+                f(1) = 1
+                f(n) = f(n-1) + f(n-2) (n>=2)的时候
+        */
+
+        var arr = [1, 2];
+        for (var i = 2; i < 30; i++) {
+            arr[i] = arr[i - 1] + arr[i - 2];
+        }
+        console.log(arr);
+    </script>
+</body>
+
+</html>

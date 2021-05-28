@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tab切换动画版</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #outer {
+            margin: 50px auto;
+            width: 500px;
+            height: 600px;
+            /* border: 1px solid red; */
+
+        }
+
+        #outer #title {
+            display: flex;
+            height: 100px;
+            line-height: 100px;
+
+            justify-content: space-evenly;
+
+        }
+
+        #outer #title h2 {
+            margin: 0;
+            padding: 0;
+            width: 50px;
+            text-align: center;
+            cursor: pointer;
+
+        }
+
+        #outer #title h2.active {
+            color: red;
+        }
+
+        #outer #con {
+            height: 500px;
+            overflow: hidden;
+        }
+
+        #outer #con li {
+            height: 500px;
+        }
+
+        #outer #con li:nth-of-type(1) {
+            background-color: chocolate;
+        }
+
+        #outer #con li:nth-of-type(2) {
+            background-color: burlywood;
+        }
+
+        #outer #con li:nth-of-type(3) {
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="title">
+            <h2 class="active">1</h2>
+            <h2>2</h2>
+            <h2>3</h2>
+        </div>
+        <ul id="con">
+            <li>内容一</li>
+            <li>内容二</li>
+            <li>内容三</li>
+        </ul>
+    </div>
+
+    <script>
+        var oTitle = document.getElementById('title');
+        var oCon = document.getElementById('con');
+
+        var oH2s = oTitle.querySelectorAll('h2');
+        var oLis = oCon.querySelectorAll('li');
+
+        // 声明定时器
+        var timer = null;
+        // 给每个h2标签绑定点击事件
+        oH2s.forEach(function (item, index) {
+            item.onclick = function () {
+                // 清除定时器
+                clearInterval(timer);
+                // 书写点击后切换的样式
+                oH2s.forEach(function (item, index) {
+                    item.classList.remove('active');
+                })
+                this.classList.add('active');
+
+                // 开始书写内容区域的样式
+                // 声明起始位置
+                var startScroll = oCon.scrollTop;
+                // 声明终止位置
+                var endScroll = index * oLis[0].offsetHeight;
+                // 声明起始步数
+                var startStep = 0;
+                // 声明终止步数
+                var endStep = 40;
+                //  每步走的距离
+                var everyStep = (endScroll - startScroll) / endStep;
+
+                // 设置定时器
+                timer = setInterval(function () {
+                    startStep++;
+                    if (startStep >= endStep) {
+                        clearInterval(timer);
+                    }
+                    startScroll += everyStep;
+                    oCon.scrollTop = startScroll;
+                }, 10);
+            }
+        })
+    </script>
+</body>
+
+</html>

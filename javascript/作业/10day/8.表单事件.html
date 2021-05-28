@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表单事件</title>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <script>
+        /* 
+            表单事件
+                -input 
+                    当表单内内容发生变化时触发
+
+                -change
+                    当表单内内容发生变化且失去焦点的时候触发
+        */
+        var oBody = document.body;
+        var oIpt = oBody.querySelector('#ipt');
+
+        //绑定  input事件
+        oIpt.oninput = function () {
+            console.log('oninput');
+        }
+
+        //绑定  change事件
+        oIpt.onchange = function () {
+            console.log('onchange');
+        }
+    </script>
+</body>
+
+</html>

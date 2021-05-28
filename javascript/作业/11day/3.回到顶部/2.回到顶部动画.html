@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部动画版</title>
+    <style>
+        #outer {
+            height: 2000px;
+        }
+
+        #box {
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            width: 200px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 50%;
+            background-color: hotpink;
+
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="box">回到顶部</div>
+    </div>
+    <script>
+        var oOuter = document.getElementById('outer');
+        var oBox = document.getElementById('box');
+
+        // 当竖直下滑页面400px,后显示出返回顶部
+        window.onscroll = function () {
+            if (document.documentElement.scrollTop > 400) {
+                oBox.style.display = "block";
+            } else {
+                oBox.style.display = "none";endLocation
+            }
+        }
+
+        var timer = null;
+        // 当点击回到顶部时,回到页面的顶部
+        oBox.onclick = function () {
+            var nowScroll = window.pageYOffset;
+            // 每次调用定时器之前,先清除定时器
+            clearInterval(timer);
+            timer = setInterval(function () {
+                nowScroll <= 0 ? clearInterval(timer) : nowScroll -= 10;
+                /* if (nowScroll <= 0) {
+                    nowScroll = 0;
+                    clearInterval(timer);
+                } else {
+                    nowScroll -= 10;
+                } */
+                window.scrollTo(0, nowScroll);
+            }, 10);
+        }
+    </script>
+</body>
+
+</html>

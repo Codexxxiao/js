@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>深拷贝</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            深拷贝：
+                思路：
+                    检测需要拷贝数据的类型，如果为数组类型或对象类型则再次进行浅拷贝
+
+                    注意：函数也是对象，但是必要去判断
+
+                方法二：使用JSON对数据进行拷贝  
+                    原理：JSON.stringify()将一个对象转为字符串
+                        JSON.parse()将一个字符串转为对象
+                    
+                    注意：JSON不能拷贝函数，正则，
+            
+        */
+        //封装一个checkType函数判断数据的类型      
+        function checkType(con) {
+            return Object.prototype.toString.call(con).slice(8, -1).toLowerCase();
+        }
+
+        function deepCopy(o) {
+            // 判断o是否为对象
+            if (checkType(o) === 'object') {
+                var newObj = {};
+            } else if (checkType(o) === 'array') { //判断是否为数组
+                var newObj = [];
+            } else { //全不是的话直接输出
+                return o;
+            }
+            // 遍历浅拷贝 
+            for (var key in o) {
+                newObj[key] = deepCopy(o[key]);
+            }
+
+            return newObj;
+        }
+
+        var obj1 = {
+            name: 'xsx',
+            age: 123,
+            arr: [1, 2, 3, 4],
+            foo: function () {}
+        }
+
+        var obj2 = deepCopy(obj1);
+        console.log(obj1);
+        console.log(obj2);
+        console.log(obj1.arr === obj2.arr); //false
+        console.log(Object.prototype.toString.call([])); //[object Array]
+    </script>
+</body>
+
+</html>

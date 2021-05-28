@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>几个弹窗</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            三个弹窗
+                -alert(message)警告框
+                    显示指定文本和一个确定按钮
+                    message如果是非字符串会被转为字符串
+
+                -confirm(message )确认框
+                    显示指定文本和两个按钮（确定和取消）
+                    返回值为boolean值，可以用一个变量接收
+                -prompt()对话框
+                    一个单行文本框和两个按钮（确定和取消）
+                    result = window.prompt(text,value)
+                    result：用来存储用户输入文字的字符串（没有内容的时候默认为null）
+                    text：用来提示用户输入文字的字符串（如果没有任何提升可以省略不写）
+                    value：文本输入框的默认值
+
+        */
+        //alert
+        alert('这是alert弹窗');
+        //confirm
+        var re = confirm('这是confirm弹窗')
+        console.log(re); //re为confirm弹窗的返回值（确定为true，取消为false）
+        //prompt
+        var re = prompt('这是prompt弹窗', '123');
+        console.log(re); //re获得对话框中用户输入的内容，arg1为提示用户的字符，arg2为文本框默认值
+    </script>
+</body>
+
+</html>

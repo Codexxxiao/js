@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>收银程序</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            需求：输入单价和数量，计算总价。
+            如果总价大于500 则打八折。
+            然后用户输入付钱，最终弹出找零。
+         */
+        var userPrice = prompt("请输入单价");
+        var userNum = prompt("请输入数量");
+        //变量userSum储存用户消费的总计
+        var userSum = userPrice * userNum;
+
+        if (userSum > 500) {
+            userSum *= 0.8;
+        }
+
+        function foo() {
+            var userPay = prompt("你本次消费" + userSum + "元，请付款（输入付款面额即可，稍后给你找零）");
+            if (userPay >= userSum) {
+                alert("找零" + (userPay - userSum) + "元，请收好")
+            } else {
+                alert('钱不够！');
+                foo();
+            }
+        }
+        foo();
+        alert('欢迎下次光临！');
+    </script>
+</body>
+
+</html>

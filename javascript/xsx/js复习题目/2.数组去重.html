@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 2, 3,, 2, 1,, 2, 31, 4, 3, 2, 32, 23, 5];
+        var newArr = [];
+        // 方法一
+        /* arr.forEach(function (item, index) {
+            if (arr.indexOf(item) === index) {
+                newArr.push(item);
+            }
+        }) */
+        // 方法二
+        /* arr.forEach(function (item, index) {
+            if (newArr.indexOf(item) === -1) {
+                newArr.push(item)
+            }
+        }) */
+        // 方法三
+        var i = 0,
+            j = 0;
+        while (i < arr.length - 1) {
+            j = i + 1;
+            while (j < arr.length) {
+                if (arr[i] === arr[j]) {
+                    arr.splice(j, 1);
+                    continue;
+                }
+                j++;
+            }
+            i++;
+        }
+        console.log(arr);
+        /* console.log(newArr); */
+    </script>
+</body>
+
+</html>

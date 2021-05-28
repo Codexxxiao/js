@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取详细的时间</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            获取详细的时间
+        */
+        var date = new Date();
+        //getFullYear()  根据本地时间返回对象的年份
+        console.log(date.getFullYear()); //2021
+        //getMonth()  根据本地时间返回对象的月份（0-11）
+        console.log(date.getMonth()); //3
+        //getDate()  根据本地时间返回对象月份的第几天（1-31）
+        console.log(date.getDate()); //29
+        //getDay()  根据本地时间返回对象的星期几（1-7）
+        console.log(date.getDay()); //4
+        // getHours()  返回日期对象的小时（0-23）
+        console.log(date.getHours()); //18
+        //getMinutes()  返回日期的分钟（0-59）
+        console.log(date.getMinutes());
+        // getSeconds()  返回日期对象的秒（0-59）
+        console.log(date.getSeconds());
+        // getMilliseconds()  放回日期对象的毫秒数  （0-999）
+        console.log(date.getMilliseconds());
+
+        //getTime()  日期对象从1970年到现在的毫秒数
+        console.log(date.getTime());
+    </script>
+</body>
+
+</html>

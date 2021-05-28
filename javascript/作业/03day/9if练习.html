@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>if语句的练习操作</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            需求:用户输入成绩 然后弹出成绩的等级
+            90-100:S
+            80-90:A
+            70-80:B
+            60-70:C
+            60以下:D
+        */
+        function fn() {
+            var userSource = prompt("请输入成绩:");
+            if (userSource >= 90) {
+                alert('S');
+            } else if (userSource >= 80) {
+                alert('A');
+            } else if (userSource >= 70) {
+                alert('B');
+            } else if (userSource >= 60) {
+                alert('C');
+            } else {
+                alert('D');
+            }
+            fn();
+        }
+        fn();
+    </script>
+</body>
+
+</html>

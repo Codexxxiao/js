@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>递增和递减运算符</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            递增和递减运算符：
+                （1）在只有一条语句的情况下，执行变量+1或变量-1的操作
+                （2）value++，返回value+1之前的值，但是value实际上已经+1
+                    ++value，返回value+1之后的值
+                    value--，返回value-1之前的值，但是value实际上已经-1
+                    --value，返回value-1之后的值
+        */
+        var a = 1;
+        a++;
+        console.log(a); //2
+        ++a;
+        console.log(a); //3
+        a--;
+        console.log(a); //2
+        --a;
+        console.log(a); //1
+
+        var b = a++;
+        console.log(a, b); //2 1
+        b = ++a;
+        console.log(a, b); //3 3
+        b = a--;
+        console.log(a, b); //2 3
+        b = --a;
+        console.log(a, b); //1 1
+    </script>
+</body>
+
+</html>

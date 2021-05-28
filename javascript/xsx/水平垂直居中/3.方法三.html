@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>方法三</title>
+    <!-- 
+        在不知道宽度的情况下：
+            position + transform
+    -->
+    <style>
+        #div0 {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+        }
+
+        #div1 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 30%;
+            height: 30%;
+
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div0">
+        <div id="div1"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>隐式绑定丢失的现象</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            隐式绑定丢失的现象：（隐式绑定函数丢失了绑定对象，从而默认绑定到window）
+                1.函数别名
+                2.参数传递
+                3.内置函数
+                4.间接调用
+                5.其它
+                
+        */
+        //1.函数别名
+        /* var a = 2; */
+
+        /* function foo() {
+            console.log(this);
+            console.log(this.a);
+        }
+
+        var obj = {
+            a: 4,
+            foo: foo
+        }
+
+        obj.foo(); //Object  4
+        //把obj.foo赋给fn，造成了隐式丢失
+        // 因为只是把obj.foo赋值给了fn，但是fn跟obj毫无关系
+        var fn = obj.foo;
+        fn(); //Window  2 */
+
+        // 以上代码等价于
+        /* var fn = function foo() {
+            console.log(this);
+            console.log(this.a);
+        }
+        //相当于函数的独立调用
+        fn(); */ //window  2
+
+        //2.参数传递
+        /* var a = 10;
+
+        function foo() {
+            console.log(this);
+            console.log(this.a);
+        } */
+        //fn作为形参接收实参obj.foo,但是fn与obj没有任何关系
+        /* function bar(fn) {
+            fn();
+        }
+
+        var obj = {
+            a: 8,
+            foo: foo
+        }
+        //当作参数传递时，会造成隐式丢失现象
+        bar(obj.foo); */ //window  10
+
+        // 等价于
+        /* var a = 10;
+
+        function bar(fn) {
+            fn();
+        }
+
+        bar(
+            function foo() { //内部this指针指向window
+                console.log(this);
+                console.log(this.a);
+            }
+        ); */ //window  10
+
+        // 3.内置函数造成隐式丢失（setTimeout(),setinterval()）
+        /* var a = 5;
+
+        function foo() {
+            console.log(this);
+            console.log(this.a);
+        }
+
+        var obj = {
+            a: 3,
+            foo: foo
+        }
+
+        // 内置函数造成隐式丢失的情况个情况2.参数传递类似
+        setTimeout(obj.foo, 1000); //window  5 */
+
+        // 4.间接调用
+        var a = 12;
+
+        function foo() {
+            console.log(this);
+            console.log(this.a);
+        }
+
+        var obj = {
+            a: 6,
+            foo: foo
+        }
+
+        var p = {
+            a: 1
+        };
+        //函数作为方法被直接对象obj调用，this隐式绑定在直接对象obj上
+        obj.foo(); //obj  6
+        //在p对象中新建foo对象，并把obj.foo赋值给这个p.foo,然后立即执行函数
+        (p.foo = obj.foo)(); //window  12(相当于foo函数的立即调用)
+        //在p对象中新建foo对象，并把obj.foo赋值给这个p.foo
+        p.foo = obj.foo;
+        //然后对通过p调用foo进行在执行
+        p.foo(); //p  1 （相当于使用p调用foo函数方法）
+    </script>
+</body>
+
+</html>

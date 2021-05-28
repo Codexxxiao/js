@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>forEach方法实现数组遍历</title>
+    <!-- 
+        Array.prototype.forEach(callback(currentValue [, index [, array]])[, thisArg])
+            callback:为数组中每个元素执行的函数,该函数接收一至三个参数
+            currentValus(必有):数组中正在处理的当前元素
+            index(可选):数组中正在处理的当前元素的索引
+            array(可选):forEach方法正在操作的数组
+
+            thisArg(可选):如果省略,undefined,null的时候,回调函数中的指针指向window
+        返回值为undefined
+        不会改变原来的数组
+
+        注意:使用forEach遍历数组,空串不会打印,undefined和null会被打印出来
+     -->
+</head>
+
+<body>
+    <script>
+        /* 
+            使用forEach方法遍历数组
+        */
+        var arr = [1, , 2, 3, undefined, 4, null, 5, 6];
+        var re = arr.forEach(function (item, index, array) {
+            // 遍历数组,输入每个元素的值
+            console.log(item, index);
+            // 遍历数组,输出每个元素的下标
+            // console.log(index);
+        });
+    </script>
+</body>
+
+</html>

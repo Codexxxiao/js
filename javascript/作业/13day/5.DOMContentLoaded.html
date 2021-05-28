@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOMContentLoaded</title>
+</head>
+
+<body>
+    <img src="./img/1.jpg" alt="">
+    <script>
+        /* 
+            DOMContentLoaded事件是DOM2提供的事件
+                只能用addEventListener才能注册这个事件
+
+            window.addEventListener('DOMContentLoaded',function[,useCapture])
+                -当所有的的节点加载完成之后，执行函数function
+            window.onload
+                -当所有的节点和资源加载完成之后，才执行函数function
+        
+        */
+        var oImg = document.querySelector('img');
+
+        function say() {
+            console.log(oImg.offsetWidth); //0
+        }
+        window.addEventListener('DOMContentLoaded', say);
+
+        window.onload = function () {
+            console.log(oImg.offsetWidth); //1014
+        }
+    </script>
+</body>
+
+</html>

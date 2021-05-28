@@ -1,0 +1,63 @@
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.aNor() {
+    a {
+        color: #666666;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+            color: chartreuse;
+        }
+    }
+}
+
+.goods {
+    width: 980px;
+
+    &>ul {
+
+        display: flex;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid #ccc;
+        background-color: #ccc;
+
+        li {
+            a {
+                display: block;
+                padding: 0 10px;
+                border: 1px solid red;
+                border-right: none;
+                background-color: white;
+
+                &.active {
+                    color: white;
+                    background-color: red;
+                }
+            }
+        }
+
+    }
+
+    .goods-message {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+
+        img {
+            display: block;
+        }
+
+        li {
+            margin: 10px 0;
+            color: #666666
+        }
+    }
+}

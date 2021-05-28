@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>格式练习</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            格式练习:写一个函数，格式化日期对象，返回yyyy-MM-dd HHmmss的形式
+        */
+
+
+        // 封装当小于10的时候
+        function foo(num) {
+            return num < 10 ? ('0' + num) : num;
+        }
+
+        function formatTime(date) {
+
+            return date.getFullYear() + '-' + foo(date.getMonth() + 1) + '-' + foo(date.getDate()) + ' ' +
+                foo(date.getHours()) + ':' + foo(date.getMinutes()) + ':' + foo(date.getSeconds());
+        }
+        var date = new Date();
+        setInterval(function () {
+                var date = new Date();
+                console.log(formatTime(date));
+            },
+            999);
+    </script>
+</body>
+
+</html>

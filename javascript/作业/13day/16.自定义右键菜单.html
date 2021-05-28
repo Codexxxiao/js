@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自定义右键菜单</title>
+    <!-- 
+        问题：document.documentElement代表html标签
+        document.documentElement.clientHeight获取窗口高度，但是html标签高度为0
+    -->
+    <style>
+        div {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 300px;
+            border: 2px solid #000;
+
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <a href="http://www.baidu.com">百度</a>
+    </div>
+    <script>
+        var oBox = document.getElementById('box');
+        // 绑定鼠标右键事件
+        document.oncontextmenu = function (event) {
+            // 阻止默认事件
+            event.preventDefault();
+
+            // 获取元素鼠标的位置
+            var pointer = {
+                x: event.clientX,
+                y: event.clientY
+            }
+
+            // 判断临界值  x轴
+            if (document.documentElement.clientWidth - pointer.x < oBox.offsetWidth) {
+                pointer.x = pointer.x - oBox.offsetWidth;
+            }
+
+            if (document.documentElement.clientHeight - pointer.y < oBox.offsetHeight) {
+                pointer.y = pointer.y - oBox.offsetHeight;
+            }
+            // 判断临界值  y轴
+            // 设置自定义菜单的位置
+            oBox.style.left = pointer.x + 'px';
+            oBox.style.top = pointer.y + 'px';
+            oBox.style.display = 'block';
+
+            // 鼠标点击其它地方的时候，自定义菜单隐藏
+            document.onclick = function (event) {
+                // 判断鼠标点击事件是否在自定义菜单内
+                if (!((event.clientX >= pointer.x && event.clientX <= pointer.x + oBox.offsetWidth) && (event
+                        .clientY >= pointer.y && event.clientY <= pointer.y + oBox.offsetHeight))) {
+                    oBox.style.display = 'none';
+                }
+                // event.stopPropagation();
+                // document.onclick = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

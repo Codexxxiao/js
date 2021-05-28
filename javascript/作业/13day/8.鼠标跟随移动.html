@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标的跟随移动</title>
+    <style>
+        img {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/1.jpg" alt="">
+    <script>
+        /* 
+            需求，图标下面图片跟随鼠标移动
+        */
+        var oImg = document.querySelector('img');
+        document.onmousemove = function (event) {
+            //注意：在js使用left和top调节元素的位置的时候，记得在后面加上'px'
+            oImg.style.left = event.clientX + 'px';
+            oImg.style.top = event.clientY + 'px';
+        }
+    </script>
+</body>
+
+</html>

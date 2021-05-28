@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部基础版</title>
+    <style>
+        #outer {
+            height: 2000px;
+        }
+
+        #box {
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            width: 200px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 50%;
+            background-color: hotpink;
+
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="box">回到顶部</div>
+    </div>
+
+    <script>
+        var oBox = document.getElementById('box');
+        var oOuter = document.getElementById('outer');
+        // 绑定滚轮滚动事件,如果往下滚动到一定距离,显示出回到顶部按钮 
+        window.onscroll = function () {
+            /*  if (this.pageYOffset > 400) {
+                 oBox.style.display = "block";
+             } else {
+                 oBox.style.display = "none";
+             } */
+            if (this.pageYOffset > 400) {
+                oBox.style.display = "block";
+            } else {
+                oBox.style.display = "none";
+            }
+        }
+
+        // 绑定点击事件,点击之后回到页面的顶部
+        oBox.onclick = function () {
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+
+</html>

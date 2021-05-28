@@ -1,0 +1,39 @@
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.goods {
+  width: 980px;
+}
+.goods > ul {
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ccc;
+  background-color: #ccc;
+}
+.goods > ul li a {
+  display: block;
+  padding: 0 10px;
+  border: 1px solid red;
+  border-right: none;
+  background-color: white;
+}
+.goods > ul li a.active {
+  color: white;
+  background-color: red;
+}
+.goods .goods-message {
+  display: none;
+}
+.goods .goods-message.active {
+  display: block;
+}
+.goods .goods-message img {
+  display: block;
+}
+.goods .goods-message li {
+  margin: 10px 0;
+  color: #666666;
+}

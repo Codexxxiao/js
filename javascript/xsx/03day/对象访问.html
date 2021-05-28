@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>对象访问</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            对象访问
+                -点表示法
+                    常用方法
+                -括号表示法
+                    可以动态的去设置成员对象的属性和值（经过实验发现点表示法也行）
+        */
+        var person = {
+            //最后一个成员后面不需要添加符号
+            // 多个成员之间用，分隔
+            name: ['Bob', 'Smith'],
+            age: 32,
+            gender: 'male',
+            interests: ['music', 'skiing'],
+            bio: function a() {
+                //注意：匿名函数是person属性bio的值，当函数当作方法使用的时候，this指向它的直接对象
+                alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + ' years old. He likes ' + this
+                    .interests[0] + ' and ' + this.interests[1] + '.');
+            },
+            greeting: function () {
+                alert('Hi I\'m' + this.name[0] + '.');
+            }
+        };
+        // 点表示法
+        /* console.log(person.age);
+        console.log(person.bio()); //undefined（没有return，默认返回了undefined）
+        console.log(person.interests);
+        console.log(person.name[0]); */
+
+        //括号表示法
+        //注意使用点表示法的时候
+        // person.bio()  person['bio']()
+        // person.name[1]  person['name'][1]
+        /* console.log(person['age']);
+        console.log(person['bio']());
+        console.log(person['name'][1]); */
+
+        // 调用对象不仅仅可以修改原有属性的值，也可以创建新的成员
+        person['eyes'] = 'hazel';
+        person.farewell = function () {
+            alert('this is farewell!')
+        }
+
+        //测试新创建的成员
+        console.log(person.eyes);
+        person.farewell();
+
+        // 括号表示法的用法：动态的去设置对象成员的值（）
+
+        var myDataName = prompt("请输入第一个值");
+        var myDataValue = prompt("请输入第二个值");
+
+        person.myDataName = myDataValue;
+        console.log(person.myDataName)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tab布局</title>
+    <style>
+        .outer {
+            width: 600px;
+            margin: 50px auto;
+            border: 1px solid red;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #title {
+            display: flex;
+        }
+
+        #title h3 {
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid red;
+            box-sizing: border-box;
+        }
+
+        #title h3.active {
+            background-color: red;
+        }
+
+        ul li {
+            height: 300px;
+            line-height: 300px;
+            border: 1px solid red;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+
+            display: none;
+        }
+
+        ul li.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div id="title">
+            <h3 class="active">标题一</h3>
+            <h3>标题二</h3>
+            <h3>标题三</h3>
+        </div>
+        <ul id="con">
+            <li class="show">内容一</li>
+            <li>内容二</li>
+            <li>内容三</li>
+        </ul>
+    </div>
+</body>
+
+</html>

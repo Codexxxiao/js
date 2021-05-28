@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>逗号运算符</title>
+</head>
+<body>
+    <script>
+        /* 逗号运算符总会返回最后一项 */
+        var a=(1,2,3,4,5);
+        alert(a);
+
+        /* 当a=2，b=2的时候，前面为false，后面为true，返回的值为true，因此会继续往后执行 */
+        for(var a=0,b=0;a<2,b<4;a++,b++){//0,2,4,6
+            alert(a+b);
+        }
+
+        /* 当a=2，b=2的时候，前面为true，后面为false，返回的值为false，因此停止执行 */
+        for(var a=0,b=0;a<4,b<2;a++,b++){//0,2
+            alert(a+b)
+        }
+    </script>
+</body>
+</html>

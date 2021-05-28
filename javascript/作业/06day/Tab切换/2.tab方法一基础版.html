@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tab方法一基础版</title>
+    <!-- 
+        方法一：直接对点击的标签操作，对未点击的标签移除
+            思路:点击某个点击事件的时候,为这个标签对象添加样式类选择器,同时把其它标签对象
+                的样式类选择器删除
+     -->
+    <style>
+        .outer {
+            width: 600px;
+            margin: 50px auto;
+            border: 1px solid red;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #title {
+            display: flex;
+        }
+
+        #title h3 {
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid red;
+            box-sizing: border-box;
+        }
+
+        #title h3.active {
+            background-color: red;
+        }
+
+        ul li {
+            height: 300px;
+            line-height: 300px;
+            border: 1px solid red;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+
+            display: none;
+        }
+
+        ul li.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div id="title">
+            <h3 class="active">标题一</h3>
+            <h3>标题二</h3>
+            <h3>标题三</h3>
+        </div>
+        <ul id="con">
+            <li class="show">内容一</li>
+            <li>内容二</li>
+            <li>内容三</li>
+        </ul>
+    </div>
+    <script>
+        //通过id获取标签元素
+        var oTitle = document.getElementById('title');
+        var oCon = document.getElementById('con');
+        //通过标签名获取元素下面相同标签名的类数组（实则为对象）
+        var oHs = oTitle.getElementsByTagName('h3');
+        var oLis = oCon.getElementsByTagName('li');
+        console.log(oLis[0].classList)
+
+        // 为获取的标签绑定点击事件
+        oHs[1].onclick = function () {
+            //add .classList.add为当前标签添加类选择器
+            //remove .classList.remove为当前标签移除类选择器
+            oHs[1].classList.add('active');
+            oHs[0].classList.remove('active');
+            oHs[2].classList.remove('active');
+
+            oLis[1].classList.add('show');
+            oLis[0].classList.remove('show');
+            oLis[2].classList.remove('show');
+        }
+
+        oHs[0].onclick = function () {
+            //add .classList.add为当前标签添加类选择器
+            //remove .classList.remove为当前标签移除类选择器
+            oHs[0].classList.add('active');
+            oHs[1].classList.remove('active');
+            oHs[2].classList.remove('active');
+
+            oLis[0].classList.add('show');
+            oLis[1].classList.remove('show');
+            oLis[2].classList.remove('show');
+        }
+
+        oHs[2].onclick = function () {
+            //add .classList.add为当前标签添加类选择器
+            //remove .classList.remove为当前标签移除类选择器
+            oHs[2].classList.add('active');
+            oHs[0].classList.remove('active');
+            oHs[1].classList.remove('active');
+
+            oLis[2].classList.add('show');
+            oLis[0].classList.remove('show');
+            oLis[1].classList.remove('show');
+        }
+    </script>
+</body>
+
+</html>

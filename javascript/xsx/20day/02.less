@@ -1,0 +1,114 @@
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.clearMP() {
+    margin: 0;
+    padding: 0;
+}
+
+.aNor() {
+    a {
+        color: #666666;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+            color: chocolate;
+        }
+    }
+}
+
+#aside {
+    width: 210px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+
+    .con1 {
+        display: flex;
+        width: 210px;
+        height: 40px;
+        line-height: 36px;
+        font-size: 12px;
+        font-weight: bold;
+
+        li {
+            flex: 1;
+            text-align: center;
+            border-top: 4px solid transparent;
+            border-bottom: 1px solid #ccc;
+
+            &.active {
+                border-top: 4px solid red;
+                border-bottom: none;
+            }
+
+
+        }
+    }
+
+    .tab-con {
+        display: none;
+
+        &.active {
+            display: block
+        }
+
+        .aNor();
+        width: 190px;
+        padding: 10px;
+
+        .con2 {
+            display: flex;
+            flex-wrap: wrap;
+
+            li {
+                width: 95px;
+                height: 28px;
+                line-height: 28px;
+                border-bottom: 1px dashed #ddd;
+            }
+        }
+
+        .con3 {
+
+            li {
+                p {
+                    .clearMP();
+
+                    &:first-of-type {
+                        font-size: 12px;
+                        font-weight: bold;
+                    }
+
+                    &:last-of-type {
+                        font-size: 18px;
+                        color: red;
+                    }
+                }
+
+                div {
+                    text-align: center;
+
+                    a {
+                        display: inline-block;
+                        width: 90px;
+                        height: 30px;
+                        line-height: 30px;
+                        border: 1px solid #ccc;
+                        text-align: center;
+                        color: #000;
+                        font-size: 12px;
+                    }
+
+
+                }
+
+                .aNor;
+            }
+        }
+    }
+
+}

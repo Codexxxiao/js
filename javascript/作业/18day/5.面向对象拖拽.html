@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象实现拖拽</title>
+    <style>
+        div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+        }
+
+        #box1 {
+            background-color: aqua;
+        }
+
+        #box2 {
+            background-color: chocolate;
+        }
+
+        #box3 {
+            background-color: lawngreen;
+        }
+
+        #box4 {
+            background-color: mediumvioletred;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+    <script>
+        /* 
+            面向对象实现拖拽
+                1.创建一个构造函数用来实例化一个拖拽对象
+                2.给拖拽对象扩展拖拽元素
+                3.给拖拽元素添加鼠标按下事件
+                4.给构造函数的原型对象上扩展一个down、move、up方法，方便每个实例化对象调用
+        */
+        function Drag(id) {
+            this.oBox = document.getElementById(id);
+
+            // 用that来保存这个实例化对象
+            var that = this;
+            // 绑定点击事件
+            this.oBox.onmousedown = function (e) {
+                // 通过实例化对象调用构造函数的原型对象上的down方法
+                that.down(e);
+            }
+        }
+
+        // 书写鼠标按下逻辑
+        Drag.prototype.down = function (e) {
+            // 获取鼠标按下时距离元素的位置
+            this.oBox.pointerDown = {
+                x: e.offsetX,
+                y: e.offsetY
+            }
+            // 原型对象上的方法一定指向其构造函数的实例化对象
+            var that = this;
+
+            document.onmousemove = function (e) {
+                // 通过实例化对象调用原型对象上的move方法
+                that.move(e);
+            }
+
+            document.onmouseup = function (e) {
+                that.up();
+            }
+        }
+
+        Drag.prototype.move = function (e) {
+            // 获取元素移动后的位置
+            var pointerLocation = {
+                x: e.clientX - this.oBox.pointerDown.x,
+                y: e.clientY - this.oBox.pointerDown.y
+            }
+
+            // 赋值
+            this.oBox.style.left = pointerLocation.x + 'px';
+            this.oBox.style.top = pointerLocation.y + 'px';
+
+        }
+
+        Drag.prototype.up = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+
+
+        console.log(new Drag('box1'));
+        new Drag('box2');
+        new Drag('box3');
+        new Drag('box4');
+    </script>
+</body>
+
+</html>

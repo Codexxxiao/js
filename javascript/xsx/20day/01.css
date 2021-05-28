@@ -1,0 +1,23 @@
+.con-choose {
+  width: 700px;
+  height: 160px;
+  border: 1px solid red;
+}
+.con-choose dl {
+  display: flex;
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 0 13px;
+}
+.con-choose dl dt {
+  margin-right: 15px;
+}
+.con-choose dl dd {
+  margin: 0 5px 0 0;
+  padding: 0 14px;
+  border: 1px solid #eee;
+}
+.con-choose dl dd:first-of-type {
+  color: red;
+}

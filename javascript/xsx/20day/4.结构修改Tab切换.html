@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./04.css">
+</head>
+
+<body>
+    <div class="goods">
+        <ul>
+            <li><a class="active">规格与包装</a></li>
+            <li><a>售后保障</a></li>
+            <li><a>商品评价</a></li>
+            <li><a>手机社区</a></li>
+            <li><a>在线教育</a></li>
+        </ul>
+        <div class="goods-message active">
+            <ul>
+                <li>分辨率：1920*1080(FHD)</li>
+                <li>后置摄像头：1200万像素</li>
+                <li>前置摄像头：500万像素</li>
+                <li>核 数：其他</li>
+                <li>频 率：以官网信息为准</li>
+                <li>品牌： Apple</li>
+                <li>商品名称：APPLEiPhone 6s Plus</li>
+                <li>商品编号：1861098</li>
+                <li>商品产地：中国大陆</li>
+                <li>商品毛重：0.51kg</li>
+                <li>热点：指纹识别，Apple Pay，金属机身，拍照神器</li>
+                <li>系统：苹果（IOS）</li>
+                <li>像素：1000-1600万品毛重：0.51kg</li>
+                <li>机身内存：64GB</li>
+            </ul>
+            <div>
+                <img src="./images/intro01.png" alt="">
+                <img src="./images/intro02.png" alt="">
+                <img src="./images/intro03.png" alt="">
+            </div>
+        </div>
+        <div class="goods-message">售后保障</div>
+        <div class="goods-message">商品评价</div>
+        <div class="goods-message">手机社区</div>
+        <div class="goods-message">在线教育</div>
+    </div>
+
+
+    <script>
+        // 对象书写tab切换  注意回调函数，构造函数 ， 构造函数的原型对象上声明方法的this指向
+
+        function Tab(oTitles, oCons) {
+            this.oTitles = oTitles;
+            this.oCons = oCons;
+            var _this = this;
+            // 遍历给所有的oTitles绑定点击事件
+            this.oTitles.forEach(function (item, index) {
+                // 给每个item添加它的下标属性
+                item.index = index;
+                item.onclick = function () {
+
+                    _this.click(this);
+
+                }
+            })
+        }
+
+        Tab.prototype.click = function (o) {
+            var _this = this;
+            // 遍历清除所有的样式
+            this.oTitles.forEach(function (item, index) {
+                item.classList.remove('active');
+                _this.oCons[index].style.display = 'none';
+            })
+
+            o.classList.add('active');
+            this.oCons[o.index].style.display = 'block';
+        }
+
+        function detailTab() {
+            var oAs = document.querySelectorAll('.goods > ul li a');
+            var oCons = document.querySelectorAll('.goods .goods-message');
+
+            new Tab(oAs, oCons);
+        }
+        detailTab();
+    </script>
+</body>
+
+</html>

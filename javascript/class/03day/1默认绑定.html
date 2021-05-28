@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>this的默认绑定</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            this指针的默认绑定
+                1.全局环境下this指针默认指向window
+                    （其实this默认为undefined，但是非严格模式下把它指向window，严格模式下为undefined）
+                2.函数独立调用，函数内部的this指向window
+                3.嵌套函数独立调用
+                4.IIEF 自调用函数
+        */
+
+        // 1.全局情况下this默认指向window
+        console.log(this); //window
+
+        //2.函数独立调用，函数内部的this指向window
+        function fn() {
+            console.log(this); //window 
+        }
+        fn();
+
+        //3.嵌套函数独立调用时，this默认指向window
+        var o = {
+            m: function () {
+                return this;
+            },
+            n: function () {
+                console.log(this); //Object o
+
+                function test() { //test为嵌套的函数独立调用
+                    return this;
+                }
+                return test();
+            }
+        }
+        console.log(o.m()); //Object 0
+        console.log(o.n()); //Window
+
+        //4.IIFT 自执行函数this默认指向window(相当于独立调用)
+        /* (function foo() {
+            console.log(this); //Window
+        })(); */
+        var a = 10;
+
+        function foo() {
+            console.log(this); //Object foo
+            console.log(this.a); //2
+            (function fn() { //fn为函数内部的自执行函数，this默认指向了window
+                console.log(this.a); //10
+                console.log(this); //window 
+            })();
+        }
+
+        var obj = {
+            a: 2,
+            foo: foo
+        }
+
+        obj.foo(); //foo函数内部指针指向obj
+    </script>
+</body>
+
+</html>

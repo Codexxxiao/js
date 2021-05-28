@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <ul id="box" class="c1 c2 c3 c4">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        var a
+        console.log(a, typeof a, a === undefined) // undefined 'undefined' true
+        console.log(a === typeof a) // false
+
+        a = 3
+        // console.log(typeof a);
+        console.log(typeof a === 'number')
+        a = 'atguigu'
+        console.log(typeof a === 'string')
+        a = true
+        console.log(typeof a === 'boolean')
+
+        a = null
+        console.log(typeof a, a === null) // 'object'  true
+
+        var oBox = document.getElementById('box');
+        oBox.onclick = function (event) {
+            console.log(event);
+            console.log(event.target);
+            console.log(event.currentTarget);
+        }
+        /* console.dir(oBox);
+
+        oBox.addEventListener('click', function () {
+            console.dir(oBox);
+        }, false)
+
+        oBox.addEventListener('click', function (event) {
+            console.dir(oBox);
+            console.log(event);
+        }, true) */
+    </script>
+</body>
+
+</html>

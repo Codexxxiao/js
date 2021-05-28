@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图样式</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #outer {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            margin: 100px auto 0;
+        }
+
+        #inner {
+            overflow: auto;
+        }
+
+        #inner .con {
+            width: 2000px;
+            height: 600px;
+            display: flex;
+        }
+
+        #inner .con img {
+            width: 400px;
+            height: 600px;
+        }
+
+        .left,
+        .right {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: rgba(100, 100, 100, .8);
+
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .left {
+            left: 20px;
+        }
+
+        .right {
+            right: 20px;
+        }
+
+        #inner .list {
+            display: flex;
+
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #inner .list li {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-color: rgba(100, 100, 100, .4);
+
+            cursor: pointer;
+        }
+
+        #inner .list li.active {
+            background-color: rgba(100, 100, 100, .9);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div class="con">
+                <img src="../img/1.jpg" alt="">
+                <img src="../img/2.jpg" alt="">
+                <img src="../img/3.jpg" alt="">
+                <img src="../img/4.jpg" alt="">
+                <img src="../img/5.jpg" alt="">
+            </div>
+            <p class="left">&lt;</p>
+            <p class="right">&gt;</p>
+            <ul class="list">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        /* 
+            需求：设置轮播图每隔两秒跳一张
+        */
+        // 获取元素
+        var oInner = document.getElementById('inner');
+        var oImgs = oInner.querySelectorAll('img');
+
+        // 获得左右点击元素
+        var oLeft = oInner.querySelector('.left');
+        var oRight = oInner.querySelector('.right');
+
+        // 获得小圆点元素
+        var oLis = oInner.querySelectorAll(".list li")
+
+
+        // 声明定时器
+        var autoTimer = null;
+        var moveTimer = null;
+
+        // 声明变量i，i为每张图片的下标
+        var i = 0;
+
+        // 封装移动动画函数
+        function move() {
+
+            var startLocation = oInner.scrollLeft;
+            var endLocation = i * oImgs[0].offsetWidth;
+
+            var startStep = 0;
+            var endStep = 40;
+
+            var everyStep = (endLocation - startLocation) / endStep;
+
+            moveTimer = setInterval(function () {
+                startStep++;
+                if (startStep >= endStep) {
+                    clearInterval(moveTimer);
+                }
+                startLocation += everyStep;
+                oInner.scrollLeft = startLocation;
+            }, 20)
+        }
+
+        // 封装清除定时器函数
+        function clear() {
+            // 清除自动动画定时器
+            clearInterval(autoTimer);
+            // 清除内部的移动定时器
+            clearInterval(moveTimer);
+        }
+
+        // 封装自动运行函数
+        function automove() {
+            autoTimer = setInterval(function () {
+                // 清除内部的移动定时器
+                clearInterval(moveTimer);
+                i++;
+                // 判断i是否为最后一张图片
+                if (i > oImgs.length - 1) {
+                    i = 0;
+                }
+                move();
+                clearList();
+            }, 2000);
+        }
+
+        //封装清除下标函数
+        function clearList() {
+            // 清除所有的样式
+            oLis.forEach(function (item, index) {
+                item.classList.remove('active');
+            })
+            // 给点击的添加样式
+            oLis[i].classList.add('active');
+        }
+
+
+
+
+        automove();
+
+        // 给左点击绑定点击事件
+        oLeft.onclick = function () {
+            clear();
+            i--;
+
+            // 判断i是否为最后一张图片
+            if (i < 0) {
+                i = oImgs.length - 1;
+            }
+
+            move();
+
+            clearList();
+
+            automove();
+        }
+
+        // 给右边绑定点击事件
+        oRight.onclick = function () {
+            clear();
+
+            // 图片下标自加
+            i++;
+
+            // 判断是否为最后一张图片
+            if (i > oImgs.length - 1) {
+                i = 0;
+            }
+
+            move();
+
+            clearList();
+
+            automove();
+        }
+
+        //设置轮播图的点绑定点击事件
+        oLis.forEach(function (item, index) {
+            item.onclick = function () {
+                clear();
+                // 清除所有的样式
+                oLis.forEach(function (item, index) {
+                    item.classList.remove('active');
+                })
+                // 给点击的添加样式
+                this.classList.add('active');
+
+                // 设置点击图片的下标
+                i = index;
+                move();
+
+                automove();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

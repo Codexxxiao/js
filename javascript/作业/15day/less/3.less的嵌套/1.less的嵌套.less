@@ -1,0 +1,46 @@
+// 1.后代选择器嵌套
+
+div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+
+    p {
+        width: 50px;
+        height: 50px;
+        border: 1px solid green;
+    }
+}
+
+
+div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+
+    // &符号代表父级引用
+    p {
+        width: 50px;
+        height: 50px;
+        border: 1px solid green;
+
+        // 子代选择器
+        &>p {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        // 第一个孩子且为&引用的元素
+        &:nth-child(1) {
+            width: 200px;
+            height: 300px;
+            border: 1px solid red;
+        }
+
+        // 父级应用hover事件
+        &:hover {
+            background-color: burlywood;
+        }
+    }
+}

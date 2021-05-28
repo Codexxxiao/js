@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>伪类选择器checked练习</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /* ul li {
+            margin-top: 30px;
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            color: floralwhite;
+            background-color: deepskyblue;
+        } */
+
+        ul li label::before {
+            content: '×';
+            margin: 0 10px;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+
+        }
+
+        ul li input {
+            display: none;
+        }
+
+        ul li label {
+            margin-top: 30px;
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            color: floralwhite;
+            background-color: deepskyblue;
+
+            display: inline-block;
+        }
+
+        ul li input:checked+label {
+            background-color: navy;
+        }
+
+        ul li input:checked+label::before {
+            content: '√';
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <input type="checkbox" name="stars" id="z"><label for="z">赵丽颖</label>
+        </li>
+        <li>
+            <input type="checkbox" name="stars" id="y"><label for="y">杨幂</label>
+        </li>
+        <li>
+            <input type="checkbox" name="stars" id="g"><label for="g">关晓彤</label>
+        </li>
+        <li>
+            <input type="checkbox" name="stars" id="d"><label for="d">迪丽热巴</label>
+        </li>
+    </ul>
+</body>
+
+</html>

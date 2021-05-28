@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>try catch 语句</title>
+</head>
+
+<body>
+    <script>
+        /*
+            常见的三种错误类型：
+                ReferenceError:读取不存在的变量时抛出
+                SyntaxError:出现语法错误时抛出
+                TypeError:值得类型发生错误时抛出
+        
+        
+            try catch finally语句
+                异常处理语句
+                把可能出错的语句放在try中，catch去捕获try中的异常，以此来保证程序不会中断执行
+                finally的语句不论在什么情况下都会执行。
+
+
+            throw语句抛出一个异常，你规定一个含有值的表达式要被抛出
+                throw new Errow(message);
+                    message:为你需要抛出错误的文本内容
+                    throw new Errow("你错了")；
+                    throw new SyntaxError("你的语法错误了");
+                    throw new ReferenceError("读取了不存在的变量");
+                    throw new TypeError("值的类型发生了错误");
+        */
+
+        //throw 语句
+        /* throw new Error('这是我的错误'); */
+
+        try {
+            console.log(a);
+        } catch (error) {
+            console.log(error) //ReferenceError:a is not defined 
+        } finally {
+            console.log(1); //1
+        }
+    </script>
+</body>
+
+</html>

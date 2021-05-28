@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>event事件对象</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+    </div>
+    <script>
+        /* 
+            event事件对象：
+                关于事件所有的详细信息
+
+            当触发事件的时候，会执行监听事件的监听函数，
+                触发事件会传递一个event对象实参给监听函数，
+                监听函数可以使用形参去接收这个event对象
+        */
+        var oBox = document.getElementById('box');
+        oBox.onclick = function (e) {
+            console.log(e); //MouseEvent
+        }
+
+        document.onkeydown = function (e) {
+            console.log(e); //KeyboardEvent
+        }
+    </script>
+</body>
+
+</html>

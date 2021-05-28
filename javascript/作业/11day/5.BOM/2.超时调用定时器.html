@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>超时调用定时器</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            超时调用定时器
+        */
+        // 使用方式一：第一个参数为函数体，使用引号包起来,相当于eval('alert(1)');   
+        /* setTimeout('alert(1)', 3000); */
+
+        // 使用方式二：第一个参数直接书写函数
+        /* setTimeout(function () {
+            alert(1);
+        }, 3000) */
+
+        // 传参数
+        // 方法一：使用字符串方式传入参数
+        /* function add(a, b) {
+            alert(a + b);
+        }
+        setTimeout("add(1,3)", 3000); */
+        // 方法二：从第三个参数开始为要传入的参数
+        /* function add(a, b) {
+            alert(a + b);
+        }
+        setTimeout(add, 3000, 2, 4); */
+    </script>
+</body>
+
+</html>

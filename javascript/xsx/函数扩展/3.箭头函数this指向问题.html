@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数的this指向问题</title>
+
+</head>
+
+<body>
+    <script>
+        /* 
+            箭头函数没有自己的this,箭头函数内部的this并不是调用时候指向的对象
+                而是定义时指向的对象
+                
+            箭头函数不会创建自己的this，它只会从自己的作用域连上继承
+
+            箭头函数不能用于构造函数,也不能使用new关键字调用
+                 foo is not a constructor
+
+            箭头函数没有arguments
+                arguments is not defined
+                但是可以引用它作用域的arguments
+
+            箭头函数不能使用yeild命令,意味着不能当作generator函数
+
+        */
+        /* document.onclick = () => {
+            console.log(this); //window
+        } */
+
+        document.onclick = () => {
+            console.log(this); //window
+            let f = () => {
+                console.log(this); //widdow
+            }
+            f();
+        }
+
+        document.onclick = function () {
+            console.log(this); //document
+            let f = () => {
+                console.log(this); //document
+            }
+            f();
+        }
+    </script>
+</body>
+
+</html>

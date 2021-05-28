@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            通过window.navigator可以引用该对象
+
+            navigator存储了与浏览器相关的基本信息
+                -onLine:表示浏览器是否连接到英特网
+                -platform:浏览器所在的系统平台
+                    win32:window
+                    mac:apple
+                    Linux:linux
+                -userAgent:浏览器的用户代理字符串
+         */
+        // 获得navigator对象，里面存储着浏览器相关的基本信息
+        console.log(navigator);
+
+        // onLine表示浏览器是否连接
+        console.log(window.navigator.onLine); //true
+
+        // platform 浏览器所在的平台
+        console.log(window.navigator.platform); //Win32 表示window系统
+
+        // userAgent
+        console.log(window.navigator
+        .userAgent); //Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+    </script>
+</body>
+
+</html>

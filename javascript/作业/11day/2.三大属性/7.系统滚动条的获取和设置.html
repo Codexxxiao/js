@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>系统滚动条的获取和设置</title>
+    <style>
+        div {
+            height: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        /* 
+            系统滚动条的获取和设置
+                获取
+                    1.html.scrollTop(IE6+)
+                    2.window.pageYOffset(IE8+)
+
+                设置
+                    1.html.scrollTop = Number;
+                    2.window.scrollTo(x,y);
+        */
+
+        var h = document.documentElement;
+        window.onscroll = function () {
+            // 获取系统滚动条的位置
+            console.log(h.scrollTop);
+            console.log(window.pageYOffset);
+            // 设置系统滚动条的位置
+            // h.scrollTop = 500;
+            window.scrollTo(0, 500);
+        }
+    </script>
+</body>
+
+</html>

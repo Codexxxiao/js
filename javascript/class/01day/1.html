@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- 
+            使用外部引入js之后，script标签内不应该再有javascri代码
+            否则之后下载外部的js文件，嵌入代码会被忽略
+         -->
+    <title></title>
+</head>
+
+<body>
+    <script>
+        /* js的三种输出方式 *
+
+            /* 在页面弹窗输出 */
+        /* alert('<h1>h1标题</h1>'); */
+        /* 以控制台日志形式打印内容 */
+        /* console.log('这是console输出的'); */
+        /*
+        document.log
+         向html输出流中插入你传入的内容
+         如果整个页面加载完成之后在使用document.wirte，
+         会导致浏览器重写整个document，会把前面的内容覆盖
+
+         内容中可以是html标签,也需要用‘’括起来
+         */
+        document.write('这是document中h1标题')
+        document.write("12312")
+
+        alert(1)
+
+        alert(2)
+        /* 点击事件执行 */
+        /*  document.onclick=function(){
+             document.write('这是document的点击事件');
+         } */
+    </script>
+</body>
+
+</html>

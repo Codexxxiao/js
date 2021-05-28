@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>选择城市</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #outer {
+            width: 400px;
+        }
+
+        #outer h2 {
+            margin: 0;
+            padding: 0;
+            background-color: burlywood;
+        }
+
+        #outer #con {
+            background-color: coral;
+
+            display: none;
+            flex-wrap: wrap;
+        }
+
+        #outer #con li {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <p>深圳</p>
+        <h2>选择城市</h2>
+        <ul id="con">
+            <li>北京</li>
+            <li>天津</li>
+            <li>南京</li>
+            <li>长沙</li>
+            <li>广州</li>
+            <li>南昌</li>
+            <li>新疆</li>
+            <li>日本</li>
+        </ul>
+    </div>
+    <script>
+        /* 
+            需求：随意选择城市
+        */
+        var p = document.querySelector('#outer p');
+        var oCon = document.getElementById('con');
+
+        document.onclick = function (event) {
+
+            // 注意nodeName获得的元素节点名称时大写的
+            if (event.target.nodeName === 'H2') {
+                event.target.nextElementSibling.style.display = 'flex';
+                return;
+            }
+
+
+            if (event.target.nodeName === 'LI') {
+                p.textContent = event.target.textContent;
+                event.target.parentNode.style.display = 'none';
+                return;
+            }
+
+            oCon.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>删除数组元素</title>
+    <!-- 
+        删除数组元素：
+            (1)pop()  pop方法可以删除数组最后的一个元素
+            (2)shift()  shift方法可以删除数组头部的元素
+            (3)delete  delete运算符，可以删除数组指定下标的元素
+                返回值为boolean，删除成功返回true，删除失败返回false
+                注意：删除后为空位元素，数组的长度不发生变化
+            (4)length  length属性可以删除尾部一个或多个元素，甚至可以清空整个数组
+            (5)splice(agr1,agr2)  splice方法可以删除指定下标位置后一个或多个元素
+                返回值是一个数组，内容是被删除的元素
+                一个参数代表从当前下标位置到最末尾的位置
+                两个参数代表从当前下标位置到删除几个
+     -->
+</head>
+
+<body>
+    <script>
+        var arr = [1, 2, 3, 4, 5, 6];
+        //pop  和  shift删除元素
+        console.log(arr.pop()); //6
+        console.log(arr.shift()); //1
+
+        //使用delete删除指定下标元素
+        console.log(arr);
+        console.log(delete arr[2]); //true
+        console.log(arr); //使用delete删除后的位置变为空位元素，数组长度不变
+
+        //使用 length删除后面一个或多个元素
+        var arr1 = [1, 2, 3, 4, 5, 6, 7]
+        arr1.length = 5;
+        console.log(arr1); //[1,2,3,4,5]
+
+        //使用 splice方法删除数组指定位置指定个数的字符串
+        var re = arr1.splice(1, 2);
+        console.log(arr1); //[1,4,5]
+        console.log(re); //[2,3]
+    </script>
+</body>
+
+</html>

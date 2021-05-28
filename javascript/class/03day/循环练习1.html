@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>循环练习1</title>
+</head>
+
+<body>
+
+    <script>
+        /* 
+            需求：循环练习
+         */
+        var sum = 0;
+        var i = 1;
+
+
+        //1.求整数1～100的累加值，但要求碰到个位为3的数则停止累加
+        /* while (i <= 100) {
+            sum += i++;
+            if (i % 10 === 3) break;
+        } */
+
+        // 2.求整数1～100的累加值，但要求跳过所有个位为3的数  4570
+        /* while (i <= 100) {
+            if (i % 10 === 3) {
+                i++;
+                continue;
+            }
+            sum += i;
+            console.log(i++);
+        } */
+        /* for (; i <= 100; i++) {
+            if (i % 10 === 3) continue;
+            sum += i;
+            console.log(i);
+        } */
+
+        //3.求1-100之间不能被7整除的整数的和（用continue） 4315
+        /* while (i <= 100) {
+            if (i % 7 != 0) {
+                sum += i;
+                console.log(i++);
+                continue;
+            }
+            i++;
+        } */
+        /* for (; i <= 100; i++) {
+            if (i % 7 === 0) continue;
+            sum += i;
+            console.log(i);
+        } */
+
+        //4.200-300之间所有的奇数的和（用continue）  12500
+        var b = 200;
+        /* while (b <= 300) {
+            if (b % 2 === 0) {
+                b++;
+                continue;
+            }
+            sum += b;
+            console.log(b++);
+        } */
+        /* for (; b <= 300; b++) {
+            if (b % 2 != 0) {
+                sum += b;
+                console.log(b);
+            }
+        } */
+
+        //5.求200-300之间第一个能被7整数的数（break） 203
+        while (b <= 300) {
+            if (b % 7 == 0) {
+                console.log(b);
+                break;
+            }
+            b++;
+        }
+
+        console.log(sum);
+    </script>
+</body>
+
+</html>

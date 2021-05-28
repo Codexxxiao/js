@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>键盘控制移动</title>
+    <style>
+        #box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            键盘控制移动
+        */
+        var oBox = document.getElementById('box');
+
+        var x = 0,
+            y = 0;
+
+        var l = false,
+            t = false,
+            r = false,
+            b = false;
+
+        // 绑定键盘事件
+        document.onkeydown = function (event) {
+            switch (event.keyCode) {
+                case 37:
+                    l = true;
+                    break;
+                case 38:
+                    t = true;
+                    break;
+                case 39:
+                    r = true;
+                    break;
+                case 40:
+                    b = true;
+                    break;
+            }
+        }
+
+        document.onkeyup = function (event) {
+            switch (event.keyCode) {
+                case 37:
+                    l = false;
+                    break;
+                case 38:
+                    t = false;
+                    break;
+                case 39:
+                    r = false;
+                    break;
+                case 40:
+                    b = false;
+                    break;
+            }
+        }
+
+        setInterval(function () {
+
+            if (l) {
+                x--;
+            }
+            if (t) {
+                y--;
+            }
+            if (r) {
+                x++;
+            }
+            if (b) {
+                y++;
+            }
+
+            oBox.style.left = x + 'px';
+            oBox.style.top = y + 'px';
+
+        }, 10)
+    </script>
+</body>
+
+</html>

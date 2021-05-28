@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数组的长度</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        数组的长度
+            -每个数组都默认赋予一个length属性
+            -通过arr.length获得数组的长度
+
+        注意:
+            (1)可以用直接设置数组的长度
+                当长度大于原来的长度,多余的位置会被设置为empty
+                当长度小于原来的长度,会把后面的字符串截掉,只留下设置的长度的数组内容
+                数组中的length属性是不能修改的
+    */
+        var arr1 = [1, 2, 3, 4, 5];
+        var arr2 = [1, 2, 3, 4, 5, ];  
+        console.log(arr1.length); //5
+        console.log(arr2.length); //5
+
+        // 设置数组的长度
+        arr1.length = 100;
+        console.log(arr1.length); //100
+
+        // 设置数组的长度小于内容的长度
+        arr2.length = 2;
+        console.log(arr2); //[1,2]
+        console.log(arr2.length); //2
+
+        // 尝试把数组长度调长看内容是否恢复
+        arr2.length = 6;
+        console.log(arr2); //[1,2,empty*4]  内容不能恢复
+
+        // 删除数组的长度属性(不能删除)
+        console.log(delete arr2.length); //false
+        //尝试修改arr2.length的configurable 
+        // TypeError:Cannot redefine property
+        /* Object.defineProperty(arr2, 'length', {
+            value:5,
+            configurable: true,
+            enumerable:false,
+            writable:true
+        }); */
+        console.log(Object.getOwnPropertyDescriptor(arr2, 'length'));
+    </script>
+</body>
+
+</html>

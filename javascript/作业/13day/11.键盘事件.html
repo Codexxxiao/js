@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件</title>
+</head>
+
+<body>
+    Culpa exercitationem eligendi qui sed. Asperiores ut rerum asperiores aliquid soluta officiis non vel quo. Mollitia
+    vitae deleniti. Eos quibusdam aspernatur et et.
+
+    Qui eos molestias nemo dolores ab sequi sed non. Atque quos dolores autem autem ut qui nulla. Nihil deserunt dolore
+    minus ipsa esse nemo. Iusto aliquid tempore provident voluptatibus et et quis dolore. Voluptatibus debitis voluptas
+    qui velit perferendis animi. Numquam consequuntur aut ut iste maxime dolorem voluptatibus ut reprehenderit.
+
+    Rerum quis odit cupiditate iusto numquam autem. Eius quos voluptatem repudiandae quia repudiandae a voluptatem. Ut
+    voluptas et. Amet laudantium aut sequi eligendi aut saepe.
+    <script>
+        /* 
+            键盘事件中：
+                event事件对象中有一个keyCode属性，代表当前的键码
+        */
+
+        document.onkeydown = function (event) {
+            console.log(event);
+            if (event.ctrlKey && event.keyCode === 67) {
+                // return false;
+                // event.preventDefault();
+            }
+        }
+    </script>
+</body>
+
+</html>

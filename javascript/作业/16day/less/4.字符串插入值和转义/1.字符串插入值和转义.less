@@ -1,0 +1,13 @@
+@url1: "E://javascript/作业//16day/images/";
+@h: "30";
+
+
+#outer {
+    /* 
+        字符串插值是在字符串中插入变量，直接使用
+            @{变量名}
+        ~是转义字符，把字符串转义成非字符串格式
+    */
+    height:~'@{h}px';
+    background: url('@{url1}01.jpg');
+}

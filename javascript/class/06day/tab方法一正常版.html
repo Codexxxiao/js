@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tab方法一正常版</title>
+    <style>
+        #outer {
+            width: 600px;
+            margin: 50px auto;
+            border: 1px solid red;
+        }
+
+        #title {
+            display: flex;
+        }
+
+        #title h3 {
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid red;
+            box-sizing: border-box;
+
+            text-align: center;
+        }
+
+        #con {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #con li {
+            height: 300px;
+            line-height: 300px;
+            border: 1px solid red;
+            font-size: 24px;
+            font-weight: bold;
+
+            text-align: center;
+            display: none;
+        }
+
+        #title h3.active {
+            background-color: red;
+        }
+
+        #con li.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="title">
+            <h3 class="active">标题一</h3>
+            <h3>标题二</h3>
+            <h3>标题三</h3>
+        </div>
+        <ul id="con">
+            <li class="show">内容一</li>
+            <li>内容二</li>
+            <li>内容三</li>
+        </ul>
+    </div>
+    <script>
+        /* 
+        选项卡：方法一
+            思路：为点击的标签添加样式类选择器，移除没有选中标签的样式类选择器
+    */
+
+        //通过id获取指定的标签元素
+        var oTitle = document.getElementById('title');
+        var oCon = document.getElementById('con');
+        // 获取标题标签和内容标签(返回值为类数组)
+        var oHs = oTitle.getElementsByTagName('h3');
+        var oLis = oCon.getElementsByTagName('li');
+
+        //为每个h3标题添加点击事件
+        for (var i = 0; i < oHs.length; i++) {
+            // 给每个标签对象添加index属性获得对象的下标
+            oHs[i].index = i;
+            // 添加点击事件
+            oHs[i].onclick = function () {
+                //循环每个对象
+                for (var i = 0; i < oHs.length; i++) {
+                    //判断哪个对象是当前的点击标签对象
+                    if (this === oHs[i]) {
+                        this.classList.add('active');
+                        oLis[this.index].classList.add('show');
+                    } else {
+                        oHs[i].classList.remove('active');
+                        oLis[i].classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

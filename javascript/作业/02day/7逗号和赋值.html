@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>逗号和赋值</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            逗号和赋值运算符
+                -逗号运算符，先计算左边，在计算右边，返回右边的值(左结合)
+                -赋值运算符，（右结合）
+
+         */
+
+        //逗号运算符
+        var a = (1, 2, 3, 4, 5); //5
+
+        // 相当于前一个判断语句失效，返回值只依照第二个判断语句的值执行
+        //当i=2，j=2的时候，i<4返回true，j<2返回false，最终返回false，for语句中断执行
+        for (var i = 0, j = 0; i < 4, j < 2; i++, j++) {
+            console.log(i + j); //0 2
+        }
+        // 当i=2，j=2的时候，i<2放回false，j<4返回true，最终返回true，for语句继续执行
+        for (var i = 0, j = 0; i < 2, j < 4; i++, j++) {
+            console.log(i + j); //0 2 4 6
+        }
+
+        //赋值运算符
+
+        var a = c = d = e = 5; //注意此时声明的只有a；c，d，e为声明但是可以赋值
+    </script>
+</body>
+
+</html>

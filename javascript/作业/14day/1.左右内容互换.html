@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>左右内容互换</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #outer {
+            width: 50%;
+            height: 50%;
+            margin: 50px auto;
+
+            display: flex;
+        }
+
+        #left,
+        #right {
+            width: 40%;
+            height: 100%;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        #left {
+            background-color: rosybrown;
+        }
+
+        #right {
+            background-color: sandybrown;
+        }
+
+        #change {
+            width: 20%;
+            height: 100%;
+            text-align: center;
+            background-color: slateblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <ul id="left">
+            <li>left的内容1</li>
+            <li>left的内容2</li>
+            <li>left的内容3</li>
+            <li>left的内容1</li>
+        </ul>
+        <div id="change">
+            <button>&gt;&gt;&gt;&gt;</button><br>
+            <button>&lt;&lt;&lt;&lt;</button>
+        </div>
+        <ul id="right">
+            <li>right的内容1</li>
+            <li>right的内容2</li>
+            <li>right的内容3</li>
+            <li>right的内容4</li>
+        </ul>
+    </div>
+    <script>
+        /* 
+            需求：实现左右内容的互换
+        */
+        var oLeft = document.getElementById('left');
+        var oRight = document.getElementById('right');
+
+        var oleLis = oLeft.querySelectorAll('li');
+        var oriLis = oRight.querySelectorAll('li');
+
+        var oBtns = document.querySelectorAll('#change button');
+
+        // 给li绑定点击事件
+        oleLis.forEach(function (item, index) {
+            item.onclick = function () {
+                this.style.background = 'red';
+                this.dataset.checked = true;
+            }
+        })
+
+        oriLis.forEach(function (item, index) {
+            item.onclick = function () {
+                this.style.background = 'red';
+                this.dataset.checked = true;
+            }
+        })
+
+        // 绑定点击事件
+        oBtns[0].onclick = function () {
+
+            var oleLis = oLeft.querySelectorAll('li');
+            var oriLis = oRight.querySelectorAll('li');
+
+            oleLis.forEach(function (item, index) {
+                if (item.dataset.checked) {
+                    oRight.appendChild(item);
+                    item.style.background = 'transparent';
+                    delete item.dataset.checked;
+                }
+            })
+        }
+
+        // 绑定点击事件
+        oBtns[1].onclick = function () {
+
+            var oleLis = oLeft.querySelectorAll('li');
+            var oriLis = oRight.querySelectorAll('li');
+
+            oriLis.forEach(function (item, index) {
+                if (item.dataset.checked) {
+                    oLeft.appendChild(item);
+                    item.style.background = 'transparent';
+                    delete item.dataset.checked;
+                }
+
+            })
+        }
+
+    </script>
+</body>
+
+</html>

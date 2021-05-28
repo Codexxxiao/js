@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图练习</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #outer {
+            position: relative;
+            margin: 50px auto;
+            width: 600px;
+
+            font-size: 0px;
+        }
+
+        img {
+            width: 600px;
+            height: 400px;
+
+        }
+
+        #imgcon li {
+            display: none;
+        }
+
+        #imgcon li.show {
+            display: block;
+        }
+
+        #dot {
+            display: flex;
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+        }
+
+        #dot li {
+            margin: 0 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            background-color: red;
+            border-radius: 50%;
+
+        }
+
+        #dot li.active {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <ul id="imgcon">
+            <li class="show"><img src="./002HSozfzy75cxa7ivLc1.jpg" alt=""></li>
+            <li><img src="./03.jpg" alt=""></li>
+            <li><img src="./20150522042530953.jpg" alt=""></li>
+            <li><img src="./youpiao.jpg" alt=""></li>
+        </ul>
+        <ul id="dot">
+            <li class='active'></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        /* 
+            需求轮播图的制作
+        */
+        //通过id获得指定标签元素
+        var oDot = document.getElementById('dot');
+        var oImg = document.getElementById('imgcon');
+        //通过标签名获得类数组标签
+        var oDlis = oDot.getElementsByTagName('li');
+        var oIlis = oImg.getElementsByTagName('li');
+
+        //使用循环绑定点击事件
+        for (var i = 0; i < oDlis.length; i++) {
+            //添加index属性记录对象下标
+            oDlis[i].index = i;
+            //绑定点击事件
+            oDlis[i].onclick = function () {
+                for (var i = 0; i < oDlis.length; i++) {
+                    oDlis[i].classList.remove('active');
+                    oIlis[i].classList.remove('show');
+                }
+                this.classList.add('active');
+                oIlis[this.index].classList.add('show');
+            }
+        } 
+    </script>
+</body>
+
+</html>

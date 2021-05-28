@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数调用</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            函数调用的四种方式
+                1.函数调用模式（独立调用）
+                2.方法调用模式（对象调用方法）
+                3.构造函数调用模式
+                4.call,apply调用
+        */
+
+        /*  //1.函数调用模式（独立调用）
+        function foo() {
+
+        }
+        //非严格模式下，函数this指向window；严格模式下,函数this指向undefined
+        foo();
+
+        //2.方法调用模式（对象调用方法）
+        function foo() {
+
+        }
+        var obj = {
+            a: 1,
+            foo: foo
+        }
+        //函数内的指针指向直接对象
+        obj.foo();
+ */
+        //3.构造函数调用模式
+        /* function foo() {
+            //console.log('这是foo'); 
+            console.log(this);
+        } */
+        //使用new调用，this指针由window指向foo函数
+        /* new foo(); */
+        //使用new调用的时候，如果没有返回值或者返回值不是对象，则返回（this）
+        // 如果返回值是对象，则返回对象
+        /* var bar = new foo();
+        console.log(bar); */
+
+        //4.间接调用函数模式
+        var obj = {
+            a: 2,
+            b: 3
+        }
+
+        function foo() {
+            console.log(this);
+            console.log(this.a);
+            console.log(this.b);
+        }
+        foo(); //window  undefined  undefined
+        //使用call将函数内this由window指向obj对象，从而间接调用obj里面的属性
+        foo.call(obj); //obj  2  3
+    </script>
+</body>
+
+</html>

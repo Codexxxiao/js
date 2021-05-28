@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数的reset参数</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            ES6给函数扩展了reset参数，用来显示接收传入的多余实参，是用一个数组
+                函数的length不包括reset参数
+    
+        */
+        function fn(...arg) {
+            console.log(arg);
+            console.log(fn.length);
+        }
+        fn(1, 2, 3, 4);
+    </script>
+</body>
+
+</html>

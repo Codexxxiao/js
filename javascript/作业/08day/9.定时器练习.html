@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>定时器练习</title>
+    <!-- 
+        定时器:
+            var intervalId = window.setInterval(function,delay);
+                function:要重复调用的函数
+                delay:每次延时的时间
+
+            windowTimers.clearInterval(intervalId)
+                取消先前通过setInterval定时的任务
+     -->
+    <style>
+        #box {
+            position: fixed;
+            left: 0;
+            top: 200px;
+
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: rosybrown;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <button id="btn1">走起</button>
+    <button id="btn2">停下</button>
+    <script>
+        /* 
+            计时器练习:
+        */
+        //获取标签元素
+        var oBox = document.getElementById('box');
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+
+        //声明定时器
+        var timer = null;
+        //声明位移变量
+        var l = 0;
+        oBtn1.onclick = function () {
+            //注意：每次点击都会添加一个定时器
+            // 因此可以先删除在添加
+            clearInterval(timer);
+
+            // 定义定时器
+            timer = setInterval(function () {
+                l += 1;
+                // 每次让小球向右位移1px
+                oBox.style.left = l + 'px';
+                // 人眼最舒适1秒60hz
+            }, 1000 / 60);
+        }
+
+        oBtn2.onclick = function () {
+            // 清除定时器
+            clearInterval(timer);
+        }
+    </script>
+</body>
+
+</html>

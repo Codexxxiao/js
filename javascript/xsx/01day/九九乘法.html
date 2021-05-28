@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>九九乘法表</title>
+
+</head>
+
+<body>
+    <script>
+        //使用while制作九九乘法表
+        var i = 1;
+        while (i <= 9) {
+            var j = 1;
+            while (j <= i) {
+                document.write(j + '*' + i + '=' + j * i + '&nbsp;&nbsp;&nbsp;' + '\t');
+                j++;
+            }
+            document.write('<br>');
+            i++;
+        }
+
+        //使用for制作九九乘法表
+
+        for (var i = 1; i <= 9; i++) {
+            for (var j = 1; j <= i; j++) {
+                document.write(j + '*' + i + '=' + j * i + '&nbsp;&nbsp;&nbsp;' + '\t');
+            }
+            document.write('<br>');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>this指针</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            var obj1 = {
+                obj2:{
+                    obj3:{
+                        fn:fn
+                    }
+                }
+            }
+            function fn(){
+                console.log(this)
+            }
+            this指针的绑定情况
+                1.默认绑定  this指向window
+
+                    fn();  //fn函数中this指向window
+
+                2.隐式绑定  this指向直接调用对象
+
+                    obj1.obj2.obj3.fn()  //fn函数中this指向obj3
+
+                3.call 和 apply 绑定  this指向call和apply的第一个参数
+
+                    fn.call(参数1)  // fn函数中this指向参数一
+                    fn.apply(参数1)  //fn函数中this指向参数一
+
+                4.new调用  this指向实例化对象
+
+                    let obj = new fn() //fn函数中this指向实例化对象obj               
+        */
+        //1.默认绑定
+        //函数独立调用
+        function bar() {
+            console.log(this); //window
+        }
+        bar();
+
+        //嵌套函数独立调用
+        function bar() {
+            function foo() {
+                console.log(this); //window
+            }
+            foo();
+        }
+
+        //IIEF（立即执行函数）
+        function bar() {
+            (function foo() {
+                console.log(this); //window
+            })();
+        }
+
+        //闭包函数（不会啊）
+
+        //2.隐式绑定（this绑定在直接对象上）
+        // 情况一：
+        function foo() {
+            console.log(this); //obj
+        }
+        var obj = {
+            a: 1,
+            foo: foo
+        }
+        obj.foo();
+        // 情况二：
+        function foo() {
+            console.log(this); //obj2
+        }
+        var obj = {
+            a: 1,
+            obj2: {
+                a: 2,
+                foo: foo
+            }
+        }
+        obj.obj2.foo();
+    </script>
+</body>
+
+</html>

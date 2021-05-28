@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Math方法</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Math方法：
+                abs(x)  取绝对值
+                sqrt(x)  返回一个数的平方根
+                    x为负数的时候返回NaN
+
+                ceil(x) 向上取整
+                floor(x)  向下取整
+                round(x)  返回四舍五入的整数
+
+                max()  返回最大值
+                min()  返回最小值
+
+                cos(x)  余弦值
+                sin(x)  正弦值
+                tan(x)  正切值
+            注意：里面放的不是角度，是弧度
+
+        */
+        //abs  绝对值
+        console.log(Math.abs(-1)); //1
+        console.log(Math.abs(1)); //1
+
+        //sqrt  平方根
+        console.log(Math.sqrt(4)); //2
+        console.log(Math.sqrt(-1)); //NaN
+
+        //ceil  向上取整
+        console.log(Math.ceil(3.4)); //4
+        console.log(Math.ceil(3.5)); //4
+        console.log(Math.ceil(-3.5)); //-3
+        console.log(Math.ceil(-3.6)); //-3
+        // floor  向下取整
+        console.log(Math.floor(3.4)); //3
+        console.log(Math.floor(3.5)); //3
+        console.log(Math.floor(-3.5)); //-4
+        console.log(Math.floor(-3.6)); //-4
+        // round  四舍五入
+        console.log(Math.round(3.4)); //3
+        console.log(Math.round(3.5)); //4
+        console.log(Math.round(-3.5)); //-3
+        console.log(Math.round(-3.6)); //-4
+
+        //max  最大值
+        console.log(Math.max(1, 2, 3, 3, 4, 2, 12, 4, 5)); //12
+        // min  最小值
+        console.log(Math.min(1, 2, 3, 3, 4, 2, 12, 4, 5)); //1
+
+        // sin
+        console.log(Math.sin(30 * Math.PI / 180)); //1/2
+        // cos
+        console.log(Math.cos(60 * Math.PI / 180)); //1/2
+        // tan
+        console.log(Math.tan(45 * Math.PI / 180)); //1
+    </script>
+</body>
+
+</html>

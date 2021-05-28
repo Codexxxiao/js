@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型和引用类型</title>
+</head>
+
+<body>
+
+    <script>
+        /* 
+            基本类型和对象类型
+                -基本类型：
+                    Number , String , Boolean , undefined , null
+                -对象类型：
+                    引用类型(函数、对象、数组、正则...)
+                
+                分类原因：存储位置不一样
+
+            基本类型和对象类型的特点
+                -基本类型的特点：
+                    1.基本数据类型存储在栈中，直接操作当前的值
+                    2.基本类型的值不可变（被重新赋值其实是被重新分配空间）
+                    3.不能说给基本类型添加属性和方法
+                        （使用字面量创建的基本类型，如果使用构造函数创建的相当于对象，可以添加属性和方法）
+                    4.基本数据类型的比较是栈中值的比较
+                -对象类型的特点：
+                    1.对象类型同时存储在栈中和堆中（在堆中存储对象的值，在栈中存储对象名和引用地址）
+                    2.对象类型是可变的
+                    3.对象类型的比较是地址值的比较
+        */
+
+        //基本数据类型
+        var a = 'xsx';
+        //基本类型不能添加属性和方法
+        a.name = 'xsx'
+        /* 
+            js执行这句话的内部机制原理：
+                var _a = new Number();
+                a.name = 'xsx';
+                delete a;(相当于a不存在了)
+        */
+        console.log(a); //xsx
+
+        //不能改变基本类型的值（被赋值只是重新开辟一个空间存放新的值）
+        a.toUpperCase();
+        console.log(a); //xsx
+
+
+        // 对象数据类型
+        var obj = {
+            name: 'xsx',
+            age: 12
+        }
+        console.log(obj.name); //xsx
+        //对象类型是可变的
+        obj.name = 'xsx1';
+        console.log(obj.name); //xsx1
+
+        var obj1 = {};
+        var obj2 = {};
+        // 对象类型是地址的比较
+        console.log(obj1 === obj2); //false
+    </script>
+</body>
+
+</html>

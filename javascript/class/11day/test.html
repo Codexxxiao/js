@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            /* overflow: hidden; */
+            /* height: 100px; */
+        }
+
+        /* #con {} */
+
+        .bar {
+            width: 40px;
+            /* 父级必须有高度设置作为参照 */
+            height: 100%;
+            /* position: fixed; */
+            /* right: 0;
+            top: 0; */
+            background-color: lavenderblush;
+        }
+
+        .box {
+            width: 40px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 60px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="con"></div>
+    <div class="bar">
+        <div class="box"></div>
+    </div>
+    <script>
+        /* var o5 = {
+            m: 5
+        };
+
+        var o6 = o5;
+
+        function fn(obj) {
+
+            obj = {
+                m: 6
+            };
+            
+        }
+
+
+        fn(o5);
+
+        console.log(o5.m, o6.m, o6 === o5);
+        var oCon = document.getElementById('con');
+        var oBox = document.querySelector('.box');;
+        var oBar = document.querySelector('.bar');;
+        //给con生成内容
+        for (var i = 0; i < 300; i++) {
+            oCon.innerHTML += i + "<br>"
+        } */
+
+        /* var a = [];
+        a['13'] = 42;
+        console.log(a);
+        console.log(a.length); */
+
+        /*  var a = 2 / 'foo';
+         var b = 'fn';
+         console.log(isNaN(0-/));//true
+         console.log(isNaN(b));//true */
+    </script>
+</body>
+
+</html>

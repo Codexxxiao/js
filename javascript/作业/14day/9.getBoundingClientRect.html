@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>getBoundingClientRect</title>
+    <style>
+        html,
+        body {
+            height: 2000px;
+        }
+
+        div {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        /* 
+        使用：getBoundingClientRect() 
+                返回一个DOMRect对象
+                属性：
+                    -left  元素左边缘到视口左边的距离
+                    -top    元素上边缘到视口上边的距离
+                    -right  元素右边缘到视口左边的距离
+                    -bottom     元素下边缘到视口上边的距离
+                    -width      元素的宽度
+                    -height     元素的高度
+                    -x 
+                    -y
+        */
+
+        var oBox = document.getElementById('box');
+
+        // 获取元素距离视口的高度
+        console.log(oBox.getBoundingClientRect().top);
+    </script>
+</body>
+
+</html>

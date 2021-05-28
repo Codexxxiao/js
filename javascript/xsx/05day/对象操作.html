@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>对象操作</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            对象操作
+                1.点语法定义（成员访问符）
+                2.中括号语法
+                3.Object.defineProperty(obj,prop,descriptor)
+                    会直接在对象上定义一个新属性，或修改一个对象的现有属性，并返回此对象
+                    obj:要定义属性的对象。
+                    prop：要定义或修改属性的名称
+                    descriptor:要定义或修改的属性描述符
+                4.Object.defineProperties(obj,props)
+                    直接在一个对象上定义新的属性或修改现有属性，并返回该对象
+                    obj：定义或修改属性的对象
+                    props：属性描述符：数据描述符，访问器描述符
+
+            读取属性
+                1.Object.getOwnPropertyNames(obj)
+                    obj:一个对象,其自身的可枚举和不可枚举属性的名称被放回  
+                2.Object.getOwnPropertyDescriptor(obj,propertyName);      
+
+         */
+
+        //对象直接量创建对象
+        /* var people = {
+            name: "xsx"
+        };
+        //  1.点语法定义给对象people添加age属性
+        people.age = 12;
+        console.log(people);
+
+        // 2.使用中括号法给对象people添加say方法
+        people['say'] = function () {};
+        console.log(people); */
+
+        //构造函数创建对象
+        var people = new Object({
+            name: 'xsx'
+        });
+        console.log(people);
+
+        //3.使用Object.defineProperty为对象people添加sex属性
+        /* Object.defineProperty(people, 'sex', {
+            value: 'male',
+            writable: true,
+            configurable: false,
+            enumereble: true,
+        });
+        console.log(people); */
+
+        // 4.使用Object.defineProperties为people添加sex和age属性
+        Object.defineProperties(people, {
+            'sex': {
+                value: 'male',
+                writable: true,
+                enumerable: true
+            },
+            'age': {
+                value: 12,
+                writable: true,
+                enumereble: true
+            }
+        });
+        console.log(people);
+
+        //使用Object.getOwnPropertyNames获取对象people其自身的可枚举和不可枚举的属性名称
+        console.log(Object.getOwnPropertyNames(people)); //['name','sex','age']
+
+        //使用Object.getOwnPropertyDescriptor获取对象属性的描述符
+        console.log(Object.getOwnPropertyDescriptor(people, 'name'));
+        //{value:'xsx',writable:true,enumerable:true,configurable:true}
+    </script>
+</body>
+
+</html>

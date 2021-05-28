@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>splice方法</title>
+    <!-- 
+        Array.prototype.splice()
+
+        splice(start,deleteCount[,item1[,item2,...]])
+            strat:指定修改的开始位置
+                (1)如果超出数组长度,则从数组末尾开始添加内容
+                (2)如果负值,则表示从数组末尾开始的第几位,如果绝对值大于数组长度,则表示开始位置为第0位
+            deleteCount(可选):
+                (1)整数,表示要移除的数组元素的个数
+                (2)如果deleteCount大于start后面的长度,则后面全部删除
+                (3)如果deleteCount为０或负数，则不删除(会返回一个空位数组)
+
+            item1,item2:要添进数组的元素,从start位置开始
+
+     -->
+</head>
+
+<body>
+    <script>
+        /* 
+            splice的删除,增加,替换操作
+         */
+        // 删除操作
+        var arr = [1, 2, 3, 4, 5];
+        arr.splice(1, 2);
+        console.log(arr); //[1,4,5]
+
+        // 增加操作
+        var arr1 = [1, 2, 3, 4, 5];
+        arr1.splice(1, 0, 1, 2);
+        console.log(arr1); //[1,1,2,2,3,4,5]
+
+        // 替换操作
+        var arr2 = [1, 2, 3, 4, 5];
+        arr2.splice(1, 1, 2, 2); //[1,2,2,3,4,5]
+        console.log(arr2);
+
+        var arr3 = [1, 2, 3, 4, 5];
+        console.log(arr3.splice())
+    </script>
+</body>
+
+</html>

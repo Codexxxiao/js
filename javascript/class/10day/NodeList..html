@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>NodeList</title>
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var oBox = document.getElementById('box');
+        var oLis = oBox.childNodes;
+        console.log(oLis); //NodeList
+        console.log(oLis.length); //9
+        oBox.appendChild(document.createElement('div'));
+        console.log(oLis.length); //10
+
+        oLis.forEach(function (item, index) {
+            oBox.appendChild(document.createElement('div'));
+        })
+
+        var oLis = oBox.getElementsByTagName('li');
+        console.log(oLis); //HTMLCollection
+    </script>
+</body>
+
+</html>

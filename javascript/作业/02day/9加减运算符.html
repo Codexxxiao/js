@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>加减运算符</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            加减运算符
+                -减法运算符：（左结合）
+                    会自动调用Number()进行隐式转换
+                    NaN和任何数字相减都为NaN，同时NaN不等于任何一个数，包括NaN本身
+
+                加法运算符：（左结合）
+                    没有出现字符串和引用类型的时候
+                        null，undefined，boolean类型会调用Number()转变为Number类型进行运算
+                        复杂类型（对象，函数，数组）会先变为String类型然后在运算
+                    出现字符串的时候
+                        +左右类型隐式调用 toString()方法转为字符串后拼接
+                    出现引用类型的是
+                        +左右类型隐式调用 toString()方法转为字符串后拼接
+                    
+                    
+        */
+        //减法运算符
+        console.log(1 - 10); //-9
+        console.log('1' - 10); //-9
+        console.log(true - 10); //-9
+        console.log(false - 10); //-10
+        console.log(NaN - 10); //NaN
+        console.log('ads' - 10); //NaN
+        console.log(undefined - 10); //NaN
+        console.log(null - 10); //-10
+
+        // 加法运算符
+        console.log(1 + 2); //3
+        console.log(true + false); //1
+        console.log('1' + false); //1false
+        console.log('1' + 2); //12
+        console.log(2 + 2 + '1'); //41
+        console.log('1' + 2 + 2); //122
+        console.log(1 + undefined); //NaN
+        console.log(1 + null); //1
+        console.log(1 + []); //1
+        console.log(1 + {}); //1[object Object]
+        console.log(1 + [1]); //11
+        console.log(1 + function fn() {}); //1function fn() {}
+
+        console.log([1, 2] + {}); //1,2[object Object]
+    </script>
+</body>
+
+</html>

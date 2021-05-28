@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ATM按键</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            需求：ATM按键，输入相应数字，执行相应功能
+        */
+        var userV = prompt('欢迎光临银行，请输入数字选择功能（1.查询余额，2.取钱，3.转账，4.退出）');
+        switch (+userV) {
+            case 1:
+                alert('正在查询余额...');
+                break;
+            case 2:
+                alert('正在取钱...');
+                break;
+            case 3:
+                alert('正在转账...');
+                break;
+            case 4:
+                alert('正在退出...');
+                break;
+            default:
+                alert('输入错误！');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图无缝</title>
+    <style>
+        #outer {
+            position: relative;
+            width: 300px;
+            /* border: 1px solid #000; */
+            margin: 0 auto;
+        }
+
+        #inner {
+            overflow: hidden;
+        }
+
+        #inner #img {
+            width: 1800px;
+            display: flex;
+        }
+
+        #inner #img img {
+            width: 300px;
+        }
+
+        #left,
+        #right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: rgba(210, 105, 30, .5);
+
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        #left {
+            left: 20px;
+        }
+
+        #right {
+            right: 20px;
+        }
+
+        #sort {
+            display: flex;
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #sort li {
+            width: 10px;
+            height: 10px;
+            margin-left: 15px;
+            border-radius: 50%;
+            background-color: rgba(210, 105, 30, .3);
+
+            cursor: pointer;
+        }
+
+        #sort li.active {
+            background-color: rgba(210, 105, 30, .9);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="img">
+                <img src="./img/1.jpg" alt="">
+                <img src="./img/2.jpg" alt="">
+                <img src="./img/3.jpg" alt="">
+                <img src="./img/4.jpg" alt="">
+                <img src="./img/5.jpg" alt="">
+                <img src="./img/1.jpg" alt="">
+            </div>
+            <p id="left">&lt;</p>
+            <p id="right">&gt;</p>
+            <ul id="sort">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var oInner = document.getElementById('inner');
+        var oImgs = document.querySelectorAll('#img img');
+
+        var oLeft = document.getElementById('left');
+        var oRight = document.getElementById('right');
+
+        var oSort = document.getElementById('sort');
+        var oLis = oSort.querySelectorAll('li');
+
+        // 声明自动轮播定时器
+        var autoTimer = null;
+        // 声明每张图片动画播放定时器
+        var moveTimer = null;
+        // 定义i代表第几张图片
+        var i = 0;
+
+
+        // 封装图片移动动画函数
+        function move() {
+
+            // 获得当前的起始位置
+            var startLocation = oInner.scrollLeft;
+            //获得终止位置
+            var endLocation = oImgs[0].offsetWidth * i;
+            //获得起始步数
+            var startStep = 0;
+            // 获得终止步数
+            var endStep = 40;
+            // 每步的距离
+            var everyStep = (endLocation - startLocation) / endStep;
+
+            moveTimer = setInterval(function () {
+
+                startStep++;
+
+                if (startStep >= endStep) {
+                    clearInterval(moveTimer);
+                }
+                // 注意直接赋值会造成精度丢失情况
+                // oInner.scrollLeft += everyStep;
+
+                // 先累加，在赋值，可以解决精度丢失情况
+                startLocation += everyStep;
+                oInner.scrollLeft = startLocation;
+
+            }, 20)
+
+        }
+
+        // 封装自动播放定时器函数
+        function automove() {
+
+            // 声明自定轮播定时器，每两秒轮播一次
+            autoTimer = setInterval(function () {
+                i++;
+                clearInterval(moveTimer);
+                // 判断临界值  当播放到最后一张图片 i++  过后，滚动条变为0，同时i变为第二张图片
+                if (i > oImgs.length - 1) {
+                    oInner.scrollLeft = 0;
+                    i = 1;
+                }
+
+                move();
+
+                sort(); 
+
+            }, 2000)
+        }
+
+        // 封装清除定时器函数
+        function clear() {
+            // 清除自动播放定时器
+            clearInterval(autoTimer);
+            clearInterval(moveTimer);
+        }
+
+        // 封装改变下标的函数
+        function sort() {
+            oLis.forEach(function (item, index) {
+                item.classList.remove('active');
+
+                oLis[i === oImgs.length - 1 ? 0 : i].classList.add('active');
+            })
+        }
+
+        automove();
+
+        // 绑定左右点击事件
+        oRight.onclick = function () {
+
+            clear();
+            i++;
+
+            if (i > oImgs.length - 1) {
+                i = 1;
+                oInner.scrollLeft = 0;
+            }
+
+            move();
+
+            sort();
+
+            automove();
+        }
+
+        oLeft.onclick = function () {
+            clear();
+            i--;
+
+            if (i < 0) {
+                i = oImgs.length - 2;
+                oInner.scrollLeft = oImgs[0].offsetWidth * oImgs.length - 1;
+            }
+
+            move();
+
+            sort();
+
+            automove();
+        }
+
+
+        oLis.forEach(function (item, index) {
+            item.index = index;
+            item.onclick = function () {
+                clear();
+                i = this.index;
+
+
+
+                move();
+
+                sort();
+
+                automove();
+            }
+        })
+    </script>
+</body>
+
+</html>

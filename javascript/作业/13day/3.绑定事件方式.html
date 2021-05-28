@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>绑定事件方式</title>
+    <style>
+        #outer {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background-color: burlywood;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #inner {
+            width: 300px;
+            height: 300px;
+            background-color: aquamarine;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #box {
+            position: absolute;
+            left: 600px;
+            width: 100px;
+            height: 100px;
+            background-color: chocolate;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="box"></div>
+        </div>
+    </div>
+    <script>
+        /* 
+            DOM0绑定事件
+                特点：
+                    -DOM0如果给同一个元素绑定同一个事件多次，则会覆盖
+                    -DOM0只支持冒泡
+
+                事件都是默认存在的，但是都被赋值为null，DOM会以冒泡的方式去执行绑定事件
+
+            DOM2绑定事件
+                addEventListener(type,listener,options);
+                    -options
+                        -capture:Boolean，是否在捕获阶段执行
+                        -once:Boolean,设置为true时，listener会在调用之后自动移除
+
+                addEventListener(type,listener,userCapture);
+                    -userCapture：
+                        -true：代表捕获阶段执行
+                        -false：代表冒泡阶段执行
+
+                特点：
+                    -可以对同一个元素绑定同一个事件多次，按书写顺序执行
+                    -可以控制事件流（捕获和冒泡）
+                    -可以使用DOM2级事件
+
+
+            选择绑定事件方式：
+                -如果当前的事件为DOM2事件，则必须通过DOM2绑定（DOMConteneLoaded事件）
+                -考虑是否要控制冒泡或捕获
+                -考虑是否绑定同一个事件多次
+
+
+            IE事件模型
+                -使用attachEvent方法绑定事件（ie11一下支持）
+                -参数一：on+事件名
+                -参数二：事件函数
+                -IE事件模型只能支持冒泡
+
+         */
+
+        var oOuter = document.getElementById('outer');
+        var oInner = document.querySelector('#inner');
+        var oBox = document.querySelector('#box');
+
+        console.dir(oBox);
+
+        // DOM0  给oOuter绑定点击事件
+        /* oOuter.onclick = function () {
+            console.log('outer1');
+        }
+        oOuter.onclick = function () {
+            console.log('outer2');
+        }
+        oOuter.onclick = function () {
+            console.log('outer3');
+        }
+
+        oOuter.onclick = function () {
+            console.log('oOuter');
+        }
+        oInner.onclick = function () {
+            console.log('oInner');
+        }
+        oBox.onclick = function () {
+            console.log('oBox');
+        } */
+
+        // DOM2  给oOter绑定点击事件
+        /* oOuter.addEventListener('click', function () {
+            console.log('oOuter');
+        }, true)
+        oInner.addEventListener('click', function () {
+            console.log('oInner');
+        }, false)
+        oBox.addEventListener('click', function () {
+            console.log('oBox');
+        }, true)
+
+        document.addEventListener('click', function () {
+            console.log('document');
+        }, false) */
+
+        // DOM2  绑定事件
+        oOuter.addEventListener('click', function () {
+            console.log('oOuter');
+        }, {
+            capture: true
+        })
+    </script>
+</body>
+
+</html>

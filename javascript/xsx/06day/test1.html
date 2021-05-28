@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test1</title>
+    <!-- 
+        数组  对象  函数调用toString属性输入的内容不同
+            数组会被去掉方括号,变成字符串
+            对象会被输入为[object Object]
+            函数会被输入为function() {}
+     -->
+</head>
+
+<body>
+    <script>
+        /* var a = 2; */
+
+        /* var obj = {
+            a : 1;
+            foo:function
+        } */
+        /* console.log(foo()()); */
+
+        var arr = [1, 1];
+        var obj = {};
+        var foo = function () {};
+
+        console.log(arr.toString()); //
+        console.log(obj.toString()); //[object Object]
+        console.log(foo.toString()); //function() {}
+    </script>
+</body>
+
+</html>

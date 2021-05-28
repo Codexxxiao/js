@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数没有形参</title>
+</head>
+
+<body>
+    <script>
+        /* function people(name, age) {
+            console.log(name, age)
+            this.name = name;
+            this.age = age;
+        }
+        var people1 = new people('xsx', 12);
+        console.log(people1); */
+
+        /* function bar() {
+            console.log('is bar');
+        }
+
+        function foo(fn) {
+            console.log('!!!!!');
+            console.log(fn);
+            fn();
+        }
+
+        foo(bar); */
+
+        /*  const action = 'say_hello';
+         debugger;
+         switch (action) {
+             case 'say_hello': {
+                 let message = 'hello';
+                 console.log('0 ~5');
+                 break;
+             }
+             case 'say_hi': {
+                 let message = 'hi';
+                 console.log('6');
+                 break;
+             }
+             default:
+                 console.log('Empty action received.');
+                 break;
+         } */
+        /*  var sum = 0;
+         var i = 1;
+         while (i <= 100) {
+             sum += i++;
+         }
+         console.log(sum); */
+        function foo() {
+            console.log(this);
+        }
+        foo(); //window
+
+        var obj = {
+            do: function () {
+                foo(); //foo是直接使用不带任何修饰的函数引用进行调用，因此只能使用默认绑定 规则
+                /* console.log(this); */
+            },
+        };
+        obj.do();
+    </script>
+</body>
+
+</html>

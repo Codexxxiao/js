@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数组的栈操作</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            数组的栈操作：
+                push(element1,element2,element3,...);
+                    -在数组尾部插入一个或多个元素
+                    -返回数组插入后长度
+                pop()
+                    -删除数组尾部得一个元素
+                    -并返回删除得这个尾部元素（其实也可以理解为获得数组尾部的元素）
+
+        */
+        /* 
+        操作数组
+    */
+
+        // 栈操作
+        // (1)arr.push(element1,element2,element3,...)
+
+        var arr = [1, 2, 3, 4, 5];
+        var len = arr.push(7, 8, 9);
+        console.log(arr); //[1,2,3,4,5,7,8,9]
+        console.log(len); //8
+
+        //使用apply来合并两个数组
+        var arr1 = [1, 2, 3];
+        var arr2 = [4, 5, 6];
+        Array.prototype.push.apply(arr1, arr2);
+        console.log(arr1); //[1,2,3,4,5,6]
+
+        //(2)arr.pop()从数组尾部删除一个元素,并返回这个元素的值
+        console.log(arr1.pop()); //6
+    </script>
+</body>
+
+</html>

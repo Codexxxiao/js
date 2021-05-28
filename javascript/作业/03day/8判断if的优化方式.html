@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>判断if的优化方式</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            将简单的if语句进行优化
+                当if和else中只有一条语句的时候
+                    (1)使用三元运算符进行优化
+                    (2)使用与或非进行优化
+        */
+        var a = 1,
+            b = 3,
+            c = 10;
+
+
+        //方法一：简单的if语句
+        /* if (a > b) {
+            c = a;
+        } else {
+            c = b;
+        }
+        console.log(c); //3 */
+
+        // 方法二:使用三元运算符优化
+        /* c = a > b ? a = 1 : b = 3;
+        console.log(c);//3 */
+
+        //方法三:使用与或非
+        c = a > b && a || b;
+        console.log(c); //3
+    </script>
+</body>
+
+</html>

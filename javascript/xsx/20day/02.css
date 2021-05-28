@@ -1,0 +1,87 @@
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+#aside {
+  width: 210px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+}
+#aside .con1 {
+  display: flex;
+  width: 210px;
+  height: 40px;
+  line-height: 36px;
+  font-size: 12px;
+  font-weight: bold;
+}
+#aside .con1 li {
+  flex: 1;
+  text-align: center;
+  border-top: 4px solid transparent;
+  border-bottom: 1px solid #ccc;
+}
+#aside .con1 li.active {
+  border-top: 4px solid red;
+  border-bottom: none;
+}
+#aside .tab-con {
+  display: none;
+  width: 190px;
+  padding: 10px;
+}
+#aside .tab-con.active {
+  display: block;
+}
+#aside .tab-con a {
+  color: #666666;
+  text-decoration: none;
+}
+#aside .tab-con a:hover {
+  text-decoration: underline;
+  color: chocolate;
+}
+#aside .tab-con .con2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+#aside .tab-con .con2 li {
+  width: 95px;
+  height: 28px;
+  line-height: 28px;
+  border-bottom: 1px dashed #ddd;
+}
+#aside .tab-con .con3 li p {
+  margin: 0;
+  padding: 0;
+}
+#aside .tab-con .con3 li p:first-of-type {
+  font-size: 12px;
+  font-weight: bold;
+}
+#aside .tab-con .con3 li p:last-of-type {
+  font-size: 18px;
+  color: red;
+}
+#aside .tab-con .con3 li div {
+  text-align: center;
+}
+#aside .tab-con .con3 li div a {
+  display: inline-block;
+  width: 90px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #ccc;
+  text-align: center;
+  color: #000;
+  font-size: 12px;
+}
+#aside .tab-con .con3 li a {
+  color: #666666;
+  text-decoration: none;
+}
+#aside .tab-con .con3 li a:hover {
+  text-decoration: underline;
+  color: chocolate;
+}

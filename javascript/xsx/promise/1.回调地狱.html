@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            回调地狱：
+
+        */
+        setTimeout(() => {
+            console.log("a数据请求回来了~");
+            setTimeout(() => {
+                console.log("b数据请求回来了~");
+                setTimeout(() => {
+                    console.log("c数据请求回来了~");
+                }, 3000);
+            }, 2000);
+        }, 1000);
+
+
+        // a数据来了   b数据来了    c数据来了
+    </script>
+</body>
+
+</html>

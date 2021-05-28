@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>节点互换练习</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            height: 100%;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #outer {
+            display: flex;
+            margin: 50px auto;
+            height: 50%;
+            width: 50%;
+            background-color: red;
+        }
+
+        #left {
+            flex-grow: 5;
+            background-color: cornflowerblue;
+        }
+
+        #center {
+            flex-grow: 1;
+            text-align: center;
+            background-color: cyan;
+        }
+
+        #right {
+            flex-grow: 5;
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="left">
+            <ul id="con1">
+                <li>我是con1的内容1</li>
+                <li>我是con1的内容2</li>
+                <li>我是con1的内容3</li>
+                <li>我是con1的内容4</li>
+            </ul>
+        </div>
+        <div id="center">
+            <button class="btn">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</button>
+            <br><button class="btn">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</button>
+        </div>
+        <div id="right">
+            <ul id="con2">
+                <li>我是con2的内容1</li>
+                <li>我是con2的内容2</li>
+                <li>我是con2的内容3</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var oCon1 = document.getElementById('con1');
+        var oCon2 = document.getElementById('con2');
+
+        // 获取con中的元素
+        var oLis1 = oCon1.getElementsByTagName('li');
+        var oLis2 = oCon2.getElementsByTagName('li');
+
+        // 获得按钮元素
+        var oBtn = document.querySelectorAll('#center .btn');
+
+        // 绑定点击事件
+        for (var i = 0; i < oLis1.length; i++) {
+            oLis1[i].onclick = function () {
+                // 背景变红
+                this.style.backgroundColor = 'red';
+                // 扩展自定义属性
+                // this.setAttribute('checked', 'true');
+                this.dataset.checked = 'true';
+            }
+        }
+
+        // 绑定点击事件
+        for (var i = 0; i < oLis2.length; i++) {
+            oLis2[i].onclick = function () {
+                // 背景变红
+                this.style.backgroundColor = 'red';
+                // 扩展自定义属性
+                // this.setAttribute('checked', 'true');
+                this.dataset.checked = 'true';
+            }
+        }
+
+        // 绑定点击事件
+        oBtn[0].onclick = function () {
+            // 判断oLis1中的是否有自定义属性checked
+            for (var i = 0; i < oLis1.length; i++) {
+                if (oLis1[i].dataset.checked) {
+
+                    oLis1[i].style.backgroundColor = 'darkcyan';
+                    delete oLis1[i].dataset.checked;
+                    oCon2.appendChild(oLis1[i]);
+                    i--; 
+                }
+            }
+        }
+
+        // 绑定点击事件
+        oBtn[1].onclick = function () {
+            // 判断oLis2中的是否有自定义属性checked
+            for (var i = 0; i < oLis2.length; i++) {
+                if (oLis2[i].dataset.checked) {
+                    oLis2[i].style.backgroundColor = 'cornflowerblue';
+                    delete oLis2[i].dataset.checked;
+                    oCon1.appendChild(oLis2[i]);
+                    i--;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

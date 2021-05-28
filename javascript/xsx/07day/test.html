@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="left">
+        <li>l1</li>
+        <li>l2</li>
+        <li>l3</li>
+        <li>l4</li>
+    </ul>
+    <ul id="right">
+        <li>r1</li>
+        <li>r2</li>
+        <li>r3</li>
+        <li>r4</li>
+    </ul>
+    <script>
+        function fn1() {
+            console.log(1);
+        }
+
+        function fn2() {
+            console.log(2);
+            console.log(this);
+        }
+
+        /* 
+            this为动态的，主要看函数是如何调用的
+
+
+        fn1.call(fn2);
+
+            fn2.foo = this;  this指向fn1,把fn1地址给fn2.foo
+
+            fn2.foo();  this指向fn2,foo地址为fn1地址，执行fn1函数
+
+
+        */
+
+        /* 
+            this();
+            fn1();//1
+        */
+        fn1.call(fn2); //1 
+
+        /*
+        注意： console.log(fn1.call === fn1.call.call);//true
+
+        fn1.call.call(fn2);
+
+            fn2.foo = this;  this指向call1，把call1地址给fn2.foo
+            
+            fn2.foo(); this指向fn2,foo地址为call1地址，执行call1函数，
+            此时call1中this指向fn2,相当于调用fn2函数
+  
+        */
+        fn1.call.call(fn2); //2     
+
+        // fn1.call(fn1);
+
+        console.log(typeof fn1); //function
+        console.log(typeof null); //object
+
+        console.log('1' + [1, 2, 3]);
+    </script>
+</body>
+
+</html>

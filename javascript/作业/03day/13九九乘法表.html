@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>九九乘法表的练习</title>
+
+</head>
+
+<body>
+    <script>
+        /* 
+            需求：九九乘法表
+         */
+        //方法一：使用for嵌套for
+        for (var i = 1; i <= 9; i++) {
+            for (var j = 1; j <= i; j++) {
+                document.write(j + '*' + i + '=' + j * i + '\t' + '&nbsp;&nbsp;&nbsp;'); //  \t为转义制表符的转义字符
+            }
+            document.write('<br>');
+        }
+
+        //方法二：使用while嵌套while
+        var i = 1;
+        while (i <= 9) {
+            var j = 1; //注意j每次都要重新赋值为1
+            while (j <= i) {
+                document.write(j + '*' + i + '=' + j * i + '\t' + '&nbsp;&nbsp;&nbsp;');
+                j++
+            }
+            document.write('<br>');
+            i++;
+        }
+
+        //方法三：使用while嵌套for
+        var i = 1;
+        while (i <= 9) {
+            for (var j = 1; j <= i; j++) {
+                document.write(j + '*' + i + '=' + j * i + '\t' + '&nbsp;&nbsp;&nbsp;');
+            }
+            document.write('<br>');
+            i++;
+        }
+    </script>
+</body>
+
+</html>

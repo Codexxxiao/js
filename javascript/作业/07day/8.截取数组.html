@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>截取数组</title>
+    <!-- 
+        截取数组
+            Array.prototype.slice([begin[,end]);
+                -返回一个新的数组对象
+                -原数组的值不会被该改变
+
+                begin不写的时候，默认为0
+                begin为负，从数组尾部开始计算元素
+                
+                end不写，默认到数组尾部
+                end为正，提取到不包含end的前一个值
+                end为负，从数组尾部开始计算
+
+                没有的话返回空数组，一定会返回一个数组
+
+                注意:左闭右开,开始位置会被截取,结束位置内容不会被截取
+
+            Array.prototype.splice(start,deleteCount[,item1[,item2,...]])
+                -返回值为删除的元素组成的数组对象
+                -原数组的值会被改变
+     -->
+</head>
+
+<body>
+    <script>
+        /* 
+            截取数组:
+                 
+        */
+        var arr = [1, 2, 3, 4, 5];
+        //使用slice截取数组
+        var re = arr.slice(1, 3);
+        console.log(arr); //[1,2,3,4,5]
+        console.log(re); //[2,3]
+
+        //  使用splice截取数组
+        var re1 = arr.splice(1, 3);
+        console.log(arr); //[1,5]
+        console.log(re1); //[2,3,4]
+    </script>
+</body>
+
+</html>

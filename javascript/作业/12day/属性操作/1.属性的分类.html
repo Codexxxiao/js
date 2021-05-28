@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>属性的分类</title>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <img src="" alt="" abc="" class="img2" say="how are you">
+    <script>
+        var oImg = document.querySelector('img');
+        /* 
+            oImg 是当前获取的DOM节点对象
+
+            这个节点对象的属性分为两种
+                -作为元素节点来说，属性是当前元素上定义的属性
+                -作为js对象来说，每个对象都可以扩展自己的属性和方法，和元素上的属性没有关系
+
+            设置节点对象的属性：
+                -如果这个属性是节点对象作为元素节点来说自有的属性，
+                    则执行通过ele.xxx设置或获取
+
+                -设置自定义属性
+                    添加自定义属性
+                    e.setAttribute(key,value)
+
+                    获得属性的值
+                    e.getAttribute(key);
+
+                    删除属性
+                    e.removeAttribute(key);
+        */
+    </script>
+</body>
+
+</html>

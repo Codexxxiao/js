@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>constructor</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            constructor  构造器
+                -想要获取一个对象是被谁实例化的，需要使用constructor
+                -constructor存在构造函数的原型对象上
+                -任意对象都是被实例化出来的，所以任意对象都能找到构造函数
+                    的原型对象，所以每一个对象都可以调用constructor
+
+                -构造函数的prototype指向其原型对象，原型对象的constructor
+                    指向其构造函数
+        */
+
+        console.log([].constructor); //ƒ Array() { [native code] }
+        console.log([].constructor === Array); //true
+
+        console.log([].__proto__.constructor === [].constructor); //true
+    </script>
+</body>
+
+</html>

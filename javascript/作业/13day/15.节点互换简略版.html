@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>节点互换练习</title>
+    <style>
+        
+        body,
+        html {
+            margin: 0;
+            height: 100%;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #outer {
+            display: flex;
+            margin: 50px auto;
+            height: 50%;
+            width: 50%;
+            background-color: red;
+        }
+
+        #left {
+            flex-grow: 5;
+            background-color: cornflowerblue;
+        }
+
+        #center {
+            flex-grow: 1;
+            text-align: center;
+            background-color: cyan;
+        }
+
+        #right {
+            flex-grow: 5;
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="left">
+            <ul class="con">
+                <li>我是con1的内容1</li>
+                <li>我是con1的内容2</li>
+                <li>我是con1的内容3</li>
+                <li>我是con1的内容4</li>
+            </ul>
+        </div>
+        <div id="center">
+            <button class="btn">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</button>
+            <br><button class="btn">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</button>
+        </div>
+        <div id="right">
+            <ul class="con">
+                <li>我是con2的内容1</li>
+                <li>我是con2的内容2</li>
+                <li>我是con2的内容3</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        /* 
+            在不知名的时候写出来的奇奇怪怪的方法
+        */
+        var oCons = document.querySelectorAll('#outer .con');
+        // 获取con中的元素
+        var oLis = [oCons[0].getElementsByTagName('li'), oCons[1].getElementsByTagName('li')];
+        // 获得按钮元素
+        var oBtns = document.querySelectorAll('#center .btn');
+
+        for (var i = 0; i < oCons.length; i++) {
+            for (var j = 0; j < oLis[i].length; j++) {
+                oLis[i][j].onclick = function () {
+                    // 背景变红
+                    this.style.backgroundColor = 'red';
+                    // 扩展自定义属性
+                    // this.setAttribute('checked', 'true');
+                    this.dataset.checked = 'true';
+                }
+            }
+        }
+
+        for (var i = 0; i < oBtns.length; i++) {
+            // 解决点击事件异步执行情况
+            (function (i) {
+                oBtns[i].onclick = function () {
+                    for (var j = 0; j < oLis[i].length; j++) {
+                        if (oLis[i][j].dataset.checked) {
+                            delete oLis[i][j].dataset.checked;
+                            if (i === 0) {
+                                oLis[i][j].style.backgroundColor = 'darkcyan';
+                                oCons[1].appendChild(oLis[i][j]);
+                            } else {
+                                oLis[i][j].style.backgroundColor = 'cornflowerblue';
+                                oCons[0].appendChild(oLis[i][j]);
+                            }
+                            j--;
+                        }
+                    }
+                }
+            })(i);
+        }
+
+    </script>
+</body>
+
+</html>

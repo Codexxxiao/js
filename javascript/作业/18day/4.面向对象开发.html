@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象开发</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            面向对象开发
+        */
+
+        /* 
+            1.使用字面量的方法创建对象
+                缺点：代码冗余
+        */
+        var student1 = {
+            name: 'xsx',
+            age: 18
+        }
+        student1.run = function () {
+            console.log('run');
+        }
+        var student2 = {
+            name: 'cyk',
+            age: 28
+        }
+        student2.run = function () {
+            console.log('run');
+        }
+
+        /* 
+            2.工厂模式
+                缺点：无法确定当前对象的构造器是谁
+        */
+        function createStudent(name, age) {
+            var obj = {};
+            obj.name = name;
+            obj.age = age;
+
+            return obj;
+        }
+
+        var s1 = createStudent('xsx', 18);
+
+        var s2 = createStudent('cyk', 28);
+
+        console.log(s1.constructor); //Object
+
+        /* 
+            3.使用构造函数
+                -当函数被new调用的话，这个函数被称为构造函数
+                -构造函数的特点；
+                    1.首字母大写
+                    2.构造函数实例化后，返回一个实例化对象
+                    3.构造函数中的this指向其实例化对象
+
+                缺点：
+                    方法无法共享
+        */
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        var p1 = new Person('xsx', 18);
+        var p2 = new Person('cyk', 28);
+
+        /* 
+            4.构造函数+原型对象方法
+        */
+
+        function Student(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Student.prototype.run = function () {
+            console.log('run');
+        }
+        Student.prototype.say = function () {
+            console.log('say');
+        }
+
+        var s1 = new Student('xsx', 18);
+        var s2 = new Student('cyk', 28);
+        console.log(s1.run === s2.run); //true
+    </script>
+</body>
+
+</html>

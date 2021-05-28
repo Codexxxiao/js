@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>几种常见的数组种类</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            几种常见的数组种类
+                1.普通数组
+                中括号（需计算的成员访问符）
+                    中括号中可以时变量（能够解析变量），也可以时表达式（获得表达式的返回值）
+                    当获取的值不存在的时候，返回undefined
+                2.多维数组
+                3.空位数组
+                    (1)空出来的位置为最前面或中间的时候,还是会计算这个位置的长度,
+                        放空出来的位置放在最后面的时候,就不会计算这个位置的长度(相当于这个位置不存在了)
+                    (2)去获取空位的值的时候,返回的是undefined
+                4.伪类数组
+                    (1)伪类数组并非数组,其实是一个对象
+                    (2)伪类数组拥有数组的两个特点:1.key是从0开始自然增长 2.拥有length属性
+         */
+
+        //1.普通数组
+        var arr1 = [1, 2, 'xsx', 3, 4];
+        console.log(arr1[2]); //xsx
+        console.log(arr1[0]); //1
+        console.log(arr1[1 + 3]); //4
+        console.log(arr1[100]); //undefined
+
+        //2.多维数组
+        var arr2 = [1, 2, [3, 4], 5, 6, [7, 8]];
+        console.log(arr2[2][1]); //4
+        console.log(arr2[5][1]); //8
+        console.log(arr2[5][1][10]); //undefined
+
+        //3.空位数组
+        //当有空位数组存在时，中间的值虽然为空，但是也会计算长度，去获取的时候返回undefined
+        var arr3 = [1, 2, , 3, 4];
+        var arr4 = [1, 2, , 3, 4, ];
+        var arr5 = [, 2, , 3, 4];
+        console.log(arr3); //长度为5
+        console.log(arr4); //长度为5
+        console.log(arr5); //长度为5
+        console.log(arr3[2]); //undefined
+
+        //4.伪类数组
+        var arrLike = {
+            0: 0,
+            1: 1,
+            2: 2,
+            3: 3,
+        }
+        Object.defineProperty(arrLike, 'length', {
+            value: 4,
+            configurable: false,
+            enumerable: false,
+            writable: true
+        });
+        console.log(arrLike);
+    </script>
+</body>
+
+</html>

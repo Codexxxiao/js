@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <script>
+        var oBox = document.getElementById('box');
+        var oLis = oBox.getElementsByTagName('li');
+
+        /* 
+            1.数组的slice方法，如果不传递任何参数的话，会返回和原数组一样的一个数组
+
+            所以可以用伪数组调用数组的slice方法，即可以转为数组
+
+            2.直接使forEach 指向伪数组
+
+            3.使用Array.from()
+                从一个类似数组或可迭代对象创建一个新的，浅拷贝的实例
+
+        */
+
+        //伪数组转数组，使伪数组可以使用数组中的方法
+
+        // 获取数组中的slice方法
+        Array.prototype.slice();
+        // 使得这个方法指向oLis这个伪数组，接收返回值
+        var re = Array.prototype.slice.call(oLis);
+
+        console.log(re); //Array(4)
+
+        // 也可以直接使用forEach直接遍历伪数组
+        // 使forEach指向伪数组
+        Array.prototype.forEach.call(oLis, function (item, index) {
+            console.log(this); //window
+            console.log(index);
+            console.log(item);
+        });
+
+        //Array.from()直接把伪数组变为数组
+        console.dir(Array);
+    </script>
+</body>
+
+</html>

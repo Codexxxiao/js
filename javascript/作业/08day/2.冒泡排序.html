@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>冒泡排序</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            冒泡排序：
+                升序思路：左右两个值进行比较，如果左边值更大，则左右的值互换
+                    依次不断把大值往右边冒泡似的排序好。
+        */
+        var arr = [4, 43, 6, 2, 14, 0, 32, 3, 5, 5, 234, 2, 12, 3];
+
+        for (var i = 0; i < arr.length - 1; i++) {
+            for (var j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+
+        console.log(arr);
+    </script>
+</body>
+
+</html>

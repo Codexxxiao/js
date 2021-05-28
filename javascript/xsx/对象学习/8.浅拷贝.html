@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>浅拷贝</title>
+</head>
+
+<body>
+    <script>
+        /* 
+
+         */
+
+        var obj = {
+            name: 'xsx',
+            age: 18,
+            hobby: ['play', 'eat'],
+            fn: function () {},
+            friend: {
+                name: 'xiaohong',
+                age: 16,
+                hobby: ['eat', 'sleep'],
+                fn: function () {}
+            }
+        }
+        var obj2 = {};
+        for (var key in obj) {
+            obj2[key] = obj[key];
+        }
+        obj2.friend.hobby = ['run', 'kick'];
+        obj2.name = 'xxxxsx';
+        obj2.friend.name = 'xxxxxh';
+
+        obj2.fn = 1;
+        obj2.friend.fn = 2;
+
+        console.log(obj);
+        console.log(obj2);
+    </script>
+</body>
+
+</html>

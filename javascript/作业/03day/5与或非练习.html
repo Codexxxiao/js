@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>与或非的练习</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            需求：判断两个数，如果有一个是非数字，那么就提示用户，否则就计算两个数字的和
+
+            isNaN(value)
+                会对value调用Number进行隐式的类型转换
+        */
+        //定义两个用户对话框
+        var userV1 = prompt("请输入第一个数字");
+        var userV2 = prompt("请输入第二个数字");
+
+        //两个数字累加，非数字提醒用户
+
+        //方法一：||（或）
+        /* if (isNaN(userV1) || isNaN(userV2)) {
+            alert("输入了非数字！");
+        } else {
+            alert(+userV1 + +userV2)//使用+一元运算符调用Numer隐式转换返回值
+        }
+ */
+        //方法二：&&（与） 和 !（非）
+        /* if (!isNaN(userV1) && !isNaN(userV2)) {
+            alert(+userV1 + +userV2)//使用+一元运算符调用Number隐式转换返回值
+        } else {
+            alert("输入了非数字！");
+        } */
+
+        //方法三：或 非
+        function fn() {
+
+            //定义两个用户对话框
+            var userV1 = prompt("请输入第一个数字");
+            var userV2 = prompt("请输入第二个数字");
+
+            if (!(isNaN(userV1) || isNaN(userV2))) {
+                alert(+userV1 + +userV2) //使用+一元运算符调用Number隐式转换返回值
+                fn(); //使用递归循环调用
+            } else {
+                alert("输入了非数字！");
+                fn(); //使用递归循环调用
+            }
+        }
+
+        fn();
+    </script>
+</body>
+
+</html>

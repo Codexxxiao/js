@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>new 命名原理</title>
+</head>
+
+<body>
+    <script>
+        /* 
+             new 命名原理
+                1.创建一个空对象，作为将要返回的对象实例
+                2.将这个空的对象的原型对象，指向构造函数的prototype属性对象
+                3.将这个实例对象的值赋值给函数内部的this关键字,添加属性和方法
+                4.返回(函数对象)
+        */
+        function Person(name) {
+            if (!(this instanceof Person)) {
+                return new Person(name);
+            }
+            this.name = name;
+        }
+        var p1 = new Person('xsx');
+        console.log(p1.__proto__ == Person.prototype); //true 
+        console.log(this);
+        console.log(window);
+
+        function foo() {
+            console.log(this)
+        }
+
+        var person = {
+            name: 'xsx',
+            age: 12,
+            foo: foo
+        }
+        person.foo();
+    </script>
+</body>
+
+</html>

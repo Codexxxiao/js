@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        // console.log(window.screen);
+
+        var oLis = document.querySelectorAll('li');
+
+        for (var i = 0; i < 3; i++) {
+            (function (i) {
+                oLis[i].onclick = function () {
+                    console.log(i);
+                }
+            })(i);
+        }
+    </script>
+</body>
+
+</html>

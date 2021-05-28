@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>修改原型对象后的注意点</title>
+</head>
+
+<body>
+    <script>
+        /* 
+             总结：一旦我们修改构造函数的原型对象，为防止引用出现问题，
+                同时也要修改原型对象的 constructor属性
+        */
+        function Myarray() {}
+        Myarray.prototype = Array.prototype;
+        console.log(Myarray.prototype.constructor); //f Array()
+        Myarray.prototype.constructor = Myarray;
+        console.log(Myarray.prototype.constructor); //f  Myarray()
+        console.log(Array.prototype.constructor); //f  Myarray()
+        var arr = new Myarray();
+
+        console.log(arr.__proto__ === Myarray.prototype); //true
+    </script>
+</body>
+
+</html>

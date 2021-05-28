@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>字符串截取</title>
+    <!-- 
+        字符串截取：
+            substr():
+                str.substr(start[, length])
+                -返回从指定位置到指定个数的字符串
+
+
+            substring():
+                str.substring(indexStart[, indexEnd])
+                -只有一个参数，截取从indexStart到字符串尾部
+                    负值全部默认为0
+                -两个参数，左闭右开
+                -如果参数2小于参数1，交换两个参数的位置
+
+            slice(beginIndex[, endIndex]):
+                -只有一个参数，截取从biginIndex到字符串尾部的长度
+                -如果有两个参数，左闭右开
+                -如果为负数，则倒着数
+     -->
+</head>
+
+<body>
+    <script>
+        //substr()
+        var str = 'sdfasgasdfasgs';
+        console.log(str.substr(3, 4)); //asga
+
+        //substring()
+        console.log(str.substring(-2, 2)); //sd
+        console.log(str.substring(2, -2)); //sd
+        console.log(str.substring(4, 2)); //fa
+        console.log(str.substring(14, 21)); //''
+
+        //slice()
+        console.log(str.slice(1, 4)); //dfa
+        console.log(str.slice(-2, 2)); //''
+    </script>
+</body>
+
+</html>

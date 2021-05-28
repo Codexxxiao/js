@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数组对象和函数对象</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            数组对象和函数对象
+                1.数组对象
+                    -作为数组，可以保存数据
+                    -作为对象，可以扩展属性和方法
+                        扩展的属性和方法，并不会增加数组的长度
+                2.函数对象
+                    -作为函数，可以被调用
+                    -作为对象，可以扩展属性和方法
+         */
+        //数组对象  
+        //作为数组，用arr保存数据
+        var arr = [1, 2, 3, 4];
+        console.log(arr);
+        //作为对象扩展属性
+        arr.name = 'xsx';
+        console.dir(arr);
+        console.log(arr.name); //xsx
+
+        //函数对象
+        //作为函数，可以调用并执行函数
+        function foo() {
+            console.log('foo');
+        }
+        foo(); //foo
+        //作为对象，可以扩展属性
+        foo.age = 'age';
+        console.log(foo.age); //age
+        console.dir(foo);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>手写new</title>
+</head>
+
+<body>
+    <script>
+        /*  
+            new调用函数时
+                没有return  或  return的值不为对象时，返回this指向的对象
+                return返回对象时，则返回return的对象
+
+            new干的事情
+                1.创建一个空对象，作为返回的实例对象
+                2.调用构造函数，使构造函数中this指向这个空对象（执行构造函数中的代码）
+                3.使对象的隐式原型指向构造函数的显示原型
+                4.判断构造函数的返回值，来决定new的返回值是（构造函数的返回值，还是实例化对象）
+                    如果构造函数无返回值，或返回值不为对象，则返回这个函数对象
+                    如果构造函数的返回值为对象，则返回这个对象
+
+        */
+
+        function Person(name, age) {
+            this.name = 'xsx';
+            this.age = 18;
+
+            return {
+                name: 'xsx'
+            };
+        }
+
+        Person.prototype.run = function () {
+            console.log('run');
+        }
+
+        function writeNew(construct) {
+            //1.创建一个空对象
+            var obj = {};
+            // 2.调用构造函数，使构造函数中的this指向这个空对象
+            var result = construct.call(obj);
+
+            // console.log(obj);
+
+            // 3.使对象的隐式原型指向构造器的显示原型
+            result.__proto__ = construct.prototype;
+
+            // 判断构造函数的返回值
+            var isObj = typeof result === 'object';
+            var isFun = typeof result === 'function';
+
+            return (isObj || isFun) ? result : obj;
+        }
+
+        var person = writeNew(Person);
+
+        console.log(person);
+    </script>
+</body>
+
+</html>

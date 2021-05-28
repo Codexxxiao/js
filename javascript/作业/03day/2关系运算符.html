@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>关系运算符</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            关系运算符：<,<=,>,>=
+                （1）返回的值为boolean类型
+                （2）两个数字比较时直接比较大小
+                （3）两个字符串比较时，比较ascii大小  
+                    小写字母大于大写字母大于数字
+                （4）其它类型比较都隐式转换为Number类型
+                （5）NaN和任何类型判断都为false
+        */
+
+        console.log(12 > 10); //t
+        console.log(12 > '10'); //t
+        console.log('ab' > '10'); //t
+        console.log(12 > null); //t
+        console.log(12 > undefined); //f
+        console.log(null < undefined); //f
+        console.log(false < undefined); //f
+        console.log(true < undefined); //f
+        console.log(false < null); //f
+        console.log([] >= ''); //f
+        console.log({} > {}); //false
+        console.log([] >= 0); //t
+    </script>
+</body>
+
+</html>

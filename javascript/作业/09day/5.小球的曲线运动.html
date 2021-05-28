@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>小球的曲线运动</title>
+    <style>
+        #box {
+            position: fixed;
+            top: 200px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: rosybrown;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            小球的曲线运动
+         */
+        //  获取标签元素
+        var oBox = document.getElementById('box');
+
+        function random(n, m) {
+            return Math.floor(Math.random() * (m - n) + n);
+        }
+
+        var timer = null;
+        var le = 0;
+        var t = 200;
+        var flag = true;
+        setInterval(function () {
+            if (flag) {
+                le++;
+                if (le == window.innerWidth - oBox.clientWidth) flag = false;
+            } else {
+                le--;
+                if (le === 0) flag = true;
+            }
+            oBox.style.left = le + 'px';
+
+            oBox.style.top = -Math.sin(le * Math.PI / 180) * 100 + t + 'px';
+
+            var r = random(0, 256);
+            var g = random(0, 256);
+            var b = random(0, 256);
+
+            oBox.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        }, 10);
+    </script>
+</body>
+
+</html>

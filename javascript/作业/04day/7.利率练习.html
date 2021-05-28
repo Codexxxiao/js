@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>利率练习</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            利率练习
+            需求：用户输入一个钱数 年利率为1.05(去年的利息和本钱 是下一年的本金) 翻倍需要几年
+        */
+        //获取用户输入的金额
+        var money = +prompt("请输入金钱");
+        //声明变量，金钱翻倍
+        var doubleMoney = money * 2;
+        //计算年份
+        var num = 0;
+        // 循环判断金额是否翻倍
+        while (money < doubleMoney) {
+            money = money * 1.01; // 每年金额变成本息相加
+            /* console.log(money); */
+            num++;
+        }
+        alert(num);
+    </script>
+</body>
+
+</html>

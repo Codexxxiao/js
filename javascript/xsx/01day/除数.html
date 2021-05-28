@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>除数的使用规则</title>
+
+    <!-- 输入一个数，求这个数每个位置都是多少 -->
+</head>
+
+<body>
+    <input type="text" id="xIp" placeholder="请输入一个数">
+    <button id="xBt">点击</button>
+    <script>
+        //获得元素
+        var vBt = document.getElementById('xBt');
+        var vIp = document.getElementById('xIp');
+
+        //绑定点击事件
+        vBt.onclick = function () {
+            //获得输入框中的字符串
+            var nIp = vIp.value;
+            //把获得的string类型转变为number，并赋值给一个临时变量
+            var temp = Number(nIp);
+            num:
+                //使用for循环，nIp.length为这个字符串的长度
+                for (let i = 0; i < nIp.length; i++) {
+                    var n = Math.floor(temp % 10); //Math.floor向下取整；Math.ceil向上取整
+                    temp /= 10; // temp = temp / 10;
+
+                    //循环输出 
+                    console.log('这个数的第' + (i + 1) + '位是：' + n);
+                }
+        }
+    </script>
+</body>
+
+</html>

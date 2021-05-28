@@ -1,0 +1,55 @@
+//1.作为普通变量
+@mainBorder: 1px solid red;
+
+//2.变量作为属性名使用，  使用的时候，用{}把变量包起来
+@bgc: background-color;
+
+//3.作为选择器名字来使用  使用的时候，用{}把变量包起来
+@d: div;
+
+// 4.保存url
+@url1: url("https://tva1.sinaimg.cn/large/00831rSTgy1gdnerxegkhj30j008d3yj.jpg");
+
+@{d} {
+    width: 500px;
+    height: 500px;
+    border: @mainBorder;
+    @{bgc}: red;
+    background: @url1;
+
+    p {
+        margin: 0;
+        padding: 0;
+        width: 50%;
+        height: 50%;
+        border: @mainBorder;
+        @{bgc}: red;
+
+        span {
+            color: saddlebrown;
+            font-size: 20px;
+            border: @mainBorder;
+            @{bgc}: red;
+
+        }
+    }
+}
+
+
+/* 
+// less中变量延迟加载
+@var: 0;
+
+.class {
+    @var : 1;
+
+    .brass {
+        // 在less中，会优先把块内全部的变量读取完成，才会选择使用哪一个
+        // 可以说是变量的延迟加载
+        @var: 2;
+        three: @var; //3
+        @var: 3;
+    }
+
+    one:@var; //1
+} */

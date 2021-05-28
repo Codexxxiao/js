@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>文档片段节点</title>
+</head>
+
+<body>
+    <button id="btn">添加100个li</button>
+    <ul id="box"></ul>
+    <script>
+        /* 
+            DocumentFragment是一个虚拟的节点类型，仅仅存在于内存中，没有添加到文档
+                树中，所以看不到渲染效果
+            使用document.createDocumentFragment()方法创建，使用
+                appendChild()等方法插入
+
+            可以是重排只发生一次
+        */
+        var oBox = document.getElementById('box');
+        var oBtn = document.getElementById('btn');
+        oBtn.onclick = function () {
+            var oFrag = document.createDocumentFragment();
+            for (var i = 0; i < 100; i++) {
+                var newLi = document.createElement('li');
+                newLi.textContent = 'hello' + i;
+                oFrag.appendChild(newLi);
+            }
+            oBox.appendChild(oFrag);
+        }
+    </script>
+</body>
+
+</html>

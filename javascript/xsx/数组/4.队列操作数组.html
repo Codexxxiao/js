@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>队列操作数组</title>
+    <!-- 
+        队列操作数组
+            -unshift(element1,element2,element3,...)
+                能够把一个或多个参数值添加到数组头部，参数1在最前面，依次往后
+                返回值为数组插入数据之后的最新长度
+
+                注意：同时传入多个参数和依次传入多个参数的结果是不一样的
+            -shift()
+                删除第一个元素
+                返回值为第一个元素的值
+     -->
+</head>
+
+<body>
+    <script>
+        var arr = [3, 4, 5, 6];
+        //使用unshift在数组最前面插入元素
+        var len = arr.unshift(0, 1, 2);
+        console.log(arr); //[01,2,3,4,5,6]
+        console.log(len); //7
+
+        //使用shift 删除数组第一个元素
+        console.log(arr.shift()); //0
+        console.log(arr); //[1,2,3,4,5,6]
+    </script>
+</body>
+
+</html>
